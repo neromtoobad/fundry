@@ -1,0 +1,6153 @@
+{
+ "netlist": "0x00000002000002000000020000050000000c00000c0000000d0000080000000e00000e01000025000000030000030000001100000b0000000400000400000013000012000000140000140000001000001000000016000015000000170000170000000e000018000000190000190000001300000b0000001b00001b0000001600001c0000001d00001d0000000e00001e0000001f00001f0000000400001100000021000021000000100000110000001600002200000023000024000000070000070000000e000026000000270000270000001a00001a0000002000002000000000000000000000280000280000000e00000e00000000000000000000290000290000002a00002a0000002b00002b0000002c00002c0000002d00002d0000002e00002e",
+ "nIn": 9,
+ "nOut": 6,
+ "nState": 1,
+ "gateCount": 42,
+ "cases": [
+  {
+   "inputs": "0x0000",
+   "state": "0x00",
+   "outputs": "0x1a",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x0000",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x0100",
+   "state": "0x00",
+   "outputs": "0x19",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x0100",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x0200",
+   "state": "0x00",
+   "outputs": "0x1b",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x0200",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x0300",
+   "state": "0x00",
+   "outputs": "0x19",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x0300",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x0400",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x0400",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x0500",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x0500",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x0600",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x0600",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x0700",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x0700",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x0800",
+   "state": "0x00",
+   "outputs": "0x1a",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x0800",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x0900",
+   "state": "0x00",
+   "outputs": "0x19",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x0900",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x0a00",
+   "state": "0x00",
+   "outputs": "0x1b",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x0a00",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x0b00",
+   "state": "0x00",
+   "outputs": "0x19",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x0b00",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x0c00",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x0c00",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x0d00",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x0d00",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x0e00",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x0e00",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x0f00",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x0f00",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x1000",
+   "state": "0x00",
+   "outputs": "0x1a",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x1000",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x1100",
+   "state": "0x00",
+   "outputs": "0x19",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x1100",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x1200",
+   "state": "0x00",
+   "outputs": "0x1b",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x1200",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x1300",
+   "state": "0x00",
+   "outputs": "0x19",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x1300",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x1400",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x1400",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x1500",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x1500",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x1600",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x1600",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x1700",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x1700",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x1800",
+   "state": "0x00",
+   "outputs": "0x1a",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x1800",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x1900",
+   "state": "0x00",
+   "outputs": "0x19",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x1900",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x1a00",
+   "state": "0x00",
+   "outputs": "0x1b",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x1a00",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x1b00",
+   "state": "0x00",
+   "outputs": "0x19",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x1b00",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x1c00",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x1c00",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x1d00",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x1d00",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x1e00",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x1e00",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x1f00",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x1f00",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x2000",
+   "state": "0x00",
+   "outputs": "0x12",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x2000",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x2100",
+   "state": "0x00",
+   "outputs": "0x11",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x2100",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x2200",
+   "state": "0x00",
+   "outputs": "0x13",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x2200",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x2300",
+   "state": "0x00",
+   "outputs": "0x11",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x2300",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x2400",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x2400",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x2500",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x2500",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x2600",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x2600",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x2700",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x2700",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x2800",
+   "state": "0x00",
+   "outputs": "0x12",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x2800",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x2900",
+   "state": "0x00",
+   "outputs": "0x11",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x2900",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x2a00",
+   "state": "0x00",
+   "outputs": "0x13",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x2a00",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x2b00",
+   "state": "0x00",
+   "outputs": "0x11",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x2b00",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x2c00",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x2c00",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x2d00",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x2d00",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x2e00",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x2e00",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x2f00",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x2f00",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x3000",
+   "state": "0x00",
+   "outputs": "0x12",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x3000",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x3100",
+   "state": "0x00",
+   "outputs": "0x11",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x3100",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x3200",
+   "state": "0x00",
+   "outputs": "0x13",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x3200",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x3300",
+   "state": "0x00",
+   "outputs": "0x11",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x3300",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x3400",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x3400",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x3500",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x3500",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x3600",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x3600",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x3700",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x3700",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x3800",
+   "state": "0x00",
+   "outputs": "0x12",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x3800",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x3900",
+   "state": "0x00",
+   "outputs": "0x11",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x3900",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x3a00",
+   "state": "0x00",
+   "outputs": "0x13",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x3a00",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x3b00",
+   "state": "0x00",
+   "outputs": "0x11",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x3b00",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x3c00",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x3c00",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x3d00",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x3d00",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x3e00",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x3e00",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x3f00",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x3f00",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x4000",
+   "state": "0x00",
+   "outputs": "0x1a",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x4000",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x4100",
+   "state": "0x00",
+   "outputs": "0x19",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x4100",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x4200",
+   "state": "0x00",
+   "outputs": "0x1b",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x4200",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x4300",
+   "state": "0x00",
+   "outputs": "0x19",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x4300",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x4400",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x4400",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x4500",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x4500",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x4600",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x4600",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x4700",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x4700",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x4800",
+   "state": "0x00",
+   "outputs": "0x1a",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x4800",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x4900",
+   "state": "0x00",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x4900",
+   "state": "0x01",
+   "outputs": "0x00",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x4a00",
+   "state": "0x00",
+   "outputs": "0x1b",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x4a00",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x4b00",
+   "state": "0x00",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x4b00",
+   "state": "0x01",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x4c00",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x4c00",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x4d00",
+   "state": "0x00",
+   "outputs": "0x00",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x4d00",
+   "state": "0x01",
+   "outputs": "0x00",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x4e00",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x4e00",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x4f00",
+   "state": "0x00",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x4f00",
+   "state": "0x01",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x5000",
+   "state": "0x00",
+   "outputs": "0x1a",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x5000",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x5100",
+   "state": "0x00",
+   "outputs": "0x19",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x5100",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x5200",
+   "state": "0x00",
+   "outputs": "0x1b",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x5200",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x5300",
+   "state": "0x00",
+   "outputs": "0x19",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x5300",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x5400",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x5400",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x5500",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x5500",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x5600",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x5600",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x5700",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x5700",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x5800",
+   "state": "0x00",
+   "outputs": "0x1a",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x5800",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x5900",
+   "state": "0x00",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x5900",
+   "state": "0x01",
+   "outputs": "0x00",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x5a00",
+   "state": "0x00",
+   "outputs": "0x1b",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x5a00",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x5b00",
+   "state": "0x00",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x5b00",
+   "state": "0x01",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x5c00",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x5c00",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x5d00",
+   "state": "0x00",
+   "outputs": "0x00",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x5d00",
+   "state": "0x01",
+   "outputs": "0x00",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x5e00",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x5e00",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x5f00",
+   "state": "0x00",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x5f00",
+   "state": "0x01",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x6000",
+   "state": "0x00",
+   "outputs": "0x12",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x6000",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x6100",
+   "state": "0x00",
+   "outputs": "0x11",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x6100",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x6200",
+   "state": "0x00",
+   "outputs": "0x13",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x6200",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x6300",
+   "state": "0x00",
+   "outputs": "0x11",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x6300",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x6400",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x6400",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x6500",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x6500",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x6600",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x6600",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x6700",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x6700",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x6800",
+   "state": "0x00",
+   "outputs": "0x12",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x6800",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x6900",
+   "state": "0x00",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x6900",
+   "state": "0x01",
+   "outputs": "0x00",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x6a00",
+   "state": "0x00",
+   "outputs": "0x13",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x6a00",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x6b00",
+   "state": "0x00",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x6b00",
+   "state": "0x01",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x6c00",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x6c00",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x6d00",
+   "state": "0x00",
+   "outputs": "0x00",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x6d00",
+   "state": "0x01",
+   "outputs": "0x00",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x6e00",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x6e00",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x6f00",
+   "state": "0x00",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x6f00",
+   "state": "0x01",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x7000",
+   "state": "0x00",
+   "outputs": "0x12",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x7000",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x7100",
+   "state": "0x00",
+   "outputs": "0x11",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x7100",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x7200",
+   "state": "0x00",
+   "outputs": "0x13",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x7200",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x7300",
+   "state": "0x00",
+   "outputs": "0x11",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x7300",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x7400",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x7400",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x7500",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x7500",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x7600",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x7600",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x7700",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x7700",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x7800",
+   "state": "0x00",
+   "outputs": "0x12",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x7800",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x7900",
+   "state": "0x00",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x7900",
+   "state": "0x01",
+   "outputs": "0x00",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x7a00",
+   "state": "0x00",
+   "outputs": "0x13",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x7a00",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x7b00",
+   "state": "0x00",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x7b00",
+   "state": "0x01",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x7c00",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x7c00",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x7d00",
+   "state": "0x00",
+   "outputs": "0x00",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x7d00",
+   "state": "0x01",
+   "outputs": "0x00",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x7e00",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x7e00",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x7f00",
+   "state": "0x00",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x7f00",
+   "state": "0x01",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x8000",
+   "state": "0x00",
+   "outputs": "0x1a",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x8000",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x8100",
+   "state": "0x00",
+   "outputs": "0x19",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x8100",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x8200",
+   "state": "0x00",
+   "outputs": "0x1b",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x8200",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x8300",
+   "state": "0x00",
+   "outputs": "0x19",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x8300",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x8400",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x8400",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x8500",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x8500",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x8600",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x8600",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x8700",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x8700",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x8800",
+   "state": "0x00",
+   "outputs": "0x1a",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x8800",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x8900",
+   "state": "0x00",
+   "outputs": "0x19",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x8900",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x8a00",
+   "state": "0x00",
+   "outputs": "0x1b",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x8a00",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x8b00",
+   "state": "0x00",
+   "outputs": "0x19",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x8b00",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x8c00",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x8c00",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x8d00",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x8d00",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x8e00",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x8e00",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x8f00",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x8f00",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x9000",
+   "state": "0x00",
+   "outputs": "0x1a",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x9000",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x9100",
+   "state": "0x00",
+   "outputs": "0x19",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x9100",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x9200",
+   "state": "0x00",
+   "outputs": "0x1b",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x9200",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x9300",
+   "state": "0x00",
+   "outputs": "0x19",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x9300",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x9400",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x9400",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x9500",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x9500",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x9600",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x9600",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x9700",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x9700",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x9800",
+   "state": "0x00",
+   "outputs": "0x1a",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x9800",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x9900",
+   "state": "0x00",
+   "outputs": "0x19",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x9900",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x9a00",
+   "state": "0x00",
+   "outputs": "0x1b",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x9a00",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x9b00",
+   "state": "0x00",
+   "outputs": "0x19",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x9b00",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x9c00",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x9c00",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x9d00",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x9d00",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x9e00",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x9e00",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x9f00",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x9f00",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xa000",
+   "state": "0x00",
+   "outputs": "0x12",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xa000",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xa100",
+   "state": "0x00",
+   "outputs": "0x11",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xa100",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xa200",
+   "state": "0x00",
+   "outputs": "0x13",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xa200",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xa300",
+   "state": "0x00",
+   "outputs": "0x11",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xa300",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xa400",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xa400",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xa500",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xa500",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xa600",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xa600",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xa700",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xa700",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xa800",
+   "state": "0x00",
+   "outputs": "0x12",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xa800",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xa900",
+   "state": "0x00",
+   "outputs": "0x11",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xa900",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xaa00",
+   "state": "0x00",
+   "outputs": "0x13",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xaa00",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xab00",
+   "state": "0x00",
+   "outputs": "0x11",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xab00",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xac00",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xac00",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xad00",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xad00",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xae00",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xae00",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xaf00",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xaf00",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xb000",
+   "state": "0x00",
+   "outputs": "0x12",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xb000",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xb100",
+   "state": "0x00",
+   "outputs": "0x11",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xb100",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xb200",
+   "state": "0x00",
+   "outputs": "0x13",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xb200",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xb300",
+   "state": "0x00",
+   "outputs": "0x11",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xb300",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xb400",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xb400",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xb500",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xb500",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xb600",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xb600",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xb700",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xb700",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xb800",
+   "state": "0x00",
+   "outputs": "0x12",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xb800",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xb900",
+   "state": "0x00",
+   "outputs": "0x11",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xb900",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xba00",
+   "state": "0x00",
+   "outputs": "0x13",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xba00",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xbb00",
+   "state": "0x00",
+   "outputs": "0x11",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xbb00",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xbc00",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xbc00",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xbd00",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xbd00",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xbe00",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xbe00",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xbf00",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xbf00",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xc000",
+   "state": "0x00",
+   "outputs": "0x1a",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xc000",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xc100",
+   "state": "0x00",
+   "outputs": "0x19",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xc100",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xc200",
+   "state": "0x00",
+   "outputs": "0x1b",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xc200",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xc300",
+   "state": "0x00",
+   "outputs": "0x19",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xc300",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xc400",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xc400",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xc500",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xc500",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xc600",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xc600",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xc700",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xc700",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xc800",
+   "state": "0x00",
+   "outputs": "0x1a",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xc800",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xc900",
+   "state": "0x00",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xc900",
+   "state": "0x01",
+   "outputs": "0x00",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xca00",
+   "state": "0x00",
+   "outputs": "0x1b",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xca00",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xcb00",
+   "state": "0x00",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xcb00",
+   "state": "0x01",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xcc00",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xcc00",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xcd00",
+   "state": "0x00",
+   "outputs": "0x00",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xcd00",
+   "state": "0x01",
+   "outputs": "0x00",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xce00",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xce00",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xcf00",
+   "state": "0x00",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xcf00",
+   "state": "0x01",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xd000",
+   "state": "0x00",
+   "outputs": "0x1a",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xd000",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xd100",
+   "state": "0x00",
+   "outputs": "0x19",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xd100",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xd200",
+   "state": "0x00",
+   "outputs": "0x1b",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xd200",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xd300",
+   "state": "0x00",
+   "outputs": "0x19",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xd300",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xd400",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xd400",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xd500",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xd500",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xd600",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xd600",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xd700",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xd700",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xd800",
+   "state": "0x00",
+   "outputs": "0x1a",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xd800",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xd900",
+   "state": "0x00",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xd900",
+   "state": "0x01",
+   "outputs": "0x00",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xda00",
+   "state": "0x00",
+   "outputs": "0x1b",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xda00",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xdb00",
+   "state": "0x00",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xdb00",
+   "state": "0x01",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xdc00",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xdc00",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xdd00",
+   "state": "0x00",
+   "outputs": "0x00",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xdd00",
+   "state": "0x01",
+   "outputs": "0x00",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xde00",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xde00",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xdf00",
+   "state": "0x00",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xdf00",
+   "state": "0x01",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xe000",
+   "state": "0x00",
+   "outputs": "0x12",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xe000",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xe100",
+   "state": "0x00",
+   "outputs": "0x11",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xe100",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xe200",
+   "state": "0x00",
+   "outputs": "0x13",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xe200",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xe300",
+   "state": "0x00",
+   "outputs": "0x11",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xe300",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xe400",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xe400",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xe500",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xe500",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xe600",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xe600",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xe700",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xe700",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xe800",
+   "state": "0x00",
+   "outputs": "0x12",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xe800",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xe900",
+   "state": "0x00",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xe900",
+   "state": "0x01",
+   "outputs": "0x00",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xea00",
+   "state": "0x00",
+   "outputs": "0x13",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xea00",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xeb00",
+   "state": "0x00",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xeb00",
+   "state": "0x01",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xec00",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xec00",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xed00",
+   "state": "0x00",
+   "outputs": "0x00",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xed00",
+   "state": "0x01",
+   "outputs": "0x00",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xee00",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xee00",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xef00",
+   "state": "0x00",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xef00",
+   "state": "0x01",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xf000",
+   "state": "0x00",
+   "outputs": "0x12",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xf000",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xf100",
+   "state": "0x00",
+   "outputs": "0x11",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xf100",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xf200",
+   "state": "0x00",
+   "outputs": "0x13",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xf200",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xf300",
+   "state": "0x00",
+   "outputs": "0x11",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xf300",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xf400",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xf400",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xf500",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xf500",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xf600",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xf600",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xf700",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xf700",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xf800",
+   "state": "0x00",
+   "outputs": "0x12",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xf800",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xf900",
+   "state": "0x00",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xf900",
+   "state": "0x01",
+   "outputs": "0x00",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xfa00",
+   "state": "0x00",
+   "outputs": "0x13",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xfa00",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xfb00",
+   "state": "0x00",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xfb00",
+   "state": "0x01",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xfc00",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xfc00",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xfd00",
+   "state": "0x00",
+   "outputs": "0x00",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xfd00",
+   "state": "0x01",
+   "outputs": "0x00",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xfe00",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xfe00",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xff00",
+   "state": "0x00",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xff00",
+   "state": "0x01",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x0001",
+   "state": "0x00",
+   "outputs": "0x1a",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x0001",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x0101",
+   "state": "0x00",
+   "outputs": "0x19",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x0101",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x0201",
+   "state": "0x00",
+   "outputs": "0x1b",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x0201",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x0301",
+   "state": "0x00",
+   "outputs": "0x19",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x0301",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x0401",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x0401",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x0501",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x0501",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x0601",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x0601",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x0701",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x0701",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x0801",
+   "state": "0x00",
+   "outputs": "0x1a",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x0801",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x0901",
+   "state": "0x00",
+   "outputs": "0x19",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x0901",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x0a01",
+   "state": "0x00",
+   "outputs": "0x1b",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x0a01",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x0b01",
+   "state": "0x00",
+   "outputs": "0x19",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x0b01",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x0c01",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x0c01",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x0d01",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x0d01",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x0e01",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x0e01",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x0f01",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x0f01",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x1001",
+   "state": "0x00",
+   "outputs": "0x1a",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x1001",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x1101",
+   "state": "0x00",
+   "outputs": "0x19",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x1101",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x1201",
+   "state": "0x00",
+   "outputs": "0x1b",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x1201",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x1301",
+   "state": "0x00",
+   "outputs": "0x19",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x1301",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x1401",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x1401",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x1501",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x1501",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x1601",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x1601",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x1701",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x1701",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x1801",
+   "state": "0x00",
+   "outputs": "0x1a",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x1801",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x1901",
+   "state": "0x00",
+   "outputs": "0x19",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x1901",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x1a01",
+   "state": "0x00",
+   "outputs": "0x1b",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x1a01",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x1b01",
+   "state": "0x00",
+   "outputs": "0x19",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x1b01",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x1c01",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x1c01",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x1d01",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x1d01",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x1e01",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x1e01",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x1f01",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x1f01",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x2001",
+   "state": "0x00",
+   "outputs": "0x12",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x2001",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x2101",
+   "state": "0x00",
+   "outputs": "0x11",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x2101",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x2201",
+   "state": "0x00",
+   "outputs": "0x13",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x2201",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x2301",
+   "state": "0x00",
+   "outputs": "0x11",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x2301",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x2401",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x2401",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x2501",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x2501",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x2601",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x2601",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x2701",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x2701",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x2801",
+   "state": "0x00",
+   "outputs": "0x12",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x2801",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x2901",
+   "state": "0x00",
+   "outputs": "0x11",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x2901",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x2a01",
+   "state": "0x00",
+   "outputs": "0x13",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x2a01",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x2b01",
+   "state": "0x00",
+   "outputs": "0x11",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x2b01",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x2c01",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x2c01",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x2d01",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x2d01",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x2e01",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x2e01",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x2f01",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x2f01",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x3001",
+   "state": "0x00",
+   "outputs": "0x12",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x3001",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x3101",
+   "state": "0x00",
+   "outputs": "0x11",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x3101",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x3201",
+   "state": "0x00",
+   "outputs": "0x13",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x3201",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x3301",
+   "state": "0x00",
+   "outputs": "0x11",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x3301",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x3401",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x3401",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x3501",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x3501",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x3601",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x3601",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x3701",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x3701",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x3801",
+   "state": "0x00",
+   "outputs": "0x12",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x3801",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x3901",
+   "state": "0x00",
+   "outputs": "0x11",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x3901",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x3a01",
+   "state": "0x00",
+   "outputs": "0x13",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x3a01",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x3b01",
+   "state": "0x00",
+   "outputs": "0x11",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x3b01",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x3c01",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x3c01",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x3d01",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x3d01",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x3e01",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x3e01",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x3f01",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x3f01",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x4001",
+   "state": "0x00",
+   "outputs": "0x1a",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x4001",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x4101",
+   "state": "0x00",
+   "outputs": "0x19",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x4101",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x4201",
+   "state": "0x00",
+   "outputs": "0x1b",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x4201",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x4301",
+   "state": "0x00",
+   "outputs": "0x19",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x4301",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x4401",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x4401",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x4501",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x4501",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x4601",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x4601",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x4701",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x4701",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x4801",
+   "state": "0x00",
+   "outputs": "0x1a",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x4801",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x4901",
+   "state": "0x00",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x4901",
+   "state": "0x01",
+   "outputs": "0x00",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x4a01",
+   "state": "0x00",
+   "outputs": "0x1b",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x4a01",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x4b01",
+   "state": "0x00",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x4b01",
+   "state": "0x01",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x4c01",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x4c01",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x4d01",
+   "state": "0x00",
+   "outputs": "0x00",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x4d01",
+   "state": "0x01",
+   "outputs": "0x00",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x4e01",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x4e01",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x4f01",
+   "state": "0x00",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x4f01",
+   "state": "0x01",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x5001",
+   "state": "0x00",
+   "outputs": "0x1a",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x5001",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x5101",
+   "state": "0x00",
+   "outputs": "0x19",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x5101",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x5201",
+   "state": "0x00",
+   "outputs": "0x1b",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x5201",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x5301",
+   "state": "0x00",
+   "outputs": "0x19",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x5301",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x5401",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x5401",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x5501",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x5501",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x5601",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x5601",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x5701",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x5701",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x5801",
+   "state": "0x00",
+   "outputs": "0x1a",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x5801",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x5901",
+   "state": "0x00",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x5901",
+   "state": "0x01",
+   "outputs": "0x00",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x5a01",
+   "state": "0x00",
+   "outputs": "0x1b",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x5a01",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x5b01",
+   "state": "0x00",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x5b01",
+   "state": "0x01",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x5c01",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x5c01",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x5d01",
+   "state": "0x00",
+   "outputs": "0x00",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x5d01",
+   "state": "0x01",
+   "outputs": "0x00",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x5e01",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x5e01",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x5f01",
+   "state": "0x00",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x5f01",
+   "state": "0x01",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x6001",
+   "state": "0x00",
+   "outputs": "0x12",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x6001",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x6101",
+   "state": "0x00",
+   "outputs": "0x11",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x6101",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x6201",
+   "state": "0x00",
+   "outputs": "0x13",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x6201",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x6301",
+   "state": "0x00",
+   "outputs": "0x11",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x6301",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x6401",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x6401",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x6501",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x6501",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x6601",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x6601",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x6701",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x6701",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x6801",
+   "state": "0x00",
+   "outputs": "0x12",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x6801",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x6901",
+   "state": "0x00",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x6901",
+   "state": "0x01",
+   "outputs": "0x00",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x6a01",
+   "state": "0x00",
+   "outputs": "0x13",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x6a01",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x6b01",
+   "state": "0x00",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x6b01",
+   "state": "0x01",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x6c01",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x6c01",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x6d01",
+   "state": "0x00",
+   "outputs": "0x00",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x6d01",
+   "state": "0x01",
+   "outputs": "0x00",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x6e01",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x6e01",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x6f01",
+   "state": "0x00",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x6f01",
+   "state": "0x01",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x7001",
+   "state": "0x00",
+   "outputs": "0x12",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x7001",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x7101",
+   "state": "0x00",
+   "outputs": "0x11",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x7101",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x7201",
+   "state": "0x00",
+   "outputs": "0x13",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x7201",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x7301",
+   "state": "0x00",
+   "outputs": "0x11",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x7301",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x7401",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x7401",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x7501",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x7501",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x7601",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x7601",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x7701",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x7701",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x7801",
+   "state": "0x00",
+   "outputs": "0x12",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x7801",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x7901",
+   "state": "0x00",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x7901",
+   "state": "0x01",
+   "outputs": "0x00",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x7a01",
+   "state": "0x00",
+   "outputs": "0x13",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x7a01",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x7b01",
+   "state": "0x00",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x7b01",
+   "state": "0x01",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x7c01",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x7c01",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x7d01",
+   "state": "0x00",
+   "outputs": "0x00",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x7d01",
+   "state": "0x01",
+   "outputs": "0x00",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x7e01",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x7e01",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x7f01",
+   "state": "0x00",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x7f01",
+   "state": "0x01",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x8001",
+   "state": "0x00",
+   "outputs": "0x1a",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x8001",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x8101",
+   "state": "0x00",
+   "outputs": "0x19",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x8101",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x8201",
+   "state": "0x00",
+   "outputs": "0x1b",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x8201",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x8301",
+   "state": "0x00",
+   "outputs": "0x19",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x8301",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x8401",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x8401",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x8501",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x8501",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x8601",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x8601",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x8701",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x8701",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x8801",
+   "state": "0x00",
+   "outputs": "0x1a",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x8801",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x8901",
+   "state": "0x00",
+   "outputs": "0x19",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x8901",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x8a01",
+   "state": "0x00",
+   "outputs": "0x1b",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x8a01",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x8b01",
+   "state": "0x00",
+   "outputs": "0x19",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x8b01",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x8c01",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x8c01",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x8d01",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x8d01",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x8e01",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x8e01",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x8f01",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x8f01",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x9001",
+   "state": "0x00",
+   "outputs": "0x1a",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x9001",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x9101",
+   "state": "0x00",
+   "outputs": "0x19",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x9101",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x9201",
+   "state": "0x00",
+   "outputs": "0x1b",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x9201",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x9301",
+   "state": "0x00",
+   "outputs": "0x19",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x9301",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x9401",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x9401",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x9501",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x9501",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x9601",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x9601",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x9701",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x9701",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x9801",
+   "state": "0x00",
+   "outputs": "0x1a",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x9801",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x9901",
+   "state": "0x00",
+   "outputs": "0x19",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x9901",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x9a01",
+   "state": "0x00",
+   "outputs": "0x1b",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x9a01",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x9b01",
+   "state": "0x00",
+   "outputs": "0x19",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x9b01",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x9c01",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x9c01",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x9d01",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x9d01",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0x9e01",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x9e01",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x9f01",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0x9f01",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xa001",
+   "state": "0x00",
+   "outputs": "0x12",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xa001",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xa101",
+   "state": "0x00",
+   "outputs": "0x11",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xa101",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xa201",
+   "state": "0x00",
+   "outputs": "0x13",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xa201",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xa301",
+   "state": "0x00",
+   "outputs": "0x11",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xa301",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xa401",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xa401",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xa501",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xa501",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xa601",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xa601",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xa701",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xa701",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xa801",
+   "state": "0x00",
+   "outputs": "0x12",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xa801",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xa901",
+   "state": "0x00",
+   "outputs": "0x11",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xa901",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xaa01",
+   "state": "0x00",
+   "outputs": "0x13",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xaa01",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xab01",
+   "state": "0x00",
+   "outputs": "0x11",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xab01",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xac01",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xac01",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xad01",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xad01",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xae01",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xae01",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xaf01",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xaf01",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xb001",
+   "state": "0x00",
+   "outputs": "0x12",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xb001",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xb101",
+   "state": "0x00",
+   "outputs": "0x11",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xb101",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xb201",
+   "state": "0x00",
+   "outputs": "0x13",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xb201",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xb301",
+   "state": "0x00",
+   "outputs": "0x11",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xb301",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xb401",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xb401",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xb501",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xb501",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xb601",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xb601",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xb701",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xb701",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xb801",
+   "state": "0x00",
+   "outputs": "0x12",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xb801",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xb901",
+   "state": "0x00",
+   "outputs": "0x11",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xb901",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xba01",
+   "state": "0x00",
+   "outputs": "0x13",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xba01",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xbb01",
+   "state": "0x00",
+   "outputs": "0x11",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xbb01",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xbc01",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xbc01",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xbd01",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xbd01",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xbe01",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xbe01",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xbf01",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xbf01",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xc001",
+   "state": "0x00",
+   "outputs": "0x1a",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xc001",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xc101",
+   "state": "0x00",
+   "outputs": "0x19",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xc101",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xc201",
+   "state": "0x00",
+   "outputs": "0x1b",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xc201",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xc301",
+   "state": "0x00",
+   "outputs": "0x19",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xc301",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xc401",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xc401",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xc501",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xc501",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xc601",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xc601",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xc701",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xc701",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xc801",
+   "state": "0x00",
+   "outputs": "0x1a",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xc801",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xc901",
+   "state": "0x00",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xc901",
+   "state": "0x01",
+   "outputs": "0x00",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xca01",
+   "state": "0x00",
+   "outputs": "0x1b",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xca01",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xcb01",
+   "state": "0x00",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xcb01",
+   "state": "0x01",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xcc01",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xcc01",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xcd01",
+   "state": "0x00",
+   "outputs": "0x00",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xcd01",
+   "state": "0x01",
+   "outputs": "0x00",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xce01",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xce01",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xcf01",
+   "state": "0x00",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xcf01",
+   "state": "0x01",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xd001",
+   "state": "0x00",
+   "outputs": "0x1a",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xd001",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xd101",
+   "state": "0x00",
+   "outputs": "0x19",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xd101",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xd201",
+   "state": "0x00",
+   "outputs": "0x1b",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xd201",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xd301",
+   "state": "0x00",
+   "outputs": "0x19",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xd301",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xd401",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xd401",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xd501",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xd501",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xd601",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xd601",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xd701",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xd701",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xd801",
+   "state": "0x00",
+   "outputs": "0x1a",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xd801",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xd901",
+   "state": "0x00",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xd901",
+   "state": "0x01",
+   "outputs": "0x00",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xda01",
+   "state": "0x00",
+   "outputs": "0x1b",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xda01",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xdb01",
+   "state": "0x00",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xdb01",
+   "state": "0x01",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xdc01",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xdc01",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xdd01",
+   "state": "0x00",
+   "outputs": "0x00",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xdd01",
+   "state": "0x01",
+   "outputs": "0x00",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xde01",
+   "state": "0x00",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xde01",
+   "state": "0x01",
+   "outputs": "0x18",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xdf01",
+   "state": "0x00",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xdf01",
+   "state": "0x01",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xe001",
+   "state": "0x00",
+   "outputs": "0x12",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xe001",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xe101",
+   "state": "0x00",
+   "outputs": "0x11",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xe101",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xe201",
+   "state": "0x00",
+   "outputs": "0x13",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xe201",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xe301",
+   "state": "0x00",
+   "outputs": "0x11",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xe301",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xe401",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xe401",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xe501",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xe501",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xe601",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xe601",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xe701",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xe701",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xe801",
+   "state": "0x00",
+   "outputs": "0x12",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xe801",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xe901",
+   "state": "0x00",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xe901",
+   "state": "0x01",
+   "outputs": "0x00",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xea01",
+   "state": "0x00",
+   "outputs": "0x13",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xea01",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xeb01",
+   "state": "0x00",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xeb01",
+   "state": "0x01",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xec01",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xec01",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xed01",
+   "state": "0x00",
+   "outputs": "0x00",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xed01",
+   "state": "0x01",
+   "outputs": "0x00",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xee01",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xee01",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xef01",
+   "state": "0x00",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xef01",
+   "state": "0x01",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xf001",
+   "state": "0x00",
+   "outputs": "0x12",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xf001",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xf101",
+   "state": "0x00",
+   "outputs": "0x11",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xf101",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xf201",
+   "state": "0x00",
+   "outputs": "0x13",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xf201",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xf301",
+   "state": "0x00",
+   "outputs": "0x11",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xf301",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xf401",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xf401",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xf501",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xf501",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xf601",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xf601",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xf701",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xf701",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xf801",
+   "state": "0x00",
+   "outputs": "0x12",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xf801",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xf901",
+   "state": "0x00",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xf901",
+   "state": "0x01",
+   "outputs": "0x00",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xfa01",
+   "state": "0x00",
+   "outputs": "0x13",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xfa01",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xfb01",
+   "state": "0x00",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xfb01",
+   "state": "0x01",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xfc01",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xfc01",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xfd01",
+   "state": "0x00",
+   "outputs": "0x00",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xfd01",
+   "state": "0x01",
+   "outputs": "0x00",
+   "newState": "0x01"
+  },
+  {
+   "inputs": "0xfe01",
+   "state": "0x00",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xfe01",
+   "state": "0x01",
+   "outputs": "0x10",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xff01",
+   "state": "0x00",
+   "outputs": "0x00",
+   "newState": "0x00"
+  },
+  {
+   "inputs": "0xff01",
+   "state": "0x01",
+   "outputs": "0x00",
+   "newState": "0x00"
+  }
+ ]
+}
