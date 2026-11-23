@@ -1,0 +1,9 @@
+{
+ "netlist": "0x00000002000002000000020000050000000900000901000020000000030000030000000c000008000000040000040000000e00000d0000000f00000f0000000b00000b000000110000100000001200001200000009000013000000140000140000000e000008000000160000160000001100001700000018000018000000090000190000001a00001a0000000400000c0000001c00001c0000000b00000c0000001100001d0000001e00001f000000150000150000001b00001b000000000000000000000900000900000021000021000000220000220000002300002300000024000024",
+ "nIn": 6,
+ "nOut": 4,
+ "nState": 1,
+ "gateCount": 33,
+ "rulebook": "{\"assets\":[{\"symbol\":\"NVDA\",\"base\":2,\"onDrop\":\"half\",\"onRise\":\"double\",\"stop\":\"stayOut\"},{\"symbol\":\"SPY\",\"base\":2,\"onDrop\":\"none\",\"onRise\":\"none\",\"stop\":\"none\"}],\"dropBps\":500,\"riseBps\":500,\"stopBps\":1500,\"allFallingToCash\":true}",
+ "english": "Normally holds NVDA 50%, SPY 50%. If NVDA falls 5% or more since the last rebalance, cut it to half. If NVDA rises 5% or more, double its weight (up to the max). Stop-loss: if NVDA is 15% below its peak, sell it and stay out until it rises 5% in one period. If everything falls 5% or more at once, move the whole fund to cash (USDG). Weights are rebalanced to these targets; leftover goes to cash."
+}
