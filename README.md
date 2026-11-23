@@ -19,11 +19,12 @@ Built for **X Layer TapeOut Accelerate** (Oct 16 – Dec 7 2026). This repo star
 | Same circuit on the **real** TapeOut contracts | ✅ fork test creates a processor on the live factory (BEM fee), tapes out, matches `step()` on all 1,024 cases (`contracts/test/TapeOutFork.t.sol`) |
 | Real stock prices | ✅ TWAP reader matches the live Uniswap quoter within 0.1% (`contracts/test/TwapFork.t.sol`) |
 | `Fund` + `FundryFactory` | ✅ fork lifecycle: launch → deposit → rebalance → a 6.8% NVDA drop halves it → a >15% crash fires the stop and the latch keeps it out → withdraw (`contracts/test/FundLifecycle.t.sol`) |
+| Web app (`app/`) | ✅ League, Launch (live chip + “try your chip”), Fund page (live chip, invest/withdraw, rebalance, decision log). Clicked through on a local fork of X Layer mainnet: launch → invest → rebalance with real Uniswap swaps |
+| Deploy + seed (`contracts/script/Deploy.s.sol`, `scripts/seed.mjs`) | ✅ run on the local fork: processor created with BEM, 8 stocks listed, 4 demo funds launched and rebalanced |
 
 ## Not built yet
 
-- Mainnet deployment (no contract addresses yet)
-- The web app (League, Launch, Fund page with decision log)
+- Mainnet deployment (no contract addresses yet, so the app runs against a local fork for now)
 - Rule parts with REF royalties, Mine-to-Own, AI "describe your fund"
 - DeWEB hosting
 
@@ -43,10 +44,23 @@ Built for **X Layer TapeOut Accelerate** (Oct 16 – Dec 7 2026). This repo star
 ## Run it
 
 ```bash
-git clone --recurse-submodules https://github.com/neromtoobad/fundry && cd fundry
-cd sdk && npm test                      # compiler tests, about 1 s
-cd ../contracts && forge test           # fork tests against X Layer mainnet (slow public RPC: ~7 min)
+git clone --recurse-submodules https://github.com/neromtoobad/fundry && cd fundry && npm install
+npm test                                # compiler tests, about 1 s
+cd contracts && forge test && cd ..     # fork tests against X Layer mainnet (slow public RPC: ~7 min)
 ```
+
+The app on a local fork of X Layer mainnet (real pools and TapeOut contracts, test money):
+
+```bash
+anvil --fork-url https://rpc.xlayer.tech --chain-id 31337                     # terminal 1
+python3 scripts/fork-fund.py 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266       # test BEM/USDG for anvil account 0
+(cd contracts && forge script script/Deploy.s.sol --rpc-url http://127.0.0.1:8545 --broadcast \
+  --private-key 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80)  # anvil's public test key
+node scripts/seed.mjs --days=2                                                # 4 demo funds, 3 rebalances each
+npm run dev                                                                   # http://localhost:5173
+```
+
+In the app, “Connect → Local test account” signs with an anvil test key and “Get test USDG” tops it up. Both only exist on the fork.
 
 ## Built before the event
 
