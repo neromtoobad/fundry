@@ -1,0 +1,16 @@
+{
+  "name": "fundry",
+  "private": true,
+  "type": "module",
+  "workspaces": ["sdk", "app"],
+  "scripts": {
+    "abi": "node scripts/abi.mjs",
+    "seed": "node scripts/seed.mjs",
+    "dev": "npm run dev -w app",
+    "build": "npm run build -w app",
+    "test": "npm test -w sdk"
+  },
+  "devDependencies": {
+    "viem": "^2.38.0"
+  }
+}

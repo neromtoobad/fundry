@@ -1,0 +1,71 @@
+{
+ "chainId": 196,
+ "usdg": "0x4ae46a509F6b1D9056937BA4500cb143933D2dc8",
+ "assets": [
+  {
+   "symbol": "NVDA",
+   "name": "NVIDIA",
+   "token": "wNVDAx",
+   "address": "0xa8ddb5Cd96b5222AFe198316E9A57CAA642850D5",
+   "pool": "0x2a2B11730C2b6d99a58034A869dd810D7300a7b2",
+   "decimals": 18
+  },
+  {
+   "symbol": "SPY",
+   "name": "S&P 500 ETF",
+   "token": "wSPYx",
+   "address": "0xE7E553Cd128F0011777323A0b44a7b96EA1CB540",
+   "pool": "0x07c40850D14064D20eB0AfDEf9574675392f2c11",
+   "decimals": 18
+  },
+  {
+   "symbol": "SPCX",
+   "name": "SpaceX",
+   "token": "wSPCXx",
+   "address": "0x8e2eeD8b8B5E13Ea7BF38e50d7821d2C57309072",
+   "pool": "0x535AabfAF9A6Fbc1A04317b98885706dc6Bf1650",
+   "decimals": 18
+  },
+  {
+   "symbol": "MSFT",
+   "name": "Microsoft",
+   "token": "wMSFTx",
+   "address": "0x166Fbe68274b6a47e025F4ba17388c539f1fa1d0",
+   "pool": "0x66187278490a70A8aC26a6E159EB045F82DbFb57",
+   "decimals": 18
+  },
+  {
+   "symbol": "META",
+   "name": "Meta",
+   "token": "wMETAx",
+   "address": "0xe840946FfEBCd66B7C4E95095effaFaDfa0D0e56",
+   "pool": "0xfAD9e3C7550768fd4f34Bc9CEFD365CC193C0fB0",
+   "decimals": 18
+  },
+  {
+   "symbol": "GOLD",
+   "name": "Gold",
+   "token": "PAXGy",
+   "address": "0x6c6494Fd9962eB98B94ffA48F6679058F820700e",
+   "pool": "0x568E1Aae314fC7E5e624dc47A505Fc857d411528",
+   "decimals": 18
+  },
+  {
+   "symbol": "BTC",
+   "name": "Bitcoin",
+   "token": "xBTC",
+   "address": "0xb7C00000bcDEeF966b20B3D884B98E64d2b06b4f",
+   "pool": "0x520F8c07A529FFb5230e76bCb8EA553D664e5b76",
+   "decimals": 8
+  },
+  {
+   "symbol": "ETH",
+   "name": "Ether",
+   "token": "xETH",
+   "address": "0xE7B000003A45145decf8a28FC755aD5eC5EA025A",
+   "pool": "0x6E18CEbFb9C5BBcf127b97a6daB026E941FfF6D5",
+   "decimals": 18
+  }
+ ],
+ "count": 8
+}

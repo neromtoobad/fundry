@@ -9,3 +9,5 @@ dist/
 .DS_Store
 *.local.json
 JUDGE-SELF.md
+deployments/31337.json
+.claude/
