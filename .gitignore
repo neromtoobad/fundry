@@ -11,3 +11,5 @@ dist/
 JUDGE-SELF.md
 deployments/31337.json
 .claude/
+design/*.png
+design/hero/*.png

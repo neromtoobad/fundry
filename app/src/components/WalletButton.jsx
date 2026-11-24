@@ -23,7 +23,7 @@ export default function WalletButton() {
       </span>
     );
 
-  if (!IS_FORK) return <button className="pill ink sm" onClick={w.connect}>Connect wallet</button>;
+  if (!IS_FORK) return <button className="pill ink sm" onClick={w.connect}>Connect wallet <span className="arw" aria-hidden>→</span></button>;
   return (
     <span style={{ position: "relative" }}>
       <button className="pill ink sm" onClick={() => setOpen((o) => !o)}>Connect</button>

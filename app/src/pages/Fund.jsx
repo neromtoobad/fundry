@@ -43,25 +43,28 @@ export default function FundPage() {
 
   return (
     <main>
-      <div className="mono" style={{ marginBottom: 8 }}><Link to="/">LEAGUE</Link> / {f.symbol}</div>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "end", gap: 16, flexWrap: "wrap" }}>
-        <div>
-          <h1 className="hero" style={{ fontSize: "clamp(40px,6vw,72px)", margin: "8px 0 10px" }}>{f.name}</h1>
+      <section className="stage flat page-head">
+        <div className="scene" aria-hidden style={{ backgroundPosition: "92% 16%" }} />
+        <div className="reveal">
+          <span className="crumb"><Link to="/">LEAGUE</Link> / {f.symbol}</span>
+          <h1 className="hero">{f.name}</h1>
           <div className="mono">
-            CIRCUIT #{String(f.circuitId)} · {f.gates} GATES · {rb ? rb.assets.filter((a) => a.stop === "stayOut").length : "?"} LATCH ·
-            {" "}LOCKED SINCE BLOCK {f.launchBlock ? Number(f.launchBlock).toLocaleString() : "?"} · CREATOR{" "}
-            {addrUrl(f.creator) ? <a href={addrUrl(f.creator)} target="_blank" rel="noreferrer">{short(f.creator)}</a> : short(f.creator)}
+            Chip #{String(f.circuitId)} · {f.gates} gates · {rb ? rb.assets.filter((a) => a.stop === "stayOut").length : "?"} latch ·
+            {" "}locked since block {f.launchBlock ? Number(f.launchBlock).toLocaleString() : "?"} · creator{" "}
+            {addrUrl(f.creator) ? <a className="u" href={addrUrl(f.creator)} target="_blank" rel="noreferrer">{short(f.creator)}</a> : short(f.creator)}
+          </div>
+          <div className="headline-num">
+            <div><b>{f.sharePrice == null ? "–" : `$${f.sharePrice.toFixed(4)}`}</b><span className="mono">Value of one share</span></div>
+            <div><b style={{ color: f.ret != null && f.ret < 0 ? "#ff8a7a" : undefined }}>{f.ret == null ? "–" : pct(f.ret)}</b><span className="mono">Since launch</span></div>
+            <div><b>{f.navUnavailable ? "–" : usd(f.nav, 0)}</b><span className="mono">Fund size</span></div>
+            <div><b>{f.rebalanceCount}</b><span className="mono">Rebalances run</span></div>
           </div>
         </div>
-      </div>
+      </section>
 
-      <div className="grid2" style={{ marginTop: 24, alignItems: "start" }}>
+      <div className="grid2" style={{ alignItems: "start" }}>
         <section className="card">
-          <span className="mono">VALUE OF ONE SHARE</span>
-          <div style={{ display: "flex", alignItems: "baseline", gap: 14, flexWrap: "wrap" }}>
-            <span className="bigval">{f.sharePrice == null ? "–" : `$${f.sharePrice.toFixed(4)}`}</span>
-            {f.ret != null && <span className={`num ${f.ret >= 0 ? "gain" : "loss"}`} style={{ fontSize: 20 }}>{pct(f.ret)} since launch</span>}
-          </div>
+          <h3>The fund</h3>
           {f.priceWaiting?.length > 0 && (
             <p className="muted" style={{ fontSize: 13, marginTop: 10 }}>
               The {f.priceWaiting.join(" and ")} {f.priceWaiting.length > 1 ? "pools don’t" : "pool doesn’t"} have 30 minutes of price history yet, so this fund can’t take money in or rebalance until it does. Withdrawals still work: they hand back your share of each holding without needing a price.

@@ -95,8 +95,16 @@ export default function Launch() {
 
   return (
     <main>
-      <h1 className="hero" style={{ fontSize: "clamp(40px,5.5vw,68px)" }}>Launch a fund</h1>
-      <p className="lede">Set the rules once. They’re compiled into a chip on X Layer and can never be changed.</p>
+      <section className="stage flat page-head">
+        <div className="scene" aria-hidden style={{ backgroundPosition: "86% 74%" }} />
+        <div className="reveal">
+          <span className="crumb"><Link to="/">LEAGUE</Link> / LAUNCH A FUND</span>
+          <h1 className="hero">Launch a fund.</h1>
+          <p className="lede" style={{ color: "rgba(255,255,255,.8)", margin: 0 }}>
+            Pick the stocks and set the rules once. Fundry etches them into a chip on X Layer, and they can never be changed, not even by you.
+          </p>
+        </div>
+      </section>
 
       <div className="grid2" style={{ alignItems: "start" }}>
         <div style={{ display: "grid", gap: 16 }}>
