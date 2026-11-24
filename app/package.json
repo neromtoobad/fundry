@@ -11,6 +11,8 @@
     "build:mainnet": "VITE_CHAIN_ID=196 vite build"
   },
   "dependencies": {
+    "@fontsource/jetbrains-mono": "^5.3.0",
+    "@fontsource/schibsted-grotesk": "^5.3.0",
     "@fundry/sdk": "*",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
