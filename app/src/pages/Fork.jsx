@@ -11,6 +11,7 @@ import { fundSummary, launchInfo, chipTree, tapeoutFee } from "../lib/data.js";
 import { factoryAbi } from "../lib/abi.js";
 import { deployment } from "../lib/config.js";
 import { useWallet } from "../lib/wallet.jsx";
+import { Ticker } from "../components/StockLogo.jsx";
 
 const pctLabel = (v) => `${+(v / 100).toFixed(2)}%`;
 const withValue = (opts, v, label) => (opts.some(([x]) => x === v) ? opts : [...opts, [v, label(v)]].sort((a, b) => a[0] - b[0]));
@@ -129,7 +130,7 @@ export default function Fork() {
             <h3>Your changes, on top</h3>
             {rules.map((r, i) => (
               <div className="rule-row" key={r.symbol}>
-                <b style={{ fontSize: 18 }}>{r.symbol}</b>
+                <Ticker symbol={r.symbol} size={24} style={{ fontSize: 18 }} />
                 <div className="line"><span>Weight vs parent</span>
                   <Seg value={r.shift} onChange={(v) => setRule(i, "shift", v)} options={[[-1, "Less"], [0, "Same"], [1, "More"]]} />
                 </div>
@@ -182,8 +183,8 @@ export default function Fork() {
                 const f = features[i];
                 const set = (k) => setTest((x) => ({ ...x, [r.symbol]: { ...f, [k]: f[k] ? 0 : 1 } }));
                 return (
-                  <div key={r.symbol} className="holding" style={{ gridTemplateColumns: "56px 1fr 120px" }}>
-                    <b>{r.symbol}</b>
+                  <div key={r.symbol} className="holding" style={{ gridTemplateColumns: "84px 1fr 120px" }}>
+                    <Ticker symbol={r.symbol} />
                     <span className="signals" style={{ margin: 0 }}>
                       {["drop", "rise", "stop"].map((k) => (
                         <button key={k} type="button" className={`sigchip ${f[k] ? "on" : ""}`} onClick={() => set(k)}>{k === "stop" ? "STOP-LOSS" : k.toUpperCase()}</button>

@@ -11,7 +11,10 @@ import { useWallet } from "../lib/wallet.jsx";
 import ChipLab from "../components/ChipLab.jsx";
 import CheckCard from "../components/CheckCard.jsx";
 import { ChipOwnerCard, FamilyCard } from "../components/Ownership.jsx";
+import { Ticker } from "../components/StockLogo.jsx";
 
+// Fund.price is USDG (6 decimals) per 1e18 base units of the token: scale to one whole token
+const perToken = (price, decimals) => (Number(price) * 10 ** ((decimals ?? 18) - 18)) / 1e6;
 const bitsOf = (hex, n) => unpackBits(hexToBytes(hex || "0x"), n);
 const SIG = ["DROP", "RISE", "STOP-LOSS"];
 const LEVEL = ["out", "low", "medium", "high"];
@@ -88,11 +91,11 @@ export default function FundPage() {
             const target = levels && levelSum ? levels[i] / levelSum : 0;
             return (
               <div className="holding" key={h.address}>
-                <b>{h.symbol}</b>
+                <Ticker symbol={h.symbol} />
                 <div>
                   <div className="bar"><i style={{ width: `${weight * 100}%` }} />{levels && <s style={{ left: `calc(${target * 100}% - 1px)` }} title="Target from the chip" />}</div>
                   <div className="mono" style={{ marginTop: 4 }}>
-                    {Number(formatUnits(h.balance, h.decimals)).toLocaleString("en-US", { maximumFractionDigits: 4 })} {h.token} · {h.price == null ? "price not ready" : `$${(Number(h.price) / 1e6).toLocaleString("en-US", { maximumFractionDigits: 2 })} each`}
+                    {Number(formatUnits(h.balance, h.decimals)).toLocaleString("en-US", { maximumFractionDigits: 4 })} {h.token} · {h.price == null ? "price not ready" : `$${perToken(h.price, h.decimals).toLocaleString("en-US", { maximumFractionDigits: 2 })} each`}
                   </div>
                 </div>
                 <span className="num right">{(weight * 100).toFixed(1)}%</span>
@@ -178,8 +181,8 @@ function LogItem({ r, f }) {
           const sig = SIG.filter((_, k) => bits[3 * i + k]);
           return (
             <div key={h.address} style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap", margin: "4px 0" }}>
-              <b style={{ width: 54 }}>{h.symbol}</b>
-              <span className="mono" style={{ width: 92 }}>${(Number(r.prices[i]) / 1e6).toFixed(2)}</span>
+              <Ticker symbol={h.symbol} size={18} style={{ width: 78 }} />
+              <span className="mono" style={{ width: 100 }}>${perToken(r.prices[i], h.decimals).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
               {sig.length ? sig.map((s) => <span key={s} className="sigchip on">{s}</span>) : <span className="sigchip">NO SIGNAL</span>}
               <span>→ {LEVEL[lv[i]]}{sum ? `, ${Math.round((100 * lv[i]) / sum)}%` : ""}</span>
             </div>

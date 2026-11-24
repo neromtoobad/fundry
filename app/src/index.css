@@ -129,7 +129,7 @@ h3 { font-size: 19px; letter-spacing: -0.025em; font-weight: 600; margin: 0 0 10
 .fund-cell .chipthumb { width: 52px; flex: none; }
 .fund-name { font-weight: 600; font-size: 18px; letter-spacing: -0.025em; transition: color 0.2s; }
 .tags { display: flex; gap: 6px; flex-wrap: wrap; }
-.tag { font-family: var(--mono); font-size: 11px; padding: 4px 9px; border-radius: 999px; background: var(--canvas); color: var(--ink); }
+.tag { font-family: var(--mono); font-size: 11px; padding: 3px 9px 3px 3px; display: inline-flex; align-items: center; gap: 6px; border-radius: 999px; background: var(--canvas); color: var(--ink); }
 .tag.out { text-decoration: line-through; color: var(--faint); }
 .num { font-variant-numeric: tabular-nums; font-weight: 600; }
 .right { text-align: right; }
@@ -185,7 +185,7 @@ svg.live .gate.latch.lit { fill: var(--copper); }
 .kv dt { color: var(--muted); }
 .kv dd { margin: 0; padding-left: 18px; font-weight: 600; text-align: right; font-variant-numeric: tabular-nums; }
 .bigval { font-size: 56px; font-weight: 600; letter-spacing: -0.05em; line-height: 1; }
-.holding { display: grid; grid-template-columns: 70px 1fr 90px; gap: 12px; align-items: center; padding: 12px 0; border-top: 1px solid var(--line); }
+.holding { display: grid; grid-template-columns: 92px 1fr 90px; gap: 12px; align-items: center; padding: 12px 0; border-top: 1px solid var(--line); }
 .holding > * { min-width: 0; }
 .bar { height: 10px; background: var(--canvas); border-radius: 999px; position: relative; overflow: hidden; }
 .bar > i { position: absolute; inset: 0 auto 0 0; background: var(--ink); border-radius: 999px; transition: width 0.8s var(--ease); }
@@ -257,7 +257,7 @@ svg.live .gate.latch.lit { fill: var(--copper); }
   .stats { row-gap: 16px; }
   .headline-num { gap: 26px; }
   .headline-num b { font-size: 34px; }
-  .holding { grid-template-columns: 56px 1fr 64px; }
+  .holding { grid-template-columns: 80px 1fr 64px; }
   .sect { margin-top: 52px; }
 }
 
@@ -273,14 +273,14 @@ svg.live .gate.ref.lit { fill: var(--copper-soft); stroke: var(--copper); }
 
 .lab-row { padding: 14px 0; border-top: 1px solid var(--line); }
 .lab-row:first-child { border-top: 0; padding-top: 0; }
-.lab-top { display: grid; grid-template-columns: 60px 1fr 110px; gap: 12px; align-items: center; }
+.lab-top { display: grid; grid-template-columns: 84px 1fr 110px; gap: 12px; align-items: center; }
 .lab-out { text-align: right; font-variant-numeric: tabular-nums; }
 .lab-out b { font-size: 18px; }
 .lab-sliders { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 20px; margin-top: 12px; }
 .lab-sliders label { display: grid; gap: 6px; font-size: 13px; color: var(--muted); }
 .lab-sliders label b { color: var(--ink); font-variant-numeric: tabular-nums; }
 .lab-sliders input[type="range"] { width: 100%; accent-color: var(--copper); }
-@media (max-width: 600px) { .lab-sliders { grid-template-columns: 1fr; } .lab-top { grid-template-columns: 52px 1fr 80px; } }
+@media (max-width: 600px) { .lab-sliders { grid-template-columns: 1fr; } .lab-top { grid-template-columns: 78px 1fr 80px; } }
 .lab-verdict { margin-top: 18px; padding: 14px 16px; border-radius: 10px; background: var(--canvas); font-size: 14px; line-height: 1.45; }
 .lab-verdict.good { background: #eaf4ec; color: #1d5a2c; }
 .lab-verdict.bad { background: #fbeae6; color: #8a2a14; }
@@ -302,3 +302,11 @@ button.sigchip:disabled { cursor: default; }
 .family-row:hover b { text-decoration: underline; }
 .family-row.self { background: var(--canvas); border-radius: 8px; padding: 10px 10px; border-top: 0; }
 .fork-mini { color: var(--copper-deep); margin-right: 8px; }
+
+/* ---- stock logos ---- */
+.stock-logo { flex: none; display: block; border-radius: 50%; }
+.ticker { display: inline-flex; align-items: center; gap: 8px; min-width: 0; white-space: nowrap; }
+.stock .stock-logo { margin-bottom: 8px; }
+.stock { display: flex; flex-direction: column; align-items: flex-start; }
+.logo-row { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px 12px; }
+.logo-row span { display: inline-flex; align-items: center; gap: 6px; }

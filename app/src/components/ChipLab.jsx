@@ -5,6 +5,7 @@ import { step, hexToBytes, unpackBits, isFork } from "@fundry/sdk";
 import Chip from "./Chip.jsx";
 import { useChip } from "./FundChip.jsx";
 import { stepOnChain } from "../lib/data.js";
+import { Ticker } from "./StockLogo.jsx";
 
 const SIG = ["DROP", "RISE", "STOP-LOSS"];
 const LEVEL = ["out", "low", "medium", "high"];
@@ -100,7 +101,7 @@ export default function ChipLab({ f, live, parents }) {
           {f.holdings.map((h, i) => (
             <div key={h.address} className="lab-row">
               <div className="lab-top">
-                <b>{h.symbol}</b>
+                <Ticker symbol={h.symbol} />
                 <span className="signals" style={{ margin: 0 }}>
                   {SIG.map((s, k) => <span key={s} className={`sigchip ${bits?.[3 * i + k] ? "on" : ""}`}>{s}</span>)}
                 </span>

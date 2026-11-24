@@ -5,6 +5,7 @@ import { usd, pct, until, ago, short } from "../lib/format.js";
 import { deployment, addrUrl, IS_FORK, ASSETS } from "../lib/config.js";
 import FundChip from "../components/FundChip.jsx";
 import { REPO } from "../App.jsx";
+import StockLogo from "../components/StockLogo.jsx";
 
 const Arw = () => <span className="arw" aria-hidden>→</span>;
 
@@ -88,7 +89,7 @@ export default function League() {
                       </div>
                     </td>
                     <td className="hide-sm">
-                      <div className="tags">{f.holdings.map((h) => <span key={h.address} className="tag">{h.symbol}</span>)}</div>
+                      <div className="tags">{f.holdings.map((h) => <span key={h.address} className="tag"><StockLogo symbol={h.symbol} size={16} />{h.symbol}</span>)}</div>
                     </td>
                     <td className={`right num ${f.ret == null ? "muted" : f.ret >= 0 ? "gain" : "loss"}`}>{f.ret == null ? "–" : pct(f.ret)}</td>
                     <td className="right num hide-sm">{f.navUnavailable ? "–" : usd(f.nav, 0)}</td>
@@ -140,7 +141,7 @@ export default function League() {
               ].map(([k, a]) => (
                 <FragmentRow key={k} k={k} a={a} />
               ))}
-              <dt>STOCKS LISTED</dt><dd>{ASSETS.map((a) => a.symbol).join(" · ")}</dd>
+              <dt>STOCKS LISTED</dt><dd className="logo-row">{ASSETS.map((a) => <span key={a.symbol} title={a.name}><StockLogo symbol={a.symbol} size={18} />{a.symbol}</span>)}</dd>
               {!IS_FORK && (<><dt>SOURCE</dt><dd><a href={`https://repo.sourcify.dev/196/${deployment.factory}`} target="_blank" rel="noreferrer">Sourcify · exact match</a></dd></>)}
             </dl>
           </div>

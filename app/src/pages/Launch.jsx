@@ -8,6 +8,7 @@ import { listedAssets, tapeoutFee, ZERO } from "../lib/data.js";
 import { factoryAbi } from "../lib/abi.js";
 import { deployment } from "../lib/config.js";
 import { useWallet } from "../lib/wallet.jsx";
+import StockLogo, { Ticker } from "../components/StockLogo.jsx";
 
 export const Seg = ({ value, options, onChange }) => (
   <span className="seg">
@@ -138,7 +139,7 @@ export default function Launch() {
                 const on = rules.some((r) => r.symbol === a.symbol);
                 return (
                   <button key={a.symbol} type="button" className={`stock ${on ? "on" : ""}`} disabled={!on && rules.length >= 4} onClick={() => toggle(a.symbol)}>
-                    <b>{a.symbol}</b><span className="muted" style={{ fontSize: 13 }}>{a.name}</span>
+                    <StockLogo symbol={a.symbol} size={28} /><b>{a.symbol}</b><span className="muted" style={{ fontSize: 13 }}>{a.name}</span>
                   </button>
                 );
               })}
@@ -151,7 +152,7 @@ export default function Launch() {
             {rules.map((r, i) => (
               <div className="rule-row" key={r.symbol}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
-                  <b style={{ fontSize: 18 }}>{r.symbol}</b>
+                  <Ticker symbol={r.symbol} size={24} style={{ fontSize: 18 }} />
                   <span className="mono">NORMALLY {total ? Math.round((100 * r.base) / total) : 0}% OF THE FUND</span>
                 </div>
                 <div className="line"><span>Normal weight</span>
@@ -223,8 +224,8 @@ export default function Launch() {
                 const f = features[i];
                 const set = (k) => setTest((t) => ({ ...t, [r.symbol]: { ...f, [k]: f[k] ? 0 : 1 } }));
                 return (
-                  <div key={r.symbol} className="holding" style={{ gridTemplateColumns: "60px 1fr 70px" }}>
-                    <b>{r.symbol}</b>
+                  <div key={r.symbol} className="holding" style={{ gridTemplateColumns: "84px 1fr 70px" }}>
+                    <Ticker symbol={r.symbol} />
                     <span className="signals" style={{ margin: 0 }}>
                       {["drop", "rise", "stop"].map((k) => (
                         <button key={k} type="button" className={`sigchip ${f[k] ? "on" : ""}`} onClick={() => set(k)}>{k === "stop" ? "STOP-LOSS" : k.toUpperCase()}</button>
