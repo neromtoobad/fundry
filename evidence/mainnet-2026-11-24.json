@@ -1,0 +1,27 @@
+{
+  "chain": "X Layer mainnet (196)",
+  "date": "2026-11-24",
+  "explorer": "https://www.oklink.com/xlayer/tx/<hash>",
+  "deployer": "0x87c48Ce1C38Bea32B7Ba55A0E91C5904780BDF40",
+  "deploy": {
+    "script": "contracts/script/Deploy.s.sol (full record: contracts/broadcast/Deploy.s.sol/196/run-latest.json)",
+    "startBlock": 76755109,
+    "FundryFactory": { "address": "0x9b4FD9f81Aa64e83446F83F03616Ac3c5Ab71e6E", "tx": "0x4f64655aca76cc6576e07f830eb0b72b1a13d0fb4147183e345f346c8da25f77", "sourcify": "exact_match" },
+    "FundImplementation": { "address": "0x6d04f13221635bd2392e5215585Db8B587e153d1", "sourcify": "exact_match" },
+    "setUpProcessor": { "what": "creates the Fundry processor through the TapeOut factory 0x1f09DAeFA827f02CBb40967cc91b259763760761, paying the 0.1 BEM deploy fee", "tx": "0x8517c4922e5cc7d56d389fd01bf795829a613df107b05cf4242939b0e29dc950", "circuits": "0x80bf3Aa74171b3711b5946D9F39b84F464B4CC0B", "transistors": "0xd1Aac2c96094fd9B9EE4C8e717620B132Fc2098c" },
+    "restock": { "what": "buys 2,000 NAND + 50 LATCH transistors in BEM", "tx": "0x5fced46b8e9a94bedb3e1844eb9d061dd04c14177169cf4552fa129b3cbfd5c7" },
+    "listAsset": { "what": "8 stocks listed with their Uniswap V3 / USDG pools", "count": 8 }
+  },
+  "launches": [
+    { "fund": "AI + Market", "address": "0x1c31CB32e816e904fFa3bB12045BA30bcC96D5ea", "circuitId": 1, "gates": 33, "block": 76755222, "tx": "0xc95c2f037669202d717d5a35fa64b64ab416fd58ebf09f9d78a79c658f0fa239" },
+    { "fund": "Big Tech Guard", "address": "0x4567d0C8c2b53c5B22D15f07e2bc99943715cBF1", "circuitId": 2, "gates": 34, "block": 76755226, "tx": "0x975af41d153788c4df415fcf715698a59d7490225377d5945509f587e758be05" },
+    { "fund": "Hard Assets", "address": "0xdB8C314bE3E045Cdf3af9200bE98D28924C87A9b", "circuitId": 3, "gates": 56, "block": 76755230, "tx": "0xd6383ddc2759da7da01b033ee4a0e40d2aa6e7f332e432af25ab1addd97ab5ff" },
+    { "fund": "SpaceX Moonshot", "address": "0x28d8dB38Da3Ee5E3c2d065908c5eBc7F7c09818C", "circuitId": 4, "gates": 24, "block": 76755234, "tx": "0x8637b29fa2fe3ae054df135374d933e6f05bf080c95d00185eac64fac6f7ec32" }
+  ],
+  "oracleFix": {
+    "why": "BTC and ETH pools kept 100 observations, under 30 minutes on busy pools, so the 30-minute TWAP reverted with OLD",
+    "call": "increaseObservationCardinalityNext(1801) in steps 500/900/1300/1801",
+    "BTC pool 0x520F8c07A529FFb5230e76bCb8EA553D664e5b76": ["0xd144652dcd3b7fb61e04919126823366610407c50374053373b0379673592d16", "0x63b2dcd1fcbd30f0b30aa48cc01a1aa58768d3fc77bb02f3ac47be7c739df0d0", "0x6f40b3def951660d169f3b2a817f0b9ae253ce06681951f15f86b55bc1cd5574", "0xf096954db1d80f0ed0d1120e0699c6778e9fac49a5dbec1a74abc4c03c827948"],
+    "ETH pool 0x6E18CEbFb9C5BBcf127b97a6daB026E941FfF6D5": ["0x465e5f6579274445b85437db3ba66fbc8b5c8e62b8745963933568a40efe46c0", "0x65ed634ba2864377f69c5335f32f92af1f0bafb5649a30ff599793d4995dc201", "0x4382632f4e748253d4f2d8d64188e01f3434406248715ede3f788d9adea759af", "0x7d526fd0e2f2f29c431ae62792e177878906748a991427101cc7da69369b2d44"]
+  }
+}

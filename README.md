@@ -4,7 +4,9 @@
 
 Built for **X Layer TapeOut Accelerate** (Oct 16 – Dec 7 2026). This repo started on Nov 17 2026.
 
-## What it does
+**App:** https://fundry.nerom.site · **For judges:** [JUDGES.md](JUDGES.md) (5-minute checks and the judging criteria answered) · **Mainnet proof:** [evidence/](evidence/mainnet-2026-11-24.json) · **Demo video:** recorded before submission (≤ 3 min), link goes here
+
+## How it works
 
 1. **Launch.** Pick up to 4 tokenized stocks (NVDA, SPY, SpaceX, MSFT, META, gold…) and set the fund's rules from plain choices: "if NVDA falls 5%, cut it to half", "stop-loss at −15% and stay out until it recovers", "if everything falls, go to cash". Fundry compiles the rulebook into a NAND/LATCH circuit and tapes it out on the **Fundry TapeOut processor**. TapeOut circuits can't be changed once taped out, so the rules are locked from launch.
 2. **Invest.** Deposit USDG for fund shares, priced at NAV. The fund holds real wrapped xStocks on X Layer, priced from 30-minute Uniswap V3 TWAPs.
@@ -56,7 +58,7 @@ The demo funds start empty: putting money in and rebalancing trade real tokens, 
 - DeWEB copy of the app (the publisher is ready and dry-run against circuit #1; publishing costs 0.085 OKB)
 - Rule parts with REF royalties, Mine-to-Own
 
-## How it uses TapeOut and X Layer
+## Built with TapeOut and X Layer (sponsor integration)
 
 - **TapeOut circuits are the rulebook.** Every fund is a circuit on the Fundry processor, and the fund contract calls `Circuits.step` on every rebalance. LATCH bits are the fund's memory ("stay out after a stop").
 - **The Fundry processor** is created by `FundryFactory` through the TapeOut factory, paying the BEM deploy fee. Every launch burns Fundry transistors, and the fund creator receives the circuit NFT.
@@ -103,9 +105,16 @@ npm run dev                                                                   # 
 
 In the app, “Connect → Local test account” signs with an anvil test key and “Get test USDG” tops it up. Both only exist on the fork.
 
-## Built before the event
+## Built during the hackathon
+
+Everything in this repo was written during Accelerate, from Nov 17 2026 (see the commit history). One idea came from before:
+
 
 The netlist-building approach (TAP-02 encoding, output buffers, the JS stepper) is adapted from our earlier TapeOut entry [NAND Arena](https://github.com/neromtoobad/nand-arena) (Oct 5–9 2026, before this event). The code here was written fresh for Fundry.
+
+## AI disclosure
+
+Fundry was built by directing Claude Code (an AI coding agent), which wrote the code, contracts, tests and copy. Every claim in this README was checked against the code or the chain. The product itself uses no AI model: the "rules in words" box is a fixed parser (`sdk/src/words.js`) that lists any sentence it didn't understand.
 
 ## License
 
