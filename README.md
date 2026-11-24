@@ -21,18 +21,35 @@ Built for **X Layer TapeOut Accelerate** (Oct 16 – Dec 7 2026). This repo star
 | `Fund` + `FundryFactory` | ✅ fork lifecycle: launch → deposit → rebalance → a 6.8% NVDA drop halves it → a >15% crash fires the stop and the latch keeps it out → withdraw (`contracts/test/FundLifecycle.t.sol`) |
 | Web app (`app/`) | ✅ League, Launch (live chip + “try your chip”), Fund page (live chip, invest/withdraw, rebalance, decision log). Clicked through on a local fork of X Layer mainnet: launch → invest → rebalance with real Uniswap swaps |
 | Deploy + seed (`contracts/script/Deploy.s.sol`, `scripts/seed.mjs`) | ✅ run on the local fork: processor created with BEM, 8 stocks listed, 4 demo funds launched and rebalanced |
+| Rules in words (`sdk/src/words.js`) | ✅ a fixed parser (no AI model) turns sentences like “If NVDA falls 5%, cut it to half” into a rulebook and lists every sentence it didn't understand (`sdk/test/words.test.js`) |
+| Keeper (`scripts/keeper.mjs`) | ✅ presses Rebalance for every fund that is due, simulating each call first; rebalanced all 5 funds on the local fork |
+| No chain scanning | ✅ public X Layer RPCs cap `eth_getLogs` at 100–1,000 blocks, so each fund stores the blocks it has events in (`Fund.eventBlocks`) and the app fetches exactly those |
+| DeWEB publisher (`scripts/deweb-publish.mjs`) | ✅ dry-run tested: opens the circuit's container, uploads the build in 24 KB chunks, activates the `.tape` name, checks every file's SHA-256 back |
 
 ## Not built yet
 
 - Mainnet deployment (no contract addresses yet, so the app runs against a local fork for now)
-- Rule parts with REF royalties, Mine-to-Own, AI "describe your fund"
-- DeWEB hosting
+- DeWEB hosting (the publisher is ready; it needs the mainnet circuit to host on)
+- Rule parts with REF royalties, Mine-to-Own
 
 ## How it uses TapeOut and X Layer
 
 - **TapeOut circuits are the rulebook.** Every fund is a circuit on the Fundry processor, and the fund contract calls `Circuits.step` on every rebalance. LATCH bits are the fund's memory ("stay out after a stop").
 - **The Fundry processor** is created by `FundryFactory` through the TapeOut factory, paying the BEM deploy fee. Every launch burns Fundry transistors, and the fund creator receives the circuit NFT.
 - **X Layer xStocks** (wrapped, traded on Uniswap V3 against USDG) are the fund holdings. Pool list: [docs/STOCKS.md](docs/STOCKS.md).
+
+## Claims and where to check them
+
+| Claim | Code |
+|---|---|
+| The rulebook is compiled to a TapeOut netlist | `sdk/src/rules.js:99` (`compile`) |
+| Each launch tapes out a new circuit and gives the chip to the creator | `contracts/src/FundryFactory.sol:188`, `:190` |
+| The circuit decides every rebalance | `contracts/src/Fund.sol:331` (`circuits.step`) |
+| Prices are Uniswap V3 30-minute TWAPs | `contracts/src/lib/Twap.sol:28` |
+| Anyone can rebalance; nobody can rebalance early or an empty fund | `contracts/src/Fund.sol:325` |
+| Withdrawals pay your exact slice of every holding, no prices used | `contracts/src/Fund.sol:237` |
+| Every decision is in the on-chain log the app shows | `contracts/src/Fund.sol` `Rebalanced`/`Traded` events, `app/src/lib/data.js:105` |
+| Rules in words, no AI | `sdk/src/words.js:43` |
 
 ## Trust model
 
