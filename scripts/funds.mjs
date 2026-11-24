@@ -44,3 +44,31 @@ export const demoFunds = [
     },
   },
 ];
+
+// Forks: each one's chip REFs its parent's chip (launched above), so the parent's rules run first,
+// unchanged, and these rules adjust the result. The parent chip's holder earns 20% of the fork's
+// creator fee.
+export const demoForks = [
+  {
+    name: "AI + Market, Safer", symbol: "fAIMS", forkOf: "AI + Market", deposit: 500,
+    rulebook: {
+      kind: "fork",
+      assets: [
+        { symbol: "NVDA", shift: -1, onDrop: "none", onRise: "none", stop: "none" },
+        { symbol: "SPY", shift: 1, onDrop: "none", onRise: "none", stop: "stayOut" },
+      ],
+      dropBps: 500, riseBps: 500, stopBps: 1500, allFallingToCash: true,
+    },
+  },
+  {
+    name: "Moonshot, Steady", symbol: "fSPCXS", forkOf: "SpaceX Moonshot", deposit: 400,
+    rulebook: {
+      kind: "fork",
+      assets: [
+        { symbol: "SPCX", shift: -1, onDrop: "none", onRise: "none", stop: "none" },
+        { symbol: "SPY", shift: 1, onDrop: "none", onRise: "none", stop: "none" },
+      ],
+      dropBps: 1000, riseBps: 1000, stopBps: 2500, allFallingToCash: true,
+    },
+  },
+];

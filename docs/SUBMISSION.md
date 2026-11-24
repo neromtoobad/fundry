@@ -21,8 +21,15 @@ Fundry compiles the rulebook into a NAND/LATCH netlist and tapes it out on the F
 
 Every decision is logged on chain with the prices, the bits the chip saw, its output and the trades it made.
 
+Three things set it apart:
+- **Fork a fund.** A fork's chip runs the parent's chip inside it, unchanged, through a TapeOut REF, then applies its own rules. The fork etches only its own gates, and 20% of its creator fee goes to whoever holds the parent chip, forever. Live on mainnet: "AI + Market, Safer" runs "AI + Market" inside it.
+- **The chip owns the fund.** The creator fee goes to whoever holds the circuit NFT. The rules can't change, so the NFT is the strategy plus its track record, and it can be sold.
+- **Check it yourself.** Each fund page has a Chip Lab (move prices, watch the real chip decide, see `Circuits.step` on chain agree) and a one-click panel that re-checks every claim from chain data: rules vs chip on every input, chain vs page, fork wiring, and a replay of every rebalance from its logged prices. `node scripts/verify.mjs --all` does the same from a terminal.
+
 ## Which TapeOut features it uses
 - **Circuits as the product:** every fund is one TapeOut circuit (processor address + circuit id on each fund page). The fund contract calls `Circuits.step` on every rebalance. LATCH bits are the fund's memory ("stay out after a stop-loss").
+- **REF:** forks are built by REF'ing the parent's chip; the factory checks the REF points at the parent and is fed the fund's own inputs. The first REF circuits on X Layer.
+- **Circuit NFTs:** the fee right is `ownerOf(circuitId)`, so the NFT is a sellable strategy.
 - **Own processor:** `FundryFactory` creates the Fundry processor through the TapeOut factory (BEM deploy fee) and burns Fundry transistors on every launch.
 - **DeWEB:** a publisher that mirrors the app into fund #1's circuit container is ready (`scripts/deweb-publish.mjs`, dry-run tested); the app itself is at fundry.nerom.site.
 - **X Layer:** xStocks / USDG Uniswap V3 pools for prices (TWAP) and trades.
@@ -32,11 +39,11 @@ Every decision is logged on chain with the prices, the bits the chip saw, its ou
 - **Investors:** people who want stock exposure on chain with rules they can read before they invest, and without trusting a manager who can change course. Reach: the creators above, the X Layer and OKX Wallet audience, and the League.
 
 ## Revenue model
-- Each fund charges a yearly management fee chosen at launch (0–2%), paid as new shares. Half goes to the creator, half to the Fundry treasury.
+- Each fund charges a yearly management fee chosen at launch (0–2%), paid as new shares. Half goes to whoever holds the fund's chip NFT, half to the Fundry treasury. A fork passes 20% of its holder's half to the parent chip's holder.
 - Fundry earns the transistor mint revenue of its own processor (launches burn Fundry transistors).
 
 ## Why users pay and keep using it
-- Creators earn half the fee on everything their fund holds, and their record is on chain and can't be faked or edited.
+- Creators earn half the fee on everything their fund holds, plus royalties from every fork of their fund, and their record is on chain and can't be faked or edited. A chip with a good record can be sold.
 - Investors get rules that cannot change after they invest, exits that always work (in-kind withdrawal, no price needed), and a full decision log.
 - Funds rebalance every period, so the product is used continuously, not once.
 

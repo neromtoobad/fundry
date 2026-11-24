@@ -4,7 +4,13 @@
 
 Built for **X Layer TapeOut Accelerate** (Oct 16 – Dec 7 2026). This repo started on Nov 17 2026.
 
-**App:** https://fundry.nerom.site · **For judges:** [JUDGES.md](JUDGES.md) (5-minute checks and the judging criteria answered) · **Mainnet proof:** [evidence/](evidence/mainnet-2026-11-24.json) · **Demo video:** recorded before submission (≤ 3 min), link goes here
+**App:** https://fundry.nerom.site · **For judges:** [JUDGES.md](JUDGES.md) (5-minute checks and the judging criteria answered) · **Mainnet proof:** [evidence/](evidence/mainnet-v2-2026-11-24.json) · **Demo video:** recorded before submission (≤ 3 min), link goes here
+
+## Three things you can only do on Fundry
+
+1. **Fork a fund.** A fork's chip runs its parent's chip inside it, unchanged, through a TapeOut **REF**, and adds its own rules on top. The fork only etches its own gates, and **20% of its creator fee goes to whoever holds the parent chip, forever**. "AI + Market, Safer" (chip #9) runs "AI + Market" (chip #5) inside it on mainnet. These are the first REF circuits on X Layer.
+2. **The chip owns the fund.** The creator fee goes to whoever holds the fund's circuit NFT right now, read live with `ownerOf`. The rules can't change, so the chip *is* the strategy and its track record, and selling the NFT sells the fee stream. No one, the holder included, can touch investors' money or the rules.
+3. **Don't trust us: check it.** Every fund page has a **Chip Lab** (move prices with sliders, watch the real chip decide gate by gate, and see TapeOut's own `Circuits.step` on X Layer return the same bits) and a **Check it yourself** panel that re-checks every claim from chain data in your browser: the rules in words match the chip on every input, the chain agrees with the page's evaluator, a fork really contains its parent, and every rebalance replays from the prices it logged. The same checks run from a terminal: `node scripts/verify.mjs --all`.
 
 ## How it works
 
@@ -12,6 +18,7 @@ Built for **X Layer TapeOut Accelerate** (Oct 16 – Dec 7 2026). This repo star
 2. **Invest.** Deposit USDG for fund shares, priced at NAV. The fund holds real wrapped xStocks on X Layer, priced from 30-minute Uniswap V3 TWAPs.
 3. **Rebalance.** Anyone can call `rebalance()` once per period. The contract turns prices into input bits, asks the circuit (`Circuits.step`) for target weights and trades toward them. The circuit decides; the contract only obeys.
 4. **Withdraw.** Burn shares and get your exact slice of every holding. No prices are involved, so a withdrawal always works.
+5. **Fork.** Press "Fork this fund" on any fund: hold more or less of each stock than the parent, add your own fall, rise and stop-loss rules, launch. The factory checks the REF points at the parent's chip and is fed the fund's own price signals before it tapes out.
 
 ## Live on X Layer mainnet
 
@@ -19,20 +26,24 @@ Built for **X Layer TapeOut Accelerate** (Oct 16 – Dec 7 2026). This repo star
 
 | | Address |
 |---|---|
-| FundryFactory | [`0x9b4FD9f81Aa64e83446F83F03616Ac3c5Ab71e6E`](https://www.oklink.com/xlayer/address/0x9b4FD9f81Aa64e83446F83F03616Ac3c5Ab71e6E) · [source verified on Sourcify](https://repo.sourcify.dev/196/0x9b4FD9f81Aa64e83446F83F03616Ac3c5Ab71e6E) |
-| Fund implementation | [`0x6d04f13221635bd2392e5215585Db8B587e153d1`](https://www.oklink.com/xlayer/address/0x6d04f13221635bd2392e5215585Db8B587e153d1) · [Sourcify](https://repo.sourcify.dev/196/0x6d04f13221635bd2392e5215585Db8B587e153d1) |
+| FundryFactory (v2) | [`0x6a880e7B1DC510E3d5254CAa6F5DB8e33bDD660c`](https://www.oklink.com/xlayer/address/0x6a880e7B1DC510E3d5254CAa6F5DB8e33bDD660c) · [source verified on Sourcify](https://repo.sourcify.dev/196/0x6a880e7B1DC510E3d5254CAa6F5DB8e33bDD660c) |
+| Fund implementation (v2) | [`0x687eb3636FCe7f2DF052792821B6942F77056FC9`](https://www.oklink.com/xlayer/address/0x687eb3636FCe7f2DF052792821B6942F77056FC9) · [Sourcify](https://repo.sourcify.dev/196/0x687eb3636FCe7f2DF052792821B6942F77056FC9) |
 | Fundry processor (Circuits) | [`0x80bf3Aa74171b3711b5946D9F39b84F464B4CC0B`](https://www.oklink.com/xlayer/address/0x80bf3Aa74171b3711b5946D9F39b84F464B4CC0B) (created through the TapeOut factory, BEM fee paid) |
 | Fundry transistors | [`0xd1Aac2c96094fd9B9EE4C8e717620B132Fc2098c`](https://www.oklink.com/xlayer/address/0xd1Aac2c96094fd9B9EE4C8e717620B132Fc2098c) |
-| Deploy transaction | [`0x4f6465…5f77`](https://www.oklink.com/xlayer/tx/0x4f64655aca76cc6576e07f830eb0b72b1a13d0fb4147183e345f346c8da25f77) (block 76,755,109) |
+| Deploy transaction | [`0xd5ce7d…1e24`](https://www.oklink.com/xlayer/tx/0xd5ce7d74d105b44d3e31be310c122db73f5a110e9eca6892ec408d67f4ee1e24) (block 76,767,744) |
+
+v1 (factory [`0x9b4F…1e6E`](https://www.oklink.com/xlayer/address/0x9b4FD9f81Aa64e83446F83F03616Ac3c5Ab71e6E), Nov 24) is retired: its four funds never took deposits, and its leftover BEM was swept back to the treasury. v2 runs on the **same processor**, so circuits #1–#4 (v1) and #5 onward (v2) sit side by side. Full record: [evidence/mainnet-v2-2026-11-24.json](evidence/mainnet-v2-2026-11-24.json), v1 in [evidence/mainnet-2026-11-24.json](evidence/mainnet-2026-11-24.json).
 
 Demo funds launched on mainnet (each one is a TapeOut circuit on the Fundry processor):
 
 | Fund | Holds | Circuit | Address |
 |---|---|---|---|
-| AI + Market | NVDA, SPY | #1, 33 gates | [`0x1c31CB32e816e904fFa3bB12045BA30bcC96D5ea`](https://www.oklink.com/xlayer/address/0x1c31CB32e816e904fFa3bB12045BA30bcC96D5ea) |
-| Big Tech Guard | MSFT, META, NVDA | #2, 34 gates | [`0x4567d0C8c2b53c5B22D15f07e2bc99943715cBF1`](https://www.oklink.com/xlayer/address/0x4567d0C8c2b53c5B22D15f07e2bc99943715cBF1) |
-| Hard Assets | GOLD, BTC, ETH | #3, 56 gates | [`0xdB8C314bE3E045Cdf3af9200bE98D28924C87A9b`](https://www.oklink.com/xlayer/address/0xdB8C314bE3E045Cdf3af9200bE98D28924C87A9b) |
-| SpaceX Moonshot | SPCX, SPY | #4, 24 gates | [`0x28d8dB38Da3Ee5E3c2d065908c5eBc7F7c09818C`](https://www.oklink.com/xlayer/address/0x28d8dB38Da3Ee5E3c2d065908c5eBc7F7c09818C) |
+| AI + Market | NVDA, SPY | #5, 33 gates | [`0x5EDcb4264213e6fA822F0cf03c85b8c03c13549E`](https://www.oklink.com/xlayer/address/0x5EDcb4264213e6fA822F0cf03c85b8c03c13549E) |
+| Big Tech Guard | MSFT, META, NVDA | #6, 34 gates | [`0x490cC2Cf07Be8c22fca40a20e464662078dEdb28`](https://www.oklink.com/xlayer/address/0x490cC2Cf07Be8c22fca40a20e464662078dEdb28) |
+| Hard Assets | GOLD, BTC, ETH | #7, 56 gates | [`0x6939589c41AD31745e9E87c5D63E0f459d704999`](https://www.oklink.com/xlayer/address/0x6939589c41AD31745e9E87c5D63E0f459d704999) |
+| SpaceX Moonshot | SPCX, SPY | #8, 24 gates | [`0x15ac80b1629763D7472E513C72fa05277Ed97fDb`](https://www.oklink.com/xlayer/address/0x15ac80b1629763D7472E513C72fa05277Ed97fDb) |
+| AI + Market, Safer (fork of AI + Market) | NVDA, SPY | #9, 45 own gates + chip #5 via REF | [`0xa0E934066bF5abf29F1AB13128B77c2822a15000`](https://www.oklink.com/xlayer/address/0xa0E934066bF5abf29F1AB13128B77c2822a15000) |
+| Moonshot, Steady (fork of SpaceX Moonshot) | SPCX, SPY | #10, 28 own gates + chip #8 via REF | [`0x67Bc068C933A3b6aC8a22cBc6E4fe1F1165E0d5C`](https://www.oklink.com/xlayer/address/0x67Bc068C933A3b6aC8a22cBc6E4fe1F1165E0d5C) |
 
 The demo funds start empty: putting money in and rebalancing trade real tokens, so we leave that to real investors. Everything else above was done on mainnet.
 
@@ -51,16 +62,21 @@ The demo funds start empty: putting money in and rebalancing trade real tokens, 
 | Rules in words (`sdk/src/words.js`) | ✅ a fixed parser (no AI model) turns sentences like “If NVDA falls 5%, cut it to half” into a rulebook and lists every sentence it didn't understand (`sdk/test/words.test.js`) |
 | Keeper (`scripts/keeper.mjs`) | ✅ presses Rebalance for every fund that is due, simulating each call first; rebalanced all 5 funds on the local fork |
 | No chain scanning | ✅ public X Layer RPCs cap `eth_getLogs` at 100–1,000 blocks, so each fund stores the blocks it has events in (`Fund.eventBlocks`) and the app fetches exactly those |
+| Forks through TapeOut REF | ✅ `compileFork` puts a REF to the parent chip first; 80 random forks and a 3-generation chain match the reference on every input (`sdk/test/forks.test.js`); on a mainnet fork, real `Circuits.step` matches on all 256 cases, only the fork's own gates are burned, and bad REFs (wrong chip, rewired inputs, no parent declared, parent not a Fundry fund) are rejected (`contracts/test/Forks.t.sol`) |
+| Chip-owner fees and fork royalties | ✅ fee follows the circuit NFT: after both chips are sold, the new holders earn and the old ones don't (`Forks.t.sol` `test_chipOwnerEarnsAndForkPaysRoyalty`) |
+| Chip Lab + Check it yourself (`app/src/components/ChipLab.jsx`, `CheckCard.jsx`) | ✅ clicked through on the local fork and run against mainnet; `scripts/verify.mjs --all` passes on all 6 mainnet funds |
 | DeWEB publisher (`scripts/deweb-publish.mjs`) | ✅ dry-run tested: opens the circuit's container, uploads the build in 24 KB chunks, activates the `.tape` name, checks every file's SHA-256 back |
 
 ## Not built yet
 
 - DeWEB copy of the app (the publisher is ready and dry-run against circuit #1; publishing costs 0.085 OKB)
-- Rule parts with REF royalties, Mine-to-Own
+- Mine-to-Own
 
 ## Built with TapeOut and X Layer (sponsor integration)
 
 - **TapeOut circuits are the rulebook.** Every fund is a circuit on the Fundry processor, and the fund contract calls `Circuits.step` on every rebalance. LATCH bits are the fund's memory ("stay out after a stop").
+- **REF is the fork mechanism.** A fork's netlist starts with a REF record to its parent's chip; TapeOut evaluates the parent inside the child, counts its gates, and doesn't burn them again.
+- **Circuit NFTs are the business.** `Fund.chipOwner()` is `Circuits.ownerOf(circuitId)`: the fee follows the NFT.
 - **The Fundry processor** is created by `FundryFactory` through the TapeOut factory, paying the BEM deploy fee. Every launch burns Fundry transistors, and the fund creator receives the circuit NFT.
 - **X Layer xStocks** (wrapped, traded on Uniswap V3 against USDG) are the fund holdings. Pool list: [docs/STOCKS.md](docs/STOCKS.md).
 
@@ -69,12 +85,15 @@ The demo funds start empty: putting money in and rebalancing trade real tokens, 
 | Claim | Code |
 |---|---|
 | The rulebook is compiled to a TapeOut netlist | `sdk/src/rules.js:99` (`compile`) |
-| Each launch tapes out a new circuit and gives the chip to the creator | `contracts/src/FundryFactory.sol:188`, `:190` |
-| The circuit decides every rebalance | `contracts/src/Fund.sol:331` (`circuits.step`) |
+| Each launch tapes out a new circuit and gives the chip to the creator | `contracts/src/FundryFactory.sol:284`, `:286` |
+| A fork's REF must point at its parent's chip, on the fund's own inputs | `contracts/src/FundryFactory.sol:235` (`_checkFork`), `sdk/src/rules.js:228` (`compileFork`) |
+| The fee goes to the chip's holder; forks pay 20% to the parent chip's holder | `contracts/src/Fund.sol:236` (`chipOwner`), `:245` (`parentOwner`), `:296` (`_accrueFees`) |
+| The circuit decides every rebalance | `contracts/src/Fund.sol:380` (`circuits.step`) |
+| Anyone can re-check the rules, the chain and every decision | `sdk/src/verify.js:21` (`checkRules`), `:68` (`replay`), `scripts/verify.mjs` |
 | Prices are Uniswap V3 30-minute TWAPs | `contracts/src/lib/Twap.sol:28` |
-| Anyone can rebalance; nobody can rebalance early or an empty fund | `contracts/src/Fund.sol:325` |
-| Withdrawals pay your exact slice of every holding, no prices used | `contracts/src/Fund.sol:237` |
-| Every decision is in the on-chain log the app shows | `contracts/src/Fund.sol` `Rebalanced`/`Traded` events, `app/src/lib/data.js:105` |
+| Anyone can rebalance; nobody can rebalance early or an empty fund | `contracts/src/Fund.sol:374` |
+| Withdrawals pay your exact slice of every holding, no prices used | `contracts/src/Fund.sol:277` |
+| Every decision is in the on-chain log the app shows | `contracts/src/Fund.sol` `Rebalanced`/`Traded` events, `app/src/lib/data.js:116` |
 | Rules in words, no AI | `sdk/src/words.js:43` |
 
 ## Trust model
@@ -99,7 +118,8 @@ anvil --fork-url https://rpc.xlayer.tech --chain-id 31337                     # 
 python3 scripts/fork-fund.py 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266       # test BEM/USDG for anvil account 0
 (cd contracts && forge script script/Deploy.s.sol --rpc-url http://127.0.0.1:8545 --broadcast \
   --private-key 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80)  # anvil's public test key
-node scripts/seed.mjs --days=2                                                # 4 demo funds, 3 rebalances each
+node scripts/seed.mjs --days=2                                                # 4 demo funds + 2 forks, 3 rebalances each
+RPC_URL=http://127.0.0.1:8545 node scripts/verify.mjs --all                    # check every fund
 npm run dev                                                                   # http://localhost:5173
 ```
 

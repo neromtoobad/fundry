@@ -9,7 +9,7 @@ export function useAsync(fn, deps = [], pollMs = 0) {
     alive.current = true;
     let timer;
     const run = () =>
-      fn()
+      Promise.resolve().then(fn)
         .then((data) => alive.current && setState({ data, error: null, loading: false }))
         .catch((error) => alive.current && setState((s) => ({ data: s.data, error, loading: false })))
         .finally(() => { if (pollMs && alive.current) timer = setTimeout(run, pollMs); });

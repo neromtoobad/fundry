@@ -7,6 +7,11 @@ import {Fund, ISwapRouter02} from "../src/Fund.sol";
 import {ITapeOutFactory, ICircuits} from "../src/interfaces/ITapeOut.sol";
 import {XLayer} from "./XLayer.sol";
 
+interface IPoolSlot0 {
+    function slot0() external view returns (uint160, int24, uint16, uint16, uint16, uint8, bool);
+    function token0() external view returns (address);
+}
+
 interface IERC20 {
     function approve(address, uint256) external returns (bool);
     function balanceOf(address) external view returns (uint256);
@@ -59,7 +64,8 @@ contract FundLifecycleTest is Test {
                 feeBps: 100,
                 period: 1 days,
                 tvlCap: 25_000e6,
-                rulebook: vm.parseJsonString(json, ".rulebook")
+                rulebook: vm.parseJsonString(json, ".rulebook"),
+                parent: address(0)
             })
         );
         return (Fund(f), id);
@@ -200,7 +206,7 @@ contract FundLifecycleTest is Test {
         assets[0] = XLayer.USDC;
         vm.expectRevert(abi.encodeWithSelector(FundryFactory.NotListed.selector, XLayer.USDC));
         factory.launch(
-            FundryFactory.Launch("x", "x", assets, hex"", 500, 500, 1500, 100, 1 days, 1e9, "")
+            FundryFactory.Launch("x", "x", assets, hex"", 500, 500, 1500, 100, 1 days, 1e9, "", address(0))
         );
     }
 
@@ -211,10 +217,29 @@ contract FundLifecycleTest is Test {
     }
 
     function _crashNvda() internal {
-        // sell enough wNVDAx to push the pool price down 5-15%
-        uint256 amount = 1_400e18;
-        deal(XLayer.wNVDAx, whale, amount);
-        _sellNvda(amount);
+        // sell wNVDAx in small steps until the pool price is about 8% lower (pool depth changes over time)
+        uint256 start = _sqrt();
+        for (uint256 k; k < 200; k++) {
+            deal(XLayer.wNVDAx, whale, 20e18);
+            _sellNvda(20e18);
+            if (_dropBps(start) >= 800) break;
+        }
+        console2.log("spot drop (bps)", _dropBps(start));
+    }
+
+    function _sqrt() internal view returns (uint256) {
+        (uint160 sq,,,,,,) = IPoolSlot0(XLayer.POOL_NVDA_USDG).slot0();
+        return sq;
+    }
+
+    /// How far the NVDA price has fallen since `start` (a sqrtPriceX96), in bps.
+    function _dropBps(uint256 start) internal view returns (uint256) {
+        uint256 now_ = _sqrt();
+        bool nvdaIs0 = IPoolSlot0(XLayer.POOL_NVDA_USDG).token0() == XLayer.wNVDAx;
+        // price ratio now/start = (now/start)^2 if NVDA is token0, else (start/now)^2
+        uint256 r = nvdaIs0 ? (now_ * 1e9) / start : (start * 1e9) / now_;
+        uint256 ratio = (r * r) / 1e14; // in bps
+        return ratio >= 10_000 ? 0 : 10_000 - ratio;
     }
 
     function _sellNvda(uint256 amount) internal {

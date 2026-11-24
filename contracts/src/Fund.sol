@@ -32,6 +32,11 @@ interface IPoolFee {
 ///         anyone: it reads TWAP prices, turns them into input bits, asks the circuit for target
 ///         weights and trades toward them through Uniswap V3 with a TWAP-based slippage limit.
 ///         There is no owner and no admin path that can move fund assets.
+///
+///         The chip is the fund's identity: the creator half of the fee goes to whoever holds the
+///         fund's circuit NFT at the time fees accrue, so a strategy with a good record can be
+///         sold or transferred like any NFT. A fork (a fund whose chip REFs another fund's chip)
+///         pays ROYALTY_BPS of its creator half to whoever holds the parent chip.
 contract Fund is ERC20, ReentrancyGuard {
     using SafeTransferLib for address;
 
@@ -41,6 +46,7 @@ contract Fund is ERC20, ReentrancyGuard {
     uint256 public constant BPS = 10_000;
     uint256 public constant MIN_TRADE = 1e6; // 1 USDG: smaller trades are skipped
     uint256 public constant DUST_BPS = 100; // trades under 1% of NAV are skipped
+    uint256 public constant ROYALTY_BPS = 2_000; // a fork pays 20% of its creator half to the parent chip
 
     struct Config {
         string name;
@@ -60,6 +66,9 @@ contract Fund is ERC20, ReentrancyGuard {
         uint16 maxSlippageBps;
         uint32 period; // seconds between rebalances
         uint256 tvlCap; // in USDG units
+        address parent; // the fund this one forks (its chip REFs the parent's chip), or 0
+        address parentCircuits; // processor of the parent chip
+        uint256 parentCircuitId;
     }
 
     // ---- fixed at launch -------------------------------------------------------------------
@@ -83,6 +92,9 @@ contract Fund is ERC20, ReentrancyGuard {
     uint32 public period;
     uint256 public tvlCap;
     uint256 public launchedAt;
+    address public parent;
+    ICircuits public parentCircuits;
+    uint256 public parentCircuitId;
 
     // ---- moving state ----------------------------------------------------------------------
     uint256 public lastRebalance;
@@ -91,6 +103,10 @@ contract Fund is ERC20, ReentrancyGuard {
     uint256[] internal _lastPrice; // USDG units per 1e18 of the asset, at the last rebalance
     uint256[] internal _peak;
     bytes public latchState;
+    // fee shares minted so far, by who received them (the chip's track record of earnings)
+    uint256 public ownerFeeShares;
+    uint256 public royaltyFeeShares;
+    uint256 public treasuryFeeShares;
     // Every block in which this fund emitted an event (launch, deposits, withdrawals, rebalances).
     // Public RPCs on X Layer cap eth_getLogs at 100-1,000 blocks, so the app reads this list and
     // fetches logs for exactly these blocks instead of scanning the chain.
@@ -98,7 +114,7 @@ contract Fund is ERC20, ReentrancyGuard {
 
     event Deposited(address indexed who, uint256 usdgIn, uint256 shares);
     event Withdrawn(address indexed who, uint256 shares, uint256 usdgOut, uint256[] assetsOut);
-    event FeesAccrued(uint256 creatorShares, uint256 treasuryShares);
+    event FeesAccrued(address chipOwner, uint256 ownerShares, address parentOwner, uint256 royaltyShares, uint256 treasuryShares);
     event Rebalanced(
         uint256 indexed n,
         bytes inputs,
@@ -147,6 +163,11 @@ contract Fund is ERC20, ReentrancyGuard {
         period = c.period;
         tvlCap = c.tvlCap;
         launchedAt = block.timestamp;
+        if (c.parent != address(0)) {
+            parent = c.parent;
+            parentCircuits = ICircuits(c.parentCircuits);
+            parentCircuitId = c.parentCircuitId;
+        }
         lastFeeAccrual = block.timestamp;
         _eventBlocks.push(block.number);
 
@@ -211,6 +232,25 @@ contract Fund is ERC20, ReentrancyGuard {
         }
     }
 
+    /// Who earns this fund's creator fee: the current holder of its chip (circuit NFT).
+    function chipOwner() public view returns (address) {
+        try circuits.ownerOf(circuitId) returns (address o) {
+            return o == address(0) ? creator : o;
+        } catch {
+            return creator;
+        }
+    }
+
+    /// Who earns the fork royalty: the current holder of the parent chip (0 if this is not a fork).
+    function parentOwner() public view returns (address) {
+        if (parent == address(0)) return address(0);
+        try parentCircuits.ownerOf(parentCircuitId) returns (address o) {
+            return o == address(0) ? treasury : o;
+        } catch {
+            return treasury;
+        }
+    }
+
     function nextRebalanceAt() public view returns (uint256) {
         return lastRebalance == 0 ? launchedAt : lastRebalance + period;
     }
@@ -260,10 +300,19 @@ contract Fund is ERC20, ReentrancyGuard {
         if (dt == 0 || supply == 0 || feeBps == 0) return;
         uint256 feeShares = FixedPointMathLib.fullMulDiv(supply, uint256(feeBps) * dt, BPS * YEAR);
         if (feeShares == 0) return;
-        uint256 toCreator = feeShares / 2;
-        _mint(creator, toCreator);
-        _mint(treasury, feeShares - toCreator);
-        emit FeesAccrued(toCreator, feeShares - toCreator);
+        uint256 creatorHalf = feeShares / 2;
+        uint256 toTreasury = feeShares - creatorHalf;
+        address owner_ = chipOwner();
+        address pOwner = parentOwner();
+        uint256 royalty = pOwner == address(0) ? 0 : (creatorHalf * ROYALTY_BPS) / BPS;
+        uint256 toOwner = creatorHalf - royalty;
+        if (toOwner > 0) _mint(owner_, toOwner);
+        if (royalty > 0) _mint(pOwner, royalty);
+        _mint(treasury, toTreasury);
+        ownerFeeShares += toOwner;
+        royaltyFeeShares += royalty;
+        treasuryFeeShares += toTreasury;
+        emit FeesAccrued(owner_, toOwner, pOwner, royalty, toTreasury);
         _markBlock();
     }
 

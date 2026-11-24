@@ -83,7 +83,7 @@ export default function League() {
                         <div className="chipthumb"><FundChip circuitId={f.circuitId} size={52} label={false} /></div>
                         <div>
                           <div className="fund-name">{f.name}</div>
-                          <div className="mono" style={{ marginTop: 3 }}>Chip #{String(f.circuitId)} · {f.gates} gates · launched {ago(f.launchedAt, f.now)}</div>
+                          <div className="mono" style={{ marginTop: 3 }}>{f.parent ? <span className="fork-mini">FORK OF {f.rulebook?.parent?.name || "a fund"}</span> : null}Chip #{String(f.circuitId)} · {f.gates} gates · launched {ago(f.launchedAt, f.now)}</div>
                         </div>
                       </div>
                     </td>

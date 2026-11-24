@@ -9,9 +9,9 @@ import { readFileSync } from "node:fs";
 import { execFileSync } from "node:child_process";
 import { createPublicClient, createWalletClient, http, parseUnits, defineChain, decodeEventLog } from "viem";
 import { privateKeyToAccount, mnemonicToAccount } from "viem/accounts";
-import { compile, bytesToHex } from "@fundry/sdk";
+import { compile, compileFork, decode, bytesToHex } from "@fundry/sdk";
 import { fundAbi, factoryAbi, circuitsAbi, erc20Abi } from "../app/src/lib/abi.js";
-import { demoFunds } from "./funds.mjs";
+import { demoFunds, demoForks } from "./funds.mjs";
 
 const RPC = process.env.RPC_URL || "http://127.0.0.1:8545";
 const days = Number((process.argv.find((a) => a.startsWith("--days=")) || "--days=0").split("=")[1]);
@@ -45,11 +45,34 @@ const existing = await pub.readContract({ address: dep.factory, abi: factoryAbi,
 const names = await Promise.all(existing.map((f) => read(f, "name")));
 const launched = [];
 
-for (const [i, f] of demoFunds.entries()) {
+/** A chip as the SDK needs it to compile a fork: read from the processor (REFs resolved). */
+async function chipOf(circuitId) {
+  const [nl, info] = await Promise.all([
+    pub.readContract({ address: dep.circuits, abi: circuitsAbi, functionName: "netlist", args: [circuitId] }),
+    pub.readContract({ address: dep.circuits, abi: circuitsAbi, functionName: "circuitInfo", args: [circuitId] }),
+  ]);
+  const records = decode(nl);
+  const subs = {};
+  for (const r of records.filter((x) => x.op === "ref")) subs[`${r.cpu}:${r.id}`] = await chipOf(BigInt(r.id));
+  return {
+    cpu: dep.circuits.toLowerCase(), circuitId: Number(circuitId), nIn: Number(info[0]), nOut: Number(info[1]), nState: Number(info[2]),
+    totalGates: Number(info[3]), records, resolve: (cpu, id) => subs[`${cpu.toLowerCase()}:${Number(id)}`] || null,
+  };
+}
+
+for (const [i, f] of [...demoFunds, ...demoForks].entries()) {
   const creator = accounts[i % accounts.length];
-  let fund = existing[names.indexOf(f.name)];
+  let fund = existing[names.indexOf(f.name)] || launched.find((x) => x.name === f.name)?.fund;
   if (!fund) {
-    const c = compile(f.rulebook);
+    let parent = "0x0000000000000000000000000000000000000000";
+    let c;
+    if (f.forkOf) {
+      const p = launched.find((x) => x.name === f.forkOf);
+      parent = p.fund;
+      const pid = await read(parent, "circuitId");
+      f.rulebook = { ...f.rulebook, parent: { fund: parent, circuitId: Number(pid), name: f.forkOf } };
+      c = compileFork(f.rulebook, await chipOf(pid));
+    } else c = compile(f.rulebook);
     const rc = await send(creator, {
       address: dep.factory, abi: factoryAbi, functionName: "launch", value: fee, gas: 6_000_000n,
       args: [{
@@ -58,14 +81,14 @@ for (const [i, f] of demoFunds.entries()) {
         netlist: bytesToHex(c.bytes),
         dropBps: f.rulebook.dropBps, riseBps: f.rulebook.riseBps, stopBps: f.rulebook.stopBps,
         feeBps: 100, period: 86_400, tvlCap: parseUnits("25000", 6),
-        rulebook: JSON.stringify(f.rulebook),
+        rulebook: JSON.stringify(f.rulebook), parent,
       }],
     });
     const ev = rc.logs
       .map((l) => { try { return decodeEventLog({ abi: factoryAbi, data: l.data, topics: l.topics }); } catch { return null; } })
       .find((e) => e?.eventName === "FundLaunched");
     fund = ev.args.fund;
-    console.log(`launched ${f.name} at ${fund}: circuit #${ev.args.circuitId}, ${c.gateCount} gates`);
+    console.log(`launched ${f.name} at ${fund}: circuit #${ev.args.circuitId}, ${c.gateCount} own gates${f.forkOf ? `, fork of ${f.forkOf}` : ""}`);
   } else console.log(`${f.name} already at ${fund}`);
   launched.push({ ...f, fund, creator });
 }

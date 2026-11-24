@@ -10,12 +10,16 @@ interface IERC20Min {
     function balanceOf(address) external view returns (uint256);
 }
 
-/// Deploys FundryFactory, creates the Fundry TapeOut processor (BEM deploy fee), buys the first
-/// transistor stock and lists every stock in deployments/assets.json.
+/// Deploys FundryFactory, sets up its TapeOut processor, buys transistor stock and lists every
+/// stock in deployments/assets.json.
 ///
 ///   forge script script/Deploy.s.sol --rpc-url <rpc> --broadcast --private-key <key>
 ///
-/// The deployer needs about 0.15 BEM. Writes deployments/<chainId>.json for the app and seed script.
+/// With PROCESSOR=<circuits address> the factory attaches to an existing processor (v2 reuses the
+/// Fundry processor that v1 created, so every chip, old and new, lives on one processor and forks
+/// can REF any of them). Without it, a new processor is created (0.1 BEM deploy fee).
+/// Transistors cost mintPrice each plus 0.01 BEM per mint transaction.
+/// Writes deployments/<chainId>.json for the app and seed script.
 contract Deploy is Script {
     address constant TAPEOUT = 0x1f09DAeFA827f02CBb40967cc91b259763760761;
     address constant SWAP_ROUTER_02 = 0x4f0C28f5926AFDA16bf2506D5D9e57Ea190f9bcA;
@@ -27,6 +31,19 @@ contract Deploy is Script {
         address pool;
         string symbol;
         string token;
+    }
+
+    function _processor(FundryFactory factory) internal {
+        address existing = vm.envOr("PROCESSOR", address(0));
+        if (existing != address(0)) {
+            factory.useProcessor(existing);
+        } else {
+            factory.setUpProcessor(
+                vm.envOr("TRANSISTOR_SUPPLY", uint256(1_000_000)),
+                vm.envOr("MINT_PRICE", uint256(1e3)),
+                "Fundry: every fund's rulebook is a chip. Launch a stock fund on X Layer whose rules nobody can change."
+            );
+        }
     }
 
     function run() external {
@@ -43,11 +60,7 @@ contract Deploy is Script {
         FundryFactory factory = new FundryFactory(TAPEOUT, usdg, SWAP_ROUTER_02, treasury, curator);
         address bem = ITapeOutFactory(TAPEOUT).bem();
         IERC20Min(bem).approve(address(factory), type(uint256).max);
-        factory.setUpProcessor(
-            vm.envOr("TRANSISTOR_SUPPLY", uint256(1_000_000)),
-            vm.envOr("MINT_PRICE", uint256(1e3)),
-            "Fundry: every fund's rulebook is a chip. Launch a stock fund on X Layer whose rules nobody can change."
-        );
+        _processor(factory);
         factory.restock(vm.envOr("RESTOCK_NAND", uint256(2_000)), vm.envOr("RESTOCK_LATCH", uint256(50)));
         IERC20Min(bem).approve(address(factory), 0);
 

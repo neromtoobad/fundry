@@ -3,12 +3,14 @@ import { Link, useParams } from "react-router-dom";
 import { describe, hexToBytes, unpackBits } from "@fundry/sdk";
 import { parseUnits, formatUnits } from "viem";
 import { useAsync } from "../lib/hooks.js";
-import { fundSummary, launchInfo, preview, decisionLog, balanceOf, client } from "../lib/data.js";
+import { fundSummary, launchInfo, preview, decisionLog, balanceOf, client, lineage } from "../lib/data.js";
 import { fundAbi, erc20Abi } from "../lib/abi.js";
 import { assetByAddress, txUrl, addrUrl, USDG, IS_FORK } from "../lib/config.js";
 import { usd, pct, bps, short, until, date, ago } from "../lib/format.js";
 import { useWallet } from "../lib/wallet.jsx";
-import FundChip from "../components/FundChip.jsx";
+import ChipLab from "../components/ChipLab.jsx";
+import CheckCard from "../components/CheckCard.jsx";
+import { ChipOwnerCard, FamilyCard } from "../components/Ownership.jsx";
 
 const bitsOf = (hex, n) => unpackBits(hexToBytes(hex || "0x"), n);
 const SIG = ["DROP", "RISE", "STOP-LOSS"];
@@ -26,6 +28,7 @@ export default function FundPage() {
   const pv = useAsync(() => preview(address), [address], 20_000);
   const log = useAsync(() => decisionLog(address), [address, fund.data?.rebalanceCount]);
   const f = fund.data;
+  const parents = useAsync(() => (f?.rulebook?.kind === "fork" ? lineage(f.rulebook) : {}), [f?.address, !!f?.rulebook]);
   const reloadAll = () => { fund.reload(); pv.reload(); log.reload(); };
 
   if (fund.error && !f) return <p className="err">Couldn’t read this fund: {fund.error.shortMessage || fund.error.message}</p>;
@@ -35,7 +38,6 @@ export default function FundPage() {
   const rb = f.rulebook;
   const english = rb ? (() => { try { return describe(rb); } catch { return null; } })() : null;
   const inputs = pv.data ? bitsOf(pv.data.inputs, 3 * n) : null;
-  const state = bitsOf(f.latchState, 8);
   const levels = pv.data?.levels;
   const levelSum = levels ? levels.reduce((s, x) => s + x, 0) : 0;
   const now = f.now;
@@ -48,10 +50,12 @@ export default function FundPage() {
         <div className="reveal">
           <span className="crumb"><Link to="/">LEAGUE</Link> / {f.symbol}</span>
           <h1 className="hero">{f.name}</h1>
+          {f.parent && (
+            <div className="fork-tag">FORK OF <Link to={`/fund/${f.parent}`}>{rb?.parent?.name || short(f.parent)}</Link> · REUSES CHIP #{rb?.parent?.circuitId}</div>
+          )}
           <div className="mono">
-            Chip #{String(f.circuitId)} · {f.gates} gates · {rb ? rb.assets.filter((a) => a.stop === "stayOut").length : "?"} latch ·
-            {" "}locked since block {f.launchBlock ? Number(f.launchBlock).toLocaleString() : "?"} · creator{" "}
-            {addrUrl(f.creator) ? <a className="u" href={addrUrl(f.creator)} target="_blank" rel="noreferrer">{short(f.creator)}</a> : short(f.creator)}
+            Chip #{String(f.circuitId)} · {f.gates} gates · locked since block {f.launchBlock ? Number(f.launchBlock).toLocaleString() : "?"} · held by{" "}
+            {addrUrl(f.chipOwner || f.creator) ? <a className="u" href={addrUrl(f.chipOwner || f.creator)} target="_blank" rel="noreferrer">{short(f.chipOwner || f.creator)}</a> : short(f.chipOwner || f.creator)}
           </div>
           <div className="headline-num">
             <div><b>{f.sharePrice == null ? "–" : `$${f.sharePrice.toFixed(4)}`}</b><span className="mono">Value of one share</span></div>
@@ -102,32 +106,31 @@ export default function FundPage() {
       </div>
 
       <section className="card" style={{ marginTop: 16 }}>
-        <div className="rules-grid">
-          <div>
-            <FundChip circuitId={f.circuitId} size={320} inputs={inputs} state={state} />
-            <div className="mono" style={{ marginTop: 8 }}>LIVE FROM CHAIN: DARK GATES CARRY A 1 FOR TODAY’S PRICES</div>
-          </div>
+        <div className="rules-grid wide">
           <div>
             <h2>The rules</h2>
             <p className="muted" style={{ marginTop: 0 }}>Compiled into the chip at launch. They can’t be changed.</p>
             {english ? <ul className="rules">{english.map((l) => <li key={l}>{l}</li>)}</ul> : <p className="muted">Rulebook text unavailable.</p>}
-            <h3 style={{ marginTop: 24 }}>What the chip sees right now</h3>
-            {inputs ? f.holdings.map((h, i) => (
-              <div className="holding" key={h.address} style={{ gridTemplateColumns: "70px 1fr 120px" }}>
-                <b>{h.symbol}</b>
-                <span className="signals" style={{ margin: 0 }}>
-                  {SIG.map((s, k) => <span key={s} className={`sigchip ${inputs[3 * i + k] ? "on" : ""}`}>{s}</span>)}
-                </span>
-                <span className="right">{levelSum ? `${Math.round((100 * levels[i]) / levelSum)}% target` : "cash"}</span>
-              </div>
-            )) : <p className="muted">Reading…</p>}
-            <div style={{ display: "flex", alignItems: "center", gap: 12, marginTop: 16, flexWrap: "wrap" }}>
-              <RebalanceButton f={f} w={w} due={due} onDone={reloadAll} />
-              <span className="muted">{due ? "Due now. Anyone can run it." : f.supply === 0n ? "Waiting for the first investor." : `Next rebalance ${until(f.nextRebalanceAt, now)}.`}</span>
-            </div>
+          </div>
+          <div>
+            <h3>Next rebalance</h3>
+            <p className="muted" style={{ marginTop: 0 }}>{due ? "Due now. Anyone can run it: the chip decides, not the caller." : f.supply === 0n ? "Waiting for the first investor." : `Next one ${until(f.nextRebalanceAt, now)}. Anyone can run it once it’s due.`}</p>
+            <RebalanceButton f={f} w={w} due={due} onDone={reloadAll} />
+            <p className="muted" style={{ fontSize: 14, marginTop: 18 }}>
+              <a className="u" href="#lab">Try the chip</a> below with your own prices, or <a className="u" href="#check">check every claim</a> on this page against the chain.
+            </p>
           </div>
         </div>
       </section>
+
+      <ChipLab f={f} live={inputs} parents={parents.data} />
+
+      <div className="grid2" style={{ alignItems: "start", marginTop: 16 }}>
+        <ChipOwnerCard f={f} w={w} onDone={reloadAll} />
+        <FamilyCard f={f} />
+      </div>
+
+      <CheckCard f={f} />
 
       <section className="card" style={{ marginTop: 16 }}>
         <h2>Decision log</h2>

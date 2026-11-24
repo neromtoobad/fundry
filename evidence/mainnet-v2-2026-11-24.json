@@ -1,0 +1,150 @@
+{
+  "chain": "X Layer mainnet (196)",
+  "date": "2026-11-24",
+  "version": "v2: forks (TapeOut REF), chip-owner fees, verify",
+  "explorer": "https://www.oklink.com/xlayer/tx/<hash>",
+  "deployer": "0x87c48Ce1C38Bea32B7Ba55A0E91C5904780BDF40",
+  "retiredV1": {
+    "factory": "0x9b4FD9f81Aa64e83446F83F03616Ac3c5Ab71e6E",
+    "why": "replaced by v2; its 4 funds never took deposits",
+    "sweep": {
+      "what": "returned the v1 factory's 0.0205 BEM (transistor sales) to the treasury",
+      "tx": "0xd1233cf2538a2d5201ab659e99961f70677f33d14926adc59732ea34048a16f0"
+    },
+    "record": "deployments/196-v1.json, evidence/mainnet-2026-11-24.json"
+  },
+  "deploy": {
+    "script": "contracts/script/Deploy.s.sol with PROCESSOR=0x80bf…CC0B RESTOCK_NAND=600 RESTOCK_LATCH=20 (full record: contracts/broadcast/Deploy.s.sol/196/run-latest.json)",
+    "startBlock": 76767744,
+    "FundryFactory": {
+      "address": "0x6a880e7B1DC510E3d5254CAa6F5DB8e33bDD660c",
+      "sourcify": "exact_match"
+    },
+    "FundImplementation": {
+      "address": "0x687eb3636FCe7f2DF052792821B6942F77056FC9",
+      "sourcify": "exact_match"
+    },
+    "processor": {
+      "what": "the same Fundry TapeOut processor as v1, attached with useProcessor (minting is permissionless)",
+      "circuits": "0x80bf3Aa74171b3711b5946D9F39b84F464B4CC0B",
+      "transistors": "0xd1Aac2c96094fd9B9EE4C8e717620B132Fc2098c"
+    },
+    "transactions": [
+      {
+        "fn": "create FundryFactory",
+        "hash": "0xd5ce7d74d105b44d3e31be310c122db73f5a110e9eca6892ec408d67f4ee1e24"
+      },
+      {
+        "fn": "approve(address,uint256)",
+        "hash": "0xc38c8b7d9c8bb747151cb92b13f851569f90e39a82300cb936e6d08829ba45ae"
+      },
+      {
+        "fn": "useProcessor(address)",
+        "hash": "0x652666a0cdbe9e343533e268e10a162ca1f19b5821c521fce4ef02127c9b9a18"
+      },
+      {
+        "fn": "restock(uint256,uint256)",
+        "hash": "0xd4b8b5ec80b3e77d4b326f8d916b3574974defc7ba3993f766282b659c128686"
+      },
+      {
+        "fn": "approve(address,uint256)",
+        "hash": "0xdc13a91785640b8263167bfe19fbeb7d2af5986d6cf775ad978c1a2d2f5e54d3"
+      },
+      {
+        "fn": "listAsset(address,address)",
+        "hash": "0xa30a658c0bb754d3d7877cb37577095f53d45abff86ab491b8e0ce8462a7a2e2"
+      },
+      {
+        "fn": "listAsset(address,address)",
+        "hash": "0x291da1e95e74c22991d1d6ac6384cb14024e3c94f3ae08f0f64070c2947a3722"
+      },
+      {
+        "fn": "listAsset(address,address)",
+        "hash": "0x7733b6064fdf3ce5f2fa070c791f6360b81f1353c8f2a3a6d99036987eb7ebb6"
+      },
+      {
+        "fn": "listAsset(address,address)",
+        "hash": "0x55f658711ff8751bcbaf31074862773439abf41c6fe41ad5269709b435d26428"
+      },
+      {
+        "fn": "listAsset(address,address)",
+        "hash": "0x12ef9a8726bef85e7b3872eba6ed8dc247f72000a0249ed8da384237e5bb5c72"
+      },
+      {
+        "fn": "listAsset(address,address)",
+        "hash": "0xcd8a3241ecb470ef62ceb8a32e56f2747288307f03b788d143591ebbb88481d8"
+      },
+      {
+        "fn": "listAsset(address,address)",
+        "hash": "0x13df0e0134f839f118f609beb68b5397cab7a0a855f902bdd3abbfc1e79f620d"
+      },
+      {
+        "fn": "listAsset(address,address)",
+        "hash": "0x791b3dd0227488d3323e5711aaf0bd72c828d5719aa8ae68f2c55bd1b08cd446"
+      }
+    ]
+  },
+  "launches": [
+    {
+      "fund": "AI + Market",
+      "address": "0x5EDcb4264213e6fA822F0cf03c85b8c03c13549E",
+      "circuitId": 5,
+      "ownGates": 33,
+      "totalGates": 33,
+      "parent": null,
+      "block": 76767860,
+      "tx": "0x9e9f6aa779fc8ce095168ca5c6c9708d9e23323d2ab9a9b23ee00c7dbad39a5c"
+    },
+    {
+      "fund": "Big Tech Guard",
+      "address": "0x490cC2Cf07Be8c22fca40a20e464662078dEdb28",
+      "circuitId": 6,
+      "ownGates": 34,
+      "totalGates": 34,
+      "parent": null,
+      "block": 76767863,
+      "tx": "0xfedeeb470a9f65164aeaa794359c8ff6726ac4a1b7e80fa4225ca867d242b246"
+    },
+    {
+      "fund": "Hard Assets",
+      "address": "0x6939589c41AD31745e9E87c5D63E0f459d704999",
+      "circuitId": 7,
+      "ownGates": 56,
+      "totalGates": 56,
+      "parent": null,
+      "block": 76767867,
+      "tx": "0xc0150d474c8bd4b73e3db6feb7e2a5e8865e5e9ca964140dfb31cd31457fbee1"
+    },
+    {
+      "fund": "SpaceX Moonshot",
+      "address": "0x15ac80b1629763D7472E513C72fa05277Ed97fDb",
+      "circuitId": 8,
+      "ownGates": 24,
+      "totalGates": 24,
+      "parent": null,
+      "block": 76767872,
+      "tx": "0xb1c7923d61c0eec8fa13663b3e99b606f0e456a84c766487c166f9c313dbd17c"
+    },
+    {
+      "fund": "AI + Market, Safer",
+      "address": "0xa0E934066bF5abf29F1AB13128B77c2822a15000",
+      "circuitId": 9,
+      "ownGates": 45,
+      "totalGates": 78,
+      "parent": "0x5EDcb4264213e6fA822F0cf03c85b8c03c13549E",
+      "block": 76767877,
+      "tx": "0xe908760c7cb7e5c77e3691737bf5220dc0ff9d60370db1943d295a0130354cf0"
+    },
+    {
+      "fund": "Moonshot, Steady",
+      "address": "0x67Bc068C933A3b6aC8a22cBc6E4fe1F1165E0d5C",
+      "circuitId": 10,
+      "ownGates": 28,
+      "totalGates": 52,
+      "parent": "0x15ac80b1629763D7472E513C72fa05277Ed97fDb",
+      "block": 76767884,
+      "tx": "0xa1a822fd93537e42f2936b7a674a836fc7baca09d9c3c350c167ecd07d2a8cec"
+    }
+  ],
+  "checks": "node scripts/verify.mjs --all: every fund passes rules-vs-chip (exhaustive), Circuits.step vs JS (16 random cases), fork REF wiring"
+}

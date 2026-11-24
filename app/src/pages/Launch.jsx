@@ -4,12 +4,12 @@ import { compile, describe, run, bytesToHex, parseWords } from "@fundry/sdk";
 import { parseUnits, formatEther, decodeEventLog } from "viem";
 import Chip from "../components/Chip.jsx";
 import { useAsync } from "../lib/hooks.js";
-import { listedAssets, tapeoutFee } from "../lib/data.js";
+import { listedAssets, tapeoutFee, ZERO } from "../lib/data.js";
 import { factoryAbi } from "../lib/abi.js";
 import { deployment } from "../lib/config.js";
 import { useWallet } from "../lib/wallet.jsx";
 
-const Seg = ({ value, options, onChange }) => (
+export const Seg = ({ value, options, onChange }) => (
   <span className="seg">
     {options.map(([v, label]) => (
       <button key={String(v)} type="button" className={v === value ? "on" : ""} onClick={() => onChange(v)}>{label}</button>
@@ -82,7 +82,7 @@ export default function Launch() {
         args: [{
           name: name.trim(), symbol, assets: rules.map((r) => bySymbol[r.symbol].address),
           netlist: bytesToHex(compiled.c.bytes), dropBps, riseBps, stopBps, feeBps, period,
-          tvlCap: parseUnits("25000", 6), rulebook: JSON.stringify(rulebook),
+          tvlCap: parseUnits("25000", 6), rulebook: JSON.stringify(rulebook), parent: ZERO,
         }],
       });
       const ev = rc.logs.map((l) => { try { return decodeEventLog({ abi: factoryAbi, data: l.data, topics: l.topics }); } catch { return null; } })

@@ -3,6 +3,7 @@ import { NavLink, Route, Routes, Link, useLocation } from "react-router-dom";
 import League from "./pages/League.jsx";
 import Launch from "./pages/Launch.jsx";
 import FundPage from "./pages/Fund.jsx";
+import Fork from "./pages/Fork.jsx";
 import WalletButton from "./components/WalletButton.jsx";
 import { IS_FORK, deployment, addrUrl } from "./lib/config.js";
 import { short } from "./lib/format.js";
@@ -11,7 +12,7 @@ export const REPO = "https://github.com/neromtoobad/fundry";
 
 export default function App() {
   const { pathname } = useLocation();
-  useEffect(() => window.scrollTo(0, 0), [pathname]);
+  useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
 
   return (
     <div className="wrap">
@@ -44,6 +45,7 @@ export default function App() {
         <Route path="/" element={<League />} />
         <Route path="/launch" element={<Launch />} />
         <Route path="/fund/:address" element={<FundPage />} />
+        <Route path="/fork/:address" element={<Fork />} />
       </Routes>
 
       <footer className="foot">

@@ -1,13 +1,14 @@
 // Everything the app shows is read from chain: the factory's fund list, each fund's state, its
 // circuit (netlist) on the Fundry TapeOut processor, and its events for the decision log.
 import { createPublicClient, http, parseAbiItem } from "viem";
+import { decode, refKey, hexToBytes, unpackBits, packBits, bytesToHex } from "@fundry/sdk";
 import { chain, deployment, assetByAddress, RPC_URL } from "./config.js";
 import { fundAbi, factoryAbi, circuitsAbi, erc20Abi } from "./abi.js";
 
 export const client = createPublicClient({ chain, transport: http(RPC_URL), batch: { multicall: { wait: 16 } } });
 
 const FUND_LAUNCHED = parseAbiItem(
-  "event FundLaunched(address indexed fund, address indexed creator, uint256 indexed circuitId, address[] assets, uint256 gates, string name, string rulebook)"
+  "event FundLaunched(address indexed fund, address indexed creator, uint256 indexed circuitId, address[] assets, uint256 gates, string name, string rulebook, address parent)"
 );
 
 // Public X Layer RPCs cap eth_getLogs at 100-1,000 blocks, so the app never scans the chain.
@@ -43,10 +44,12 @@ export async function launchInfo(fund) {
   return (launchCache[key] = {
     creator: l.args.creator, circuitId: l.args.circuitId, gates: Number(l.args.gates),
     rulebook, launchBlock: l.blockNumber, launchTx: l.transactionHash,
+    parent: l.args.parent && l.args.parent !== ZERO ? l.args.parent : null,
   });
 }
 
 const fundRead = fundRead0;
+export const ZERO = "0x0000000000000000000000000000000000000000";
 
 /** Summary used by the League table and the top of the Fund page. */
 export async function fundSummary(address, launchInfo) {
@@ -73,11 +76,14 @@ export async function fundSummary(address, launchInfo) {
   // $ per share = (nav / 1e6) / (supply / 1e18) = nav * 1e12 / supply
   const sharePrice = navUnavailable ? null : supply > 0n ? Number((nav * 10n ** 12n * 1_000_000n) / supply) / 1e6 : 1;
   const now = Number((await client.getBlock()).timestamp); // chain time (the local fork can run ahead of the wall clock)
+  const [chipOwner, ownerFeeShares, royaltyFeeShares] = await Promise.all(
+    ["chipOwner", "ownerFeeShares", "royaltyFeeShares"].map((fn) => fundRead(address, fn).catch(() => null))
+  );
   return {
     address, name, symbol, nav, supply, sharePrice, ret: sharePrice == null ? null : sharePrice - 1,
     launchedAt: Number(launchedAt), rebalanceCount: Number(rebalanceCount), nextRebalanceAt: Number(nextRebalanceAt),
     period: Number(period), feeBps: Number(feeBps), tvlCap, dropBps: Number(dropBps), riseBps: Number(riseBps), stopBps: Number(stopBps),
-    latchState, holdings, cash, now, priceWaiting, navUnavailable, ...launchInfo,
+    latchState, holdings, cash, now, priceWaiting, navUnavailable, chipOwner, ownerFeeShares, royaltyFeeShares, ...launchInfo,
   };
 }
 
@@ -140,4 +146,72 @@ export async function listedAssets() {
 
 export async function balanceOf(token, who) {
   return client.readContract({ address: token, abi: erc20Abi, functionName: "balanceOf", args: [who] });
+}
+
+// ---- chips, forks and checks --------------------------------------------------------------------
+
+const treeCache = new Map();
+/**
+ * A chip with every REF'd chip loaded, ready for the SDK evaluator:
+ * { circuitId, netlist, records, nIn, nOut, nState, gateCount, resolve }.
+ */
+export async function chipTree(circuitId) {
+  const key = String(circuitId);
+  if (treeCache.has(key)) return treeCache.get(key);
+  const p = (async () => {
+    const c = await circuit(BigInt(circuitId));
+    const records = decode(c.netlist);
+    const subs = {};
+    for (const r of records.filter((x) => x.op === "ref")) {
+      if (r.cpu.toLowerCase() !== deployment.circuits.toLowerCase()) throw new Error("REF to another processor");
+      subs[refKey(r.cpu, r.id)] = await chipTree(r.id);
+    }
+    return { circuitId: Number(circuitId), ...c, records, resolve: (cpu, id) => subs[refKey(cpu, id)] || null, subs };
+  })();
+  treeCache.set(key, p);
+  p.catch(() => treeCache.delete(key));
+  return p;
+}
+
+/** Ask the real TapeOut evaluator: one beat of `circuitId` for these bits. */
+export async function stepOnChain(circuitId, stateBits, inputBits) {
+  const [newState, outputs] = await client.readContract({
+    address: deployment.circuits, abi: circuitsAbi, functionName: "step",
+    args: [BigInt(circuitId), bytesToHex(packBits(stateBits)), bytesToHex(packBits(inputBits))],
+  });
+  return { state: unpackBits(hexToBytes(newState), stateBits.length), outputs: unpackBits(hexToBytes(outputs), 64) };
+}
+
+/** The fund that owns a chip, and its rulebook (for checking forks against their parent). */
+export async function fundOfCircuit(circuitId) {
+  const fund = await client.readContract({ address: deployment.factory, abi: factoryAbi, functionName: "fundOfCircuit", args: [BigInt(circuitId)] });
+  if (!fund || fund === ZERO) return null;
+  return { fund, ...(await launchInfo(fund)) };
+}
+
+/** Parent rulebooks for a fork, all the way up, keyed by circuit id: what referenceStep needs. */
+export async function lineage(rb) {
+  const out = {};
+  let cur = rb;
+  while (cur?.kind === "fork" && cur.parent) {
+    const id = Number(cur.parent.circuitId);
+    const [p, tree] = await Promise.all([fundOfCircuit(id), chipTree(id)]);
+    if (!p?.rulebook) throw new Error(`parent chip #${id}: rulebook not found`);
+    out[id] = { rulebook: p.rulebook, nState: tree.nState, fund: p.fund, name: p.rulebook?.parent?.name };
+    cur = p.rulebook;
+  }
+  return out;
+}
+
+export async function childrenOf(fund) {
+  return client.readContract({ address: deployment.factory, abi: factoryAbi, functionName: "childrenOf", args: [fund] });
+}
+
+export async function fundName(fund) {
+  return fundRead(fund, "name");
+}
+
+/** The circuit NFT owner (who earns a fund's creator fee). */
+export async function ownerOfChip(circuitId) {
+  return client.readContract({ address: deployment.circuits, abi: circuitsAbi, functionName: "ownerOf", args: [BigInt(circuitId)] });
 }
