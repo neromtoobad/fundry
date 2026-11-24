@@ -11,6 +11,31 @@ Built for **X Layer TapeOut Accelerate** (Oct 16 – Dec 7 2026). This repo star
 3. **Rebalance.** Anyone can call `rebalance()` once per period. The contract turns prices into input bits, asks the circuit (`Circuits.step`) for target weights and trades toward them. The circuit decides; the contract only obeys.
 4. **Withdraw.** Burn shares and get your exact slice of every holding. No prices are involved, so a withdrawal always works.
 
+## Live on X Layer mainnet
+
+**App: https://fundry.nerom.site** (reads X Layer mainnet; connect OKX Wallet to launch or invest)
+
+| | Address |
+|---|---|
+| FundryFactory | [`0x9b4FD9f81Aa64e83446F83F03616Ac3c5Ab71e6E`](https://www.oklink.com/xlayer/address/0x9b4FD9f81Aa64e83446F83F03616Ac3c5Ab71e6E) · [source verified on Sourcify](https://repo.sourcify.dev/196/0x9b4FD9f81Aa64e83446F83F03616Ac3c5Ab71e6E) |
+| Fund implementation | [`0x6d04f13221635bd2392e5215585Db8B587e153d1`](https://www.oklink.com/xlayer/address/0x6d04f13221635bd2392e5215585Db8B587e153d1) · [Sourcify](https://repo.sourcify.dev/196/0x6d04f13221635bd2392e5215585Db8B587e153d1) |
+| Fundry processor (Circuits) | [`0x80bf3Aa74171b3711b5946D9F39b84F464B4CC0B`](https://www.oklink.com/xlayer/address/0x80bf3Aa74171b3711b5946D9F39b84F464B4CC0B) (created through the TapeOut factory, BEM fee paid) |
+| Fundry transistors | [`0xd1Aac2c96094fd9B9EE4C8e717620B132Fc2098c`](https://www.oklink.com/xlayer/address/0xd1Aac2c96094fd9B9EE4C8e717620B132Fc2098c) |
+| Deploy transaction | [`0x4f6465…5f77`](https://www.oklink.com/xlayer/tx/0x4f64655aca76cc6576e07f830eb0b72b1a13d0fb4147183e345f346c8da25f77) (block 76,755,109) |
+
+Demo funds launched on mainnet (each one is a TapeOut circuit on the Fundry processor):
+
+| Fund | Holds | Circuit | Address |
+|---|---|---|---|
+| AI + Market | NVDA, SPY | #1, 33 gates | [`0x1c31CB32e816e904fFa3bB12045BA30bcC96D5ea`](https://www.oklink.com/xlayer/address/0x1c31CB32e816e904fFa3bB12045BA30bcC96D5ea) |
+| Big Tech Guard | MSFT, META, NVDA | #2, 34 gates | [`0x4567d0C8c2b53c5B22D15f07e2bc99943715cBF1`](https://www.oklink.com/xlayer/address/0x4567d0C8c2b53c5B22D15f07e2bc99943715cBF1) |
+| Hard Assets | GOLD, BTC, ETH | #3, 56 gates | [`0xdB8C314bE3E045Cdf3af9200bE98D28924C87A9b`](https://www.oklink.com/xlayer/address/0xdB8C314bE3E045Cdf3af9200bE98D28924C87A9b) |
+| SpaceX Moonshot | SPCX, SPY | #4, 24 gates | [`0x28d8dB38Da3Ee5E3c2d065908c5eBc7F7c09818C`](https://www.oklink.com/xlayer/address/0x28d8dB38Da3Ee5E3c2d065908c5eBc7F7c09818C) |
+
+The demo funds start empty: putting money in and rebalancing trade real tokens, so we leave that to real investors. Everything else above was done on mainnet.
+
+**Oracle note.** The BTC and ETH pools kept only 100 price observations, less than the 30-minute TWAP window on such busy pools, so `price()` reverted with `OLD`. We raised both pools to 1,801 observations with Uniswap's permissionless `increaseObservationCardinalityNext` (BTC pool `0x520F…5b76`, ETH pool `0x6E18…F6D5`); the app shows "price not ready" for a pool until it has 30 minutes of history, and withdrawals never need a price.
+
 ## What works today
 
 | | Status |
@@ -28,8 +53,7 @@ Built for **X Layer TapeOut Accelerate** (Oct 16 – Dec 7 2026). This repo star
 
 ## Not built yet
 
-- Mainnet deployment (no contract addresses yet, so the app runs against a local fork for now)
-- DeWEB hosting (the publisher is ready; it needs the mainnet circuit to host on)
+- DeWEB copy of the app (the publisher is ready and dry-run against circuit #1; publishing costs 0.085 OKB)
 - Rule parts with REF royalties, Mine-to-Own
 
 ## How it uses TapeOut and X Layer

@@ -50,29 +50,34 @@ const fundRead = fundRead0;
 
 /** Summary used by the League table and the top of the Fund page. */
 export async function fundSummary(address, launchInfo) {
-  const [name, symbol, nav, supply, launchedAt, rebalanceCount, nextRebalanceAt, period, feeBps, tvlCap, assets, dropBps, riseBps, stopBps, latchState] =
+  let [name, symbol, nav, supply, launchedAt, rebalanceCount, nextRebalanceAt, period, feeBps, tvlCap, assets, dropBps, riseBps, stopBps, latchState] =
     await Promise.all(
       ["name", "symbol", "nav", "totalSupply", "launchedAt", "rebalanceCount", "nextRebalanceAt", "period", "feeBps", "tvlCap", "assets", "dropBps", "riseBps", "stopBps", "latchState"].map(
-        (fn) => fundRead(address, fn)
+        // nav and price revert while a pool can't serve a 30-minute TWAP yet; that must not hide the fund
+        (fn) => fundRead(address, fn).catch((e) => (fn === "nav" ? null : Promise.reject(e)))
       )
     );
   const balances = await Promise.all(assets.map((a) => client.readContract({ address: a, abi: erc20Abi, functionName: "balanceOf", args: [address] })));
-  const prices = await Promise.all(assets.map((_, i) => fundRead(address, "price", [BigInt(i)])));
+  const prices = await Promise.all(assets.map((_, i) => fundRead(address, "price", [BigInt(i)]).catch(() => null)));
   const holdings = assets.map((a, i) => {
     const meta = assetByAddress[a.toLowerCase()] || { symbol: "?", name: a, decimals: 18 };
-    const value = (prices[i] * balances[i]) / 10n ** 18n; // USDG units (price is per 1e18 base units)
+    const value = prices[i] == null ? 0n : (prices[i] * balances[i]) / 10n ** 18n; // USDG units (price is per 1e18 base units)
     return { address: a, ...meta, balance: balances[i], price: prices[i], value };
   });
   const cash = await client.readContract({ address: deployment.usdg, abi: erc20Abi, functionName: "balanceOf", args: [address] });
+  const priceWaiting = holdings.filter((h) => h.price == null).map((h) => h.symbol);
+  // with no stock held, the NAV is just the cash, so it is exact even without prices
+  const navUnavailable = nav == null && balances.some((b) => b > 0n);
+  if (nav == null) nav = navUnavailable ? 0n : cash;
   // shares are minted at 1e12 per USDG unit at launch, so share price starts at exactly $1.00
   // $ per share = (nav / 1e6) / (supply / 1e18) = nav * 1e12 / supply
-  const sharePrice = supply > 0n ? Number((nav * 10n ** 12n * 1_000_000n) / supply) / 1e6 : 1;
+  const sharePrice = navUnavailable ? null : supply > 0n ? Number((nav * 10n ** 12n * 1_000_000n) / supply) / 1e6 : 1;
   const now = Number((await client.getBlock()).timestamp); // chain time (the local fork can run ahead of the wall clock)
   return {
-    address, name, symbol, nav, supply, sharePrice, ret: sharePrice - 1,
+    address, name, symbol, nav, supply, sharePrice, ret: sharePrice == null ? null : sharePrice - 1,
     launchedAt: Number(launchedAt), rebalanceCount: Number(rebalanceCount), nextRebalanceAt: Number(nextRebalanceAt),
     period: Number(period), feeBps: Number(feeBps), tvlCap, dropBps: Number(dropBps), riseBps: Number(riseBps), stopBps: Number(stopBps),
-    latchState, holdings, cash, now, ...launchInfo,
+    latchState, holdings, cash, now, priceWaiting, navUnavailable, ...launchInfo,
   };
 }
 

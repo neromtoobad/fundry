@@ -7,7 +7,7 @@ import FundChip from "../components/FundChip.jsx";
 export default function League() {
   const { data: funds, error, loading } = useAsync(allFunds, [], 20_000);
   const nav = useNavigate();
-  const ranked = (funds || []).slice().sort((a, b) => b.ret - a.ret);
+  const ranked = (funds || []).slice().sort((a, b) => (b.ret ?? -9) - (a.ret ?? -9));
   const tvl = ranked.reduce((s, f) => s + f.nav, 0n);
   const gates = ranked.reduce((s, f) => s + (f.gates || 0), 0);
   const runs = ranked.reduce((s, f) => s + f.rebalanceCount, 0);
@@ -66,8 +66,8 @@ export default function League() {
                   <td className="hide-sm">
                     <div className="tags">{f.holdings.map((h) => <span key={h.address} className="tag">{h.symbol}</span>)}</div>
                   </td>
-                  <td className={`right num ${f.ret >= 0 ? "gain" : "loss"}`}>{pct(f.ret)}</td>
-                  <td className="right num hide-sm">{usd(f.nav, 0)}</td>
+                  <td className={`right num ${f.ret == null ? "muted" : f.ret >= 0 ? "gain" : "loss"}`}>{f.ret == null ? "–" : pct(f.ret)}</td>
+                  <td className="right num hide-sm">{f.navUnavailable ? "–" : usd(f.nav, 0)}</td>
                   <td className="right num hide-sm">{f.rebalanceCount}</td>
                   <td className="right hide-sm muted">{until(f.nextRebalanceAt, f.now)}</td>
                 </tr>

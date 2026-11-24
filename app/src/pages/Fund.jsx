@@ -59,11 +59,16 @@ export default function FundPage() {
         <section className="card">
           <span className="mono">VALUE OF ONE SHARE</span>
           <div style={{ display: "flex", alignItems: "baseline", gap: 14, flexWrap: "wrap" }}>
-            <span className="bigval">${f.sharePrice.toFixed(4)}</span>
-            <span className={`num ${f.ret >= 0 ? "gain" : "loss"}`} style={{ fontSize: 20 }}>{pct(f.ret)} since launch</span>
+            <span className="bigval">{f.sharePrice == null ? "–" : `$${f.sharePrice.toFixed(4)}`}</span>
+            {f.ret != null && <span className={`num ${f.ret >= 0 ? "gain" : "loss"}`} style={{ fontSize: 20 }}>{pct(f.ret)} since launch</span>}
           </div>
+          {f.priceWaiting?.length > 0 && (
+            <p className="muted" style={{ fontSize: 13, marginTop: 10 }}>
+              The {f.priceWaiting.join(" and ")} {f.priceWaiting.length > 1 ? "pools don’t" : "pool doesn’t"} have 30 minutes of price history yet, so this fund can’t take money in or rebalance until it does. Withdrawals still work: they hand back your share of each holding without needing a price.
+            </p>
+          )}
           <dl className="kv" style={{ marginTop: 18 }}>
-            <dt>Fund size</dt><dd>{usd(f.nav)}</dd>
+            <dt>Fund size</dt><dd>{f.navUnavailable ? "–" : usd(f.nav)}</dd>
             <dt>Cash (USDG)</dt><dd>{usd(f.cash)}</dd>
             <dt>Rebalances run</dt><dd>{f.rebalanceCount}</dd>
             <dt>Rebalances</dt><dd>every {f.period >= 604800 ? "week" : f.period >= 86400 ? "day" : "hour"}</dd>
@@ -80,7 +85,7 @@ export default function FundPage() {
                 <div>
                   <div className="bar"><i style={{ width: `${weight * 100}%` }} />{levels && <s style={{ left: `calc(${target * 100}% - 1px)` }} title="Target from the chip" />}</div>
                   <div className="mono" style={{ marginTop: 4 }}>
-                    {Number(formatUnits(h.balance, h.decimals)).toLocaleString("en-US", { maximumFractionDigits: 4 })} {h.token} · ${(Number(h.price) / 1e6).toLocaleString("en-US", { maximumFractionDigits: 2 })} each
+                    {Number(formatUnits(h.balance, h.decimals)).toLocaleString("en-US", { maximumFractionDigits: 4 })} {h.token} · {h.price == null ? "price not ready" : `$${(Number(h.price) / 1e6).toLocaleString("en-US", { maximumFractionDigits: 2 })} each`}
                   </div>
                 </div>
                 <span className="num right">{(weight * 100).toFixed(1)}%</span>
