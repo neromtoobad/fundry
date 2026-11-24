@@ -11,7 +11,7 @@
       "what": "returned the v1 factory's 0.0205 BEM (transistor sales) to the treasury",
       "tx": "0xd1233cf2538a2d5201ab659e99961f70677f33d14926adc59732ea34048a16f0"
     },
-    "record": "deployments/196-v1.json, evidence/mainnet-2026-11-24.json"
+    "record": "deployments/retired/196-v1.json, evidence/mainnet-2026-11-24.json"
   },
   "deploy": {
     "script": "contracts/script/Deploy.s.sol with PROCESSOR=0x80bf…CC0B RESTOCK_NAND=600 RESTOCK_LATCH=20 (full record: contracts/broadcast/Deploy.s.sol/196/run-latest.json)",
