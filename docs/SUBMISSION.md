@@ -24,7 +24,7 @@ Every decision is logged on chain with the prices, the bits the chip saw, its ou
 ## Which TapeOut features it uses
 - **Circuits as the product:** every fund is one TapeOut circuit (processor address + circuit id on each fund page). The fund contract calls `Circuits.step` on every rebalance. LATCH bits are the fund's memory ("stay out after a stop-loss").
 - **Own processor:** `FundryFactory` creates the Fundry processor through the TapeOut factory (BEM deploy fee) and burns Fundry transistors on every launch.
-- **DeWEB:** the app is mirrored on X Layer DeWEB (see README for the tape:// / gateway link).
+- **DeWEB:** a publisher that mirrors the app into fund #1's circuit container is ready (`scripts/deweb-publish.mjs`, dry-run tested); the app itself is at fundry.nerom.site.
 - **X Layer:** xStocks / USDG Uniswap V3 pools for prices (TWAP) and trades.
 
 ## Target users and how we reach them
