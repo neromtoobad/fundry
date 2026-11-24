@@ -89,6 +89,8 @@ contract FundLifecycleTest is Test {
 
     function test_fullLifecycle() public {
         (Fund fund,) = _launch();
+        uint256 launchBlock = block.number;
+        vm.roll(block.number + 1);
         _deposit(fund, alice, 1_000e6);
         assertEq(fund.nav(), 1_000e6, "all cash before the first rebalance");
 
@@ -113,6 +115,7 @@ contract FundLifecycleTest is Test {
         // NVDA crashes: a whale dumps wNVDAx into the pool, then a day passes so the TWAP catches up
         _crashNvda();
         vm.warp(block.timestamp + 1 days + 1);
+        vm.roll(block.number + 1);
         (bytes memory inputs,,, uint8[] memory lv2) = fund.preview();
         console2.log("inputs after crash");
         console2.logBytes(inputs);
@@ -138,6 +141,17 @@ contract FundLifecycleTest is Test {
         // fees went to creator and treasury as shares
         assertGt(fund.balanceOf(creator), 0);
         assertGt(fund.balanceOf(treasury), 0);
+
+        // the event-block index: launch, then deposit + first rebalance, then rebalance + withdraw
+        // (one entry per block, however many events it holds)
+        assertEq(fund.eventBlockCount(), 3);
+        uint256[] memory blocks = fund.eventBlocks(0, 10);
+        assertEq(blocks.length, 3);
+        assertEq(blocks[0], launchBlock);
+        assertEq(blocks[1], launchBlock + 1);
+        assertEq(blocks[2], launchBlock + 2);
+        assertEq(fund.eventBlocks(2, 3)[0], launchBlock + 2);
+        assertEq(fund.eventBlocks(5, 9).length, 0);
     }
 
     function test_bigCrashFiresStopAndStaysOut() public {

@@ -2,13 +2,19 @@
   "name": "fundry",
   "private": true,
   "type": "module",
-  "workspaces": ["sdk", "app"],
+  "workspaces": [
+    "sdk",
+    "app"
+  ],
   "scripts": {
     "abi": "node scripts/abi.mjs",
     "seed": "node scripts/seed.mjs",
     "dev": "npm run dev -w app",
     "build": "npm run build -w app",
-    "test": "npm test -w sdk"
+    "test": "npm test -w sdk",
+    "keeper": "node scripts/keeper.mjs",
+    "deploy:mainnet": "cd contracts && forge script script/Deploy.s.sol --rpc-url $RPC_URL --broadcast --private-key $PRIVATE_KEY",
+    "seed:mainnet": "node --env-file=.env scripts/seed.mjs"
   },
   "devDependencies": {
     "viem": "^2.38.0"

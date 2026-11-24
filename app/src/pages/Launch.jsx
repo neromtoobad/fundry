@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { compile, describe, run, bytesToHex } from "@fundry/sdk";
+import { compile, describe, run, bytesToHex, parseWords } from "@fundry/sdk";
 import { parseUnits, formatEther, decodeEventLog } from "viem";
 import Chip from "../components/Chip.jsx";
 import { useAsync } from "../lib/hooks.js";
@@ -16,6 +16,12 @@ const Seg = ({ value, options, onChange }) => (
     ))}
   </span>
 );
+
+// a parsed threshold that isn't one of the preset buttons still shows as its own button
+const withValue = (opts, v, label) => (opts.some(([x]) => x === v) ? opts : [...opts, [v, label(v)]].sort((a, b) => a[0] - b[0]));
+const pctLabel = (v) => `${+(v / 100).toFixed(2)}%`;
+
+const EXAMPLE = "Hold 60% NVDA and 40% SPY. If NVDA falls 5%, cut it to half. If it rises 8%, double it. Stop-loss 15% on NVDA, and stay out until it recovers. If everything falls, go to cash.";
 
 const newRule = (symbol) => ({ symbol, base: 2, onDrop: "half", onRise: "none", stop: "none" });
 
@@ -34,6 +40,17 @@ export default function Launch() {
   const [feeBps, setFee] = useState(100);
   const [test, setTest] = useState({}); // symbol -> {drop, rise, stop}
   const [status, setStatus] = useState(null);
+  const [words, setWords] = useState("");
+  const [heard, setHeard] = useState(null);
+
+  function applyWords() {
+    const r = parseWords(words, (listed || []).map((a) => a.symbol));
+    setHeard(r);
+    if (!r.rulebook) return;
+    const rb = r.rulebook;
+    setRules(rb.assets);
+    setDrop(rb.dropBps); setRise(rb.riseBps); setStop(rb.stopBps); setCash(rb.allFallingToCash);
+  }
 
   const rulebook = { assets: rules, dropBps, riseBps, stopBps, allFallingToCash };
   const compiled = useMemo(() => {
@@ -84,6 +101,23 @@ export default function Launch() {
       <div className="grid2" style={{ alignItems: "start" }}>
         <div style={{ display: "grid", gap: 16 }}>
           <section className="card">
+            <h3>Write your rules in words <span className="muted" style={{ fontWeight: 500 }}>· optional</span></h3>
+            <textarea className="input" rows={4} style={{ resize: "vertical", lineHeight: 1.4 }} placeholder={EXAMPLE} value={words} onChange={(e) => setWords(e.target.value)} />
+            <div style={{ display: "flex", gap: 10, alignItems: "center", marginTop: 10, flexWrap: "wrap" }}>
+              <button type="button" className="pill ink sm" disabled={!words.trim()} onClick={applyWords}>Fill in the rules below</button>
+              {!words && <button type="button" className="pill sm" onClick={() => setWords(EXAMPLE)}>Use the example</button>}
+              <span className="muted" style={{ fontSize: 13 }}>Read by a fixed parser, not an AI. Check the result below before you launch.</span>
+            </div>
+            {heard && (
+              <div style={{ marginTop: 12, fontSize: 14, display: "grid", gap: 4 }}>
+                {heard.error && <div className="err" style={{ margin: 0 }}>{heard.error}</div>}
+                {heard.understood.map((x) => <div key={"u" + x}><span className="gain">✓</span> {x}</div>)}
+                {heard.skipped.map((x) => <div key={"s" + x} className="muted"><span className="loss">✗</span> Didn’t understand: “{x}”. Set it with the buttons below.</div>)}
+              </div>
+            )}
+          </section>
+
+          <section className="card">
             <h3>Name</h3>
             <input className="input" placeholder="e.g. AI + Market" value={name} maxLength={32} onChange={(e) => setName(e.target.value)} />
             {name && <div className="mono" style={{ marginTop: 8 }}>SHARE TICKER {symbol}</div>}
@@ -132,13 +166,13 @@ export default function Launch() {
             <h3>Triggers</h3>
             <div className="rule-row" style={{ borderTop: 0, paddingTop: 0 }}>
               <div className="line"><span>“Falls” means</span>
-                <Seg value={dropBps} onChange={setDrop} options={[[300, "3%"], [500, "5%"], [800, "8%"], [1000, "10%"]]} /><span className="muted" style={{ width: "auto" }}>since last rebalance</span>
+                <Seg value={dropBps} onChange={setDrop} options={withValue([[300, "3%"], [500, "5%"], [800, "8%"], [1000, "10%"]], dropBps, pctLabel)} /><span className="muted" style={{ width: "auto" }}>since last rebalance</span>
               </div>
               <div className="line"><span>“Rises” means</span>
-                <Seg value={riseBps} onChange={setRise} options={[[300, "3%"], [500, "5%"], [800, "8%"], [1000, "10%"]]} />
+                <Seg value={riseBps} onChange={setRise} options={withValue([[300, "3%"], [500, "5%"], [800, "8%"], [1000, "10%"]], riseBps, pctLabel)} />
               </div>
               <div className="line"><span>Stop-loss at</span>
-                <Seg value={stopBps} onChange={setStop} options={[[1000, "−10%"], [1500, "−15%"], [2000, "−20%"], [2500, "−25%"]]} /><span className="muted" style={{ width: "auto" }}>from peak</span>
+                <Seg value={stopBps} onChange={setStop} options={withValue([[1000, "−10%"], [1500, "−15%"], [2000, "−20%"], [2500, "−25%"]], stopBps, (v) => "−" + pctLabel(v))} /><span className="muted" style={{ width: "auto" }}>from peak</span>
               </div>
               <div className="line"><span>All falling</span>
                 <Seg value={allFallingToCash} onChange={setCash} options={[[true, "Move to cash"], [false, "Follow each rule"]]} />

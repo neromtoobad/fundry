@@ -3,9 +3,9 @@ import { Link, useParams } from "react-router-dom";
 import { describe, hexToBytes, unpackBits } from "@fundry/sdk";
 import { parseUnits, formatUnits } from "viem";
 import { useAsync } from "../lib/hooks.js";
-import { fundSummary, launches, preview, decisionLog, balanceOf, client } from "../lib/data.js";
+import { fundSummary, launchInfo, preview, decisionLog, balanceOf, client } from "../lib/data.js";
 import { fundAbi, erc20Abi } from "../lib/abi.js";
-import { assetByAddress, txUrl, addrUrl, USDG } from "../lib/config.js";
+import { assetByAddress, txUrl, addrUrl, USDG, IS_FORK } from "../lib/config.js";
 import { usd, pct, bps, short, until, date, ago } from "../lib/format.js";
 import { useWallet } from "../lib/wallet.jsx";
 import FundChip from "../components/FundChip.jsx";
@@ -22,9 +22,9 @@ function TxLink({ hash, children }) {
 export default function FundPage() {
   const { address } = useParams();
   const w = useWallet();
-  const fund = useAsync(async () => fundSummary(address, (await launches())[address.toLowerCase()] || {}), [address], 20_000);
+  const fund = useAsync(async () => fundSummary(address, await launchInfo(address)), [address], 20_000);
   const pv = useAsync(() => preview(address), [address], 20_000);
-  const log = useAsync(() => decisionLog(address, fund.data?.launchBlock), [address, fund.data?.launchBlock != null]);
+  const log = useAsync(() => decisionLog(address), [address, fund.data?.rebalanceCount]);
   const f = fund.data;
   const reloadAll = () => { fund.reload(); pv.reload(); log.reload(); };
 
@@ -247,6 +247,7 @@ function InvestCard({ f, w, onDone }) {
           <input className="input" inputMode="decimal" placeholder="100" value={amount} onChange={(e) => setAmount(e.target.value.replace(/[^0-9.]/g, ""))} style={{ marginTop: 6 }} />
           {mine && <div className="mono" style={{ marginTop: 6 }}>YOU HAVE {usd(mine.usdg)}</div>}
           <p className="muted" style={{ fontSize: 14 }}>You get shares at today’s value. Your money joins the fund’s cash and is put to work at the next rebalance.</p>
+          {!IS_FORK && <p className="muted" style={{ fontSize: 13 }}>Real money on X Layer. Tokenized stocks can fall, and the chip only follows its rules. Each fund is capped at {usd(f.tvlCap, 0)}. Not investment advice.</p>}
           <button className="pill ink big" style={{ width: "100%", justifyContent: "center" }} disabled={!w.account || !Number(amount) || st?.busy} onClick={invest}>
             {st?.busy || "Invest"}
           </button>

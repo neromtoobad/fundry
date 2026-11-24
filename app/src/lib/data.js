@@ -10,37 +10,43 @@ const FUND_LAUNCHED = parseAbiItem(
   "event FundLaunched(address indexed fund, address indexed creator, uint256 indexed circuitId, address[] assets, uint256 gates, string name, string rulebook)"
 );
 
-/** getLogs in chunks (public RPCs cap the block range). */
-async function getLogsChunked(params, from, to, step = 50_000n) {
-  const out = [];
-  for (let a = from; a <= to; a += step) {
-    const b = a + step - 1n > to ? to : a + step - 1n;
-    out.push(...(await client.getLogs({ ...params, fromBlock: a, toBlock: b })));
-  }
+// Public X Layer RPCs cap eth_getLogs at 100-1,000 blocks, so the app never scans the chain.
+// Each fund keeps an on-chain list of the blocks it emitted events in (eventBlocks); we fetch logs
+// for exactly those blocks.
+const fundRead0 = (address, functionName, args) => client.readContract({ address, abi: fundAbi, functionName, args });
+
+async function eventBlocksOf(fund) {
+  const n = await fundRead0(fund, "eventBlockCount");
+  return n === 0n ? [] : fundRead0(fund, "eventBlocks", [0n, n]);
+}
+
+/** Run async jobs with at most `n` in flight (public RPCs rate-limit bursts). */
+async function pool(items, n, fn) {
+  const out = new Array(items.length);
+  let i = 0;
+  await Promise.all(Array.from({ length: Math.min(n, items.length) }, async () => {
+    while (i < items.length) { const k = i++; out[k] = await fn(items[k]); }
+  }));
   return out;
 }
 
-let launchCache = null;
-/** FundLaunched events: creator, circuit id, rulebook JSON per fund. */
-export async function launches() {
-  if (launchCache) return launchCache;
-  const latest = await client.getBlockNumber();
-  const logs = await getLogsChunked({ address: deployment.factory, event: FUND_LAUNCHED }, BigInt(deployment.startBlock), latest);
-  const map = {};
-  for (const l of logs) {
-    let rulebook = null;
-    try { rulebook = JSON.parse(l.args.rulebook); } catch { /* a launch with an unreadable rulebook still shows */ }
-    map[l.args.fund.toLowerCase()] = {
-      creator: l.args.creator, circuitId: l.args.circuitId, gates: Number(l.args.gates),
-      rulebook, launchBlock: l.blockNumber, launchTx: l.transactionHash,
-    };
-  }
-  launchCache = map;
-  setTimeout(() => (launchCache = null), 15_000);
-  return map;
+const launchCache = {};
+/** The FundLaunched event for one fund: creator, circuit id, gate count, rulebook JSON. */
+export async function launchInfo(fund) {
+  const key = fund.toLowerCase();
+  if (launchCache[key]) return launchCache[key];
+  const [block] = await fundRead0(fund, "eventBlocks", [0n, 1n]);
+  const [l] = await client.getLogs({ address: deployment.factory, event: FUND_LAUNCHED, args: { fund }, fromBlock: block, toBlock: block });
+  if (!l) return {};
+  let rulebook = null;
+  try { rulebook = JSON.parse(l.args.rulebook); } catch { /* a launch with an unreadable rulebook still shows */ }
+  return (launchCache[key] = {
+    creator: l.args.creator, circuitId: l.args.circuitId, gates: Number(l.args.gates),
+    rulebook, launchBlock: l.blockNumber, launchTx: l.transactionHash,
+  });
 }
 
-const fundRead = (address, functionName, args) => client.readContract({ address, abi: fundAbi, functionName, args });
+const fundRead = fundRead0;
 
 /** Summary used by the League table and the top of the Fund page. */
 export async function fundSummary(address, launchInfo) {
@@ -72,11 +78,8 @@ export async function fundSummary(address, launchInfo) {
 
 export async function allFunds() {
   if (!deployment) return [];
-  const [list, info] = await Promise.all([
-    client.readContract({ address: deployment.factory, abi: factoryAbi, functionName: "allFunds" }),
-    launches(),
-  ]);
-  return Promise.all(list.map((f) => fundSummary(f, info[f.toLowerCase()] || {})));
+  const list = await client.readContract({ address: deployment.factory, abi: factoryAbi, functionName: "allFunds" });
+  return pool(list, 4, async (f) => fundSummary(f, await launchInfo(f)));
 }
 
 /** The circuit as taped out on the Fundry processor. */
@@ -96,24 +99,27 @@ export async function preview(address) {
 
 const ev = (name) => fundAbi.find((x) => x.type === "event" && x.name === name);
 
-/** Every rebalance with the trades it made, newest first. */
-export async function decisionLog(address, fromBlock) {
-  const latest = await client.getBlockNumber();
-  const from = BigInt(fromBlock ?? deployment.startBlock);
-  const [reb, trades, deps, wds] = await Promise.all(
-    ["Rebalanced", "Traded", "Deposited", "Withdrawn"].map((n) => getLogsChunked({ address, event: ev(n) }, from, latest))
-  );
-  const blocks = {};
-  const ts = async (bn) => (blocks[bn] ??= (await client.getBlock({ blockNumber: bn })).timestamp);
+const EVENTS = ["Rebalanced", "Traded", "Deposited", "Withdrawn"].map(ev);
+
+/** Every rebalance with the trades it made, newest first, plus money in and out. */
+export async function decisionLog(address) {
+  const blocks = await eventBlocksOf(address);
+  const perBlock = await pool(blocks, 4, async (b) => {
+    const [logs, block] = await Promise.all([
+      client.getLogs({ address, events: EVENTS, fromBlock: b, toBlock: b }),
+      client.getBlock({ blockNumber: b }),
+    ]);
+    return logs.map((l) => ({ ...l, time: Number(block.timestamp) }));
+  });
+  const logs = perBlock.flat();
   const byTx = {};
-  for (const t of trades) (byTx[t.transactionHash] ??= []).push(t.args);
-  const rebalances = await Promise.all(
-    reb.map(async (l) => ({ ...l.args, n: Number(l.args.n), tx: l.transactionHash, block: l.blockNumber, time: Number(await ts(l.blockNumber)), trades: byTx[l.transactionHash] || [] }))
-  );
-  const flows = await Promise.all(
-    [...deps.map((l) => ({ kind: "deposit", ...l.args, tx: l.transactionHash, block: l.blockNumber })),
-     ...wds.map((l) => ({ kind: "withdraw", ...l.args, tx: l.transactionHash, block: l.blockNumber }))].map(async (f) => ({ ...f, time: Number(await ts(f.block)) }))
-  );
+  for (const t of logs.filter((l) => l.eventName === "Traded")) (byTx[t.transactionHash] ??= []).push(t.args);
+  const rebalances = logs.filter((l) => l.eventName === "Rebalanced").map((l) => ({
+    ...l.args, n: Number(l.args.n), tx: l.transactionHash, block: l.blockNumber, time: l.time, trades: byTx[l.transactionHash] || [],
+  }));
+  const flows = logs.filter((l) => l.eventName === "Deposited" || l.eventName === "Withdrawn").map((l) => ({
+    kind: l.eventName === "Deposited" ? "deposit" : "withdraw", ...l.args, tx: l.transactionHash, block: l.blockNumber, time: l.time,
+  }));
   return { rebalances: rebalances.sort((a, b) => b.n - a.n), flows: flows.sort((a, b) => Number(b.block - a.block)) };
 }
 

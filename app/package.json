@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "oxlint",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "build:mainnet": "VITE_CHAIN_ID=196 vite build"
   },
   "dependencies": {
     "@fundry/sdk": "*",

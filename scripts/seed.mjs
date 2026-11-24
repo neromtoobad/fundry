@@ -1,6 +1,8 @@
-// Launches the demo funds through FundryFactory, deposits and runs their first rebalance.
+// Launches the demo funds through FundryFactory. On the local fork it also deposits test USDG and
+// runs their first rebalance.
 //   Local fork:  node scripts/seed.mjs [--days=N]   (anvil's test accounts, chain 31337)
-//   Mainnet:     PRIVATE_KEY=0x.. RPC_URL=https://rpc.xlayer.tech node scripts/seed.mjs
+//   Mainnet:     node --env-file=.env scripts/seed.mjs   (launches only: putting real money in and
+//                the first swap are done by a person from the app, never by this script)
 // On the fork, --days=N moves time forward a day at a time and rebalances again, so the decision
 // log has more than one entry. It never fakes prices: the chips see whatever the real pools say.
 import { readFileSync } from "node:fs";
@@ -68,10 +70,12 @@ for (const [i, f] of demoFunds.entries()) {
   launched.push({ ...f, fund, creator });
 }
 
-// investors: the creator deposits, and on the fork a second account joins
+if (!fork) process.exit(0);
+
+// fork only: the creator deposits test USDG and a second account joins
 for (const [i, f] of launched.entries()) {
   if ((await read(f.fund, "totalSupply")) > 0n) continue;
-  const investors = fork ? [f.creator, accounts[(i + 1) % accounts.length]] : [f.creator];
+  const investors = [f.creator, accounts[(i + 1) % accounts.length]];
   for (const [k, who] of investors.entries()) {
     const amount = parseUnits(String(k === 0 ? f.deposit : Math.round(f.deposit / 2)), 6);
     await send(who, { address: dep.usdg, abi: erc20Abi, functionName: "approve", args: [f.fund, amount] });
@@ -89,7 +93,7 @@ async function rebalanceDue(keeper) {
   }
 }
 await rebalanceDue(accounts[0]);
-for (let d = 0; d < days && fork; d++) {
+for (let d = 0; d < days; d++) {
   await pub.request({ method: "evm_increaseTime", params: [86_401] });
   await pub.request({ method: "evm_mine", params: [] });
   await rebalanceDue(accounts[d % accounts.length]);

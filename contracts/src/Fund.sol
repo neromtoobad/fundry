@@ -91,6 +91,10 @@ contract Fund is ERC20, ReentrancyGuard {
     uint256[] internal _lastPrice; // USDG units per 1e18 of the asset, at the last rebalance
     uint256[] internal _peak;
     bytes public latchState;
+    // Every block in which this fund emitted an event (launch, deposits, withdrawals, rebalances).
+    // Public RPCs on X Layer cap eth_getLogs at 100-1,000 blocks, so the app reads this list and
+    // fetches logs for exactly these blocks instead of scanning the chain.
+    uint256[] internal _eventBlocks;
 
     event Deposited(address indexed who, uint256 usdgIn, uint256 shares);
     event Withdrawn(address indexed who, uint256 shares, uint256 usdgOut, uint256[] assetsOut);
@@ -144,6 +148,7 @@ contract Fund is ERC20, ReentrancyGuard {
         tvlCap = c.tvlCap;
         launchedAt = block.timestamp;
         lastFeeAccrual = block.timestamp;
+        _eventBlocks.push(block.number);
 
         for (uint256 i; i < n; i++) {
             address a = c.assets[i];
@@ -224,6 +229,7 @@ contract Fund is ERC20, ReentrancyGuard {
         usdg.safeTransferFrom(msg.sender, address(this), amount);
         _mint(msg.sender, shares);
         emit Deposited(msg.sender, amount, shares);
+        _markBlock();
     }
 
     /// Burn shares and receive your exact slice of every holding (cash + each stock).
@@ -242,6 +248,7 @@ contract Fund is ERC20, ReentrancyGuard {
             if (outs[i] > 0) _assets[i].safeTransfer(to, outs[i]);
         }
         emit Withdrawn(msg.sender, shares, cash, outs);
+        _markBlock();
     }
 
     // ---- fees ------------------------------------------------------------------------------
@@ -257,6 +264,7 @@ contract Fund is ERC20, ReentrancyGuard {
         _mint(creator, toCreator);
         _mint(treasury, feeShares - toCreator);
         emit FeesAccrued(toCreator, feeShares - toCreator);
+        _markBlock();
     }
 
     function accrueFees() external nonReentrant {
@@ -369,6 +377,26 @@ contract Fund is ERC20, ReentrancyGuard {
         lastRebalance = block.timestamp;
         rebalanceCount++;
         emit Rebalanced(rebalanceCount, inputs, outputs, newState, levels, prices, navBefore, nav());
+        _markBlock();
+    }
+
+    function _markBlock() internal {
+        uint256 n = _eventBlocks.length;
+        if (n == 0 || _eventBlocks[n - 1] != block.number) _eventBlocks.push(block.number);
+    }
+
+    /// How many blocks hold this fund's events (see _eventBlocks).
+    function eventBlockCount() external view returns (uint256) {
+        return _eventBlocks.length;
+    }
+
+    /// Blocks [from, to) of the event-block list, oldest first.
+    function eventBlocks(uint256 from, uint256 to) external view returns (uint256[] memory out) {
+        uint256 n = _eventBlocks.length;
+        if (to > n) to = n;
+        if (from >= to) return out;
+        out = new uint256[](to - from);
+        for (uint256 i = from; i < to; i++) out[i - from] = _eventBlocks[i];
     }
 
     function _swap(address tokenIn, address tokenOut, uint24 fee, uint256 amountIn, uint256 fairOut) internal {
