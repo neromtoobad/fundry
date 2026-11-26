@@ -1,4 +1,4 @@
-// Checks anyone can run on a Fundry fund, in the browser or in Node, from chain data alone.
+// Checks anyone can run on a Sworn fund, in the browser or in Node, from chain data alone.
 //
 //   checkRules   : the chip (netlist read from chain) gives the result the plain-words rulebook
 //                  says, on every input and every memory state (or a large random sample).

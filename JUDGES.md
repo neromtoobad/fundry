@@ -1,17 +1,18 @@
 # For judges
 
-Fundry in one line: launch a tokenized-stock fund on X Layer whose rules are a TapeOut circuit, so nobody can change them after launch, not even the creator.
+Sworn in one line: launch a tokenized-stock fund on X Layer whose rules are a TapeOut circuit, so nobody can change them after launch, not even the creator.
 
-- **App:** https://fundry.nerom.site (reads X Layer mainnet)
+- **App:** https://sworn.nerom.site (reads X Layer mainnet)
+- **Name:** built as "Fundry" and renamed Sworn on Nov 26; the deployed contracts keep the old name (`FundryFactory`, processor "Fundry" / `FNDRY`).
 - **Contracts and demo funds:** README → "Live on X Layer mainnet"
 - **Every mainnet transaction we sent, with hashes:** [evidence/mainnet-v2-2026-11-24.json](evidence/mainnet-v2-2026-11-24.json) (v2, live) and [evidence/mainnet-2026-11-24.json](evidence/mainnet-2026-11-24.json) (v1, retired)
 
 ## The fastest check: let the app prove itself
 
-Open any fund on https://fundry.nerom.site, scroll to **Check it yourself** and press **Run the checks**. Using chain data only, your browser reads the chip, confirms a fork really contains its parent chip, runs the written rules against the chip on every possible input, asks `Circuits.step` on X Layer 12 random questions and compares the answers, and replays every rebalance from the prices it logged. From a terminal:
+Open any fund on https://sworn.nerom.site, scroll to **Check it yourself** and press **Run the checks**. Using chain data only, your browser reads the chip, confirms a fork really contains its parent chip, runs the written rules against the chip on every possible input, asks `Circuits.step` on X Layer 12 random questions and compares the answers, and replays every rebalance from the prices it logged. From a terminal:
 
 ```bash
-git clone https://github.com/neromtoobad/fundry && cd fundry && npm install
+git clone https://github.com/neromtoobad/sworn && cd sworn && npm install
 node scripts/verify.mjs --all     # read-only, mainnet; every fund, every check
 ```
 
@@ -22,7 +23,7 @@ Try **Chip Lab** on the same page too: move a stock's price with a slider and wa
 | What to check | Where |
 |---|---|
 | Each fund is a TapeOut circuit | Open any fund on the app: the header shows `CIRCUIT #n` on processor `0x80bf…CC0B`. On chain: `Fund.circuitId()` and `Circuits.circuitInfo(id)` |
-| The Fundry processor was created through the real TapeOut factory (BEM fee) | `setUpProcessor` tx in the evidence file; code in `contracts/src/FundryFactory.sol` |
+| The Sworn processor was created through the real TapeOut factory (BEM fee) | `setUpProcessor` tx in the evidence file; code in `contracts/src/FundryFactory.sol` |
 | The fund obeys the chip | `Fund.rebalance` calls `Circuits.step` and trades toward the levels it returns: `contracts/src/Fund.sol` (rebalance ~line 325, `step` ~331) |
 | The rules can't change after launch | TapeOut circuits are immutable once taped out; `Fund` has no setter for rules, circuit or thresholds |
 | Rules compile to NAND/LATCH correctly | `npm test` (200 random rulebooks match the reference on every input) and `contracts/test/TapeOutFork.t.sol` (real factory, all 1,024 inputs) |
@@ -31,11 +32,11 @@ Try **Chip Lab** on the same page too: move a stock's price with a slider and wa
 | The fee follows the chip NFT | `Fund.chipOwner()` = `Circuits.ownerOf(circuitId)`; `Fund.parentOwner()` for the 20% royalty. `Forks.t.sol` sells both chips and checks the fee moves with them |
 | Source matches what's deployed | Sourcify exact match for `FundryFactory` and the `Fund` implementation (links in the README) |
 
-## Judging criteria → where Fundry answers them
+## Judging criteria → where Sworn answers them
 
 | Criterion | Answer |
 |---|---|
-| User value and commercial potential | Creators turn the rules they already post on X into a fund their followers can join, and earn half of a 0–2%/yr fee. Investors get rules that can't change and exits that always work. Revenue: the other half of the fee goes to the Fundry treasury, plus Fundry transistor sales on every launch. See `docs/SUBMISSION.md`. |
+| User value and commercial potential | Creators turn the rules they already post on X into a fund their followers can join, and earn half of a 0–2%/yr fee. Investors get rules that can't change and exits that always work. Revenue: the other half of the fee goes to the Sworn treasury, plus Sworn transistor sales on every launch. See `docs/SUBMISSION.md`. |
 | Innovation | The circuit is the fund's rulebook and LATCH bits are its memory ("stay out after a stop-loss"). The chip decides the weights; the contract only obeys. Forks compose strategies chip-inside-chip with TapeOut REF (the first REF circuits on X Layer), and pay their parent a royalty, so good strategies earn from everything built on them. |
 | Ecosystem integration | Own TapeOut processor (BEM fee, transistors burned per launch), `Circuits.step` on every rebalance, REF for forks, the circuit NFT as the fee right (ownerOf), X Layer xStocks and USDG pools, DeWEB publisher in `scripts/deweb-publish.mjs`. |
 | Product readiness and UX | Live app on mainnet data; rules can be written in plain words; Chip Lab lets anyone test a fund's real chip with what-if prices; every claim can be re-checked in the browser; every decision is logged on chain and shown on the fund page. |

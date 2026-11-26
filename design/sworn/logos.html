@@ -1,0 +1,47 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f4f3ef;--ink:#0d0f12;--copper:#E2591B;--cream:#f4efe6;--muted:#6b6a64}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);font-family:Inter Tight,sans-serif;color:var(--ink);padding:56px;width:1600px}
+h1{font-size:44px;letter-spacing:-.04em;margin:0 0 6px}p.s{color:var(--muted);margin:0 0 36px;font-size:18px}
+.row{display:grid;grid-template-columns:90px 260px 1fr 330px;gap:36px;align-items:center;background:#fff;border-radius:24px;padding:32px 40px;margin-bottom:22px}
+.tag{font:500 13px JetBrains Mono;color:var(--muted);letter-spacing:.06em}
+.tag b{display:block;font:800 56px Inter Tight;color:var(--ink);letter-spacing:-.04em}
+.av{width:220px;height:220px;border-radius:50%;overflow:hidden;box-shadow:0 0 0 1px #e4e2dc}
+.lock{display:flex;align-items:center;gap:18px;line-height:1}.lock .w{font-weight:700;font-size:64px;letter-spacing:-.01em}.lock .w i{font-style:normal;margin-left:.045em}
+.lock.d{background:var(--ink);color:#fff;border-radius:18px;padding:22px 28px;margin-top:14px;width:max-content}
+.small{display:flex;gap:22px;align-items:end}.small div{text-align:center;font:500 11px JetBrains Mono;color:var(--muted)}
+.tab{display:flex;align-items:center;gap:8px;background:#e9e7e1;border-radius:10px 10px 0 0;padding:8px 14px;font-size:13px;width:200px;margin-top:10px}
+</style></head><body>
+<h1>Sworn: three logo directions</h1>
+<p class="s">Each one shown as the X avatar, the lockup on light and dark, and at favicon size. Copper #E2591B, ink #0D0F12, the site's paper colour.</p>
+<div id="rows"></div>
+<script>
+const ink="#0d0f12",cu="#E2591B",cr="#f4efe6";
+// A — Seal: a chip pressed into a copper wax seal
+function A(){let bumps="";for(let i=0;i<20;i++){const a=i/20*2*Math.PI;bumps+=`<circle cx="${50+40*Math.cos(a)}" cy="${50+40*Math.sin(a)}" r="7.5" fill="${cu}"/>`}
+ let pins="";for(let k=0;k<3;k++){const o=37+k*13;pins+=`<rect x="${o-2.5}" y="22" width="5" height="7" fill="${ink}"/><rect x="${o-2.5}" y="71" width="5" height="7" fill="${ink}"/><rect x="22" y="${o-2.5}" width="7" height="5" fill="${ink}"/><rect x="71" y="${o-2.5}" width="7" height="5" fill="${ink}"/>`}
+ return `<circle cx="50" cy="50" r="41" fill="${cu}"/>${bumps}<circle cx="50" cy="50" r="35" fill="none" stroke="#b8430f" stroke-width="1.6"/>${pins}<rect x="28" y="28" width="44" height="44" rx="5" fill="${ink}"/>
+ <path d="M60 38H45l-5 5v2l5 5h10l5 5v2l-5 5H40" fill="none" stroke="${cr}" stroke-width="5.5" stroke-linejoin="round"/><circle cx="61" cy="38" r="3.6" fill="${cu}"/><circle cx="39" cy="62" r="3.6" fill="${cu}"/>`}
+// B — Trace S: the S is one circuit trace with two pads
+function B(){return `<rect width="100" height="100" rx="24" fill="${ink}"/>
+ <path d="M70 24H40l-11 11v4l11 11h20l11 11v4L60 76H30" fill="none" stroke="${cr}" stroke-width="10" stroke-linejoin="round"/>
+ <circle cx="72" cy="24" r="8" fill="${cu}"/><circle cx="28" cy="76" r="8" fill="${cu}"/>`}
+// C — Die: a chip with one copper latch cell, the "o" in the wordmark
+function C(bg=true){let pins="";for(let k=0;k<3;k++){const o=36+k*14;pins+=`<rect x="${o-3}" y="14" width="6" height="10" rx="1" fill="${cr}"/><rect x="${o-3}" y="76" width="6" height="10" rx="1" fill="${cr}"/><rect x="14" y="${o-3}" width="10" height="6" rx="1" fill="${cr}"/><rect x="76" y="${o-3}" width="10" height="6" rx="1" fill="${cr}"/>`}
+ return `${bg?`<rect width="100" height="100" fill="${cu}"/>`:""}${pins}<rect x="24" y="24" width="52" height="52" rx="7" fill="${ink}"/><rect x="41" y="41" width="18" height="18" rx="2" fill="${cu}"/><rect x="41" y="41" width="18" height="18" rx="2" fill="none" stroke="${cr}" stroke-width="2.5"/>`}
+const svg=(inner,s)=>`<svg width="${s}" height="${s}" viewBox="0 0 100 100">${inner}</svg>`;
+const opts=[
+ {k:"A",name:"Seal",why:"A chip pressed into a wax seal: the rules are sealed. Strongest 'can't be changed' story; busiest at small sizes.",icon:A(),av:`<rect width="100" height="100" fill="${cr}"/><g transform="translate(6 6) scale(.88)">${A()}</g>`},
+ {k:"B",name:"Trace",why:"The S is a single circuit trace between two copper pads. Simplest, boldest at 16px, reads as 'chip' and 'S' at once.",icon:B(),av:B()},
+ {k:"C",name:"Die",why:"A die with one copper latch cell (the fund's memory). Doubles as the 'o' in the wordmark.",icon:`<rect width="100" height="100" rx="22" fill="${cu}"/>${C(false)}`,av:C()},
+];
+document.getElementById("rows").innerHTML=opts.map(o=>{
+ const word=o.k==="C"?`<span class="w" style="display:flex;align-items:baseline">sw<span style="display:inline-block;width:.62em;margin:0 .02em;transform:translateY(.06em)">${svg(C(false).replace(/f4efe6/g,"x").replaceAll("#x","currentColor"),40).replace('width="40" height="40"','width="100%" height="100%" style="display:block"')}</span>r<i>n</i></span>`:`${svg(o.icon,72)}<span class="w">Swor<i>n</i></span>`;
+ return `<div class="row"><div class="tag">OPTION<b>${o.k}</b>${o.name.toUpperCase()}</div>
+ <div class="av">${svg(o.av,220)}</div>
+ <div><div class="lock" style="color:${ink}">${word}</div><div class="lock d" style="color:#fff">${word.replace(/currentColor/g,"#fff")}</div>
+ <p style="color:#6b6a64;font-size:16px;margin:16px 0 0;max-width:560px">${o.why}</p></div>
+ <div><div class="small"><div>${svg(o.icon,64)}<br>64</div><div>${svg(o.icon,32)}<br>32</div><div>${svg(o.icon,16)}<br>16</div></div>
+ <div class="tab">${svg(o.icon,16)} Sworn · stock funds…</div></div></div>`}).join("");
+</script></body></html>

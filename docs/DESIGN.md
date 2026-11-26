@@ -1,4 +1,4 @@
-# Fundry design direction (Nov 23)
+# Sworn design direction (Nov 23)
 
 ## References (principles only, nothing cloned)
 - [Composer](https://www.composer.trade): the category leader for no-code trading strategies. It uses a very large grotesk headline, black on a light canvas, and blocky flat colour rectangles. The first line says what it does.
@@ -6,7 +6,7 @@
 
 Shared principles: a light, cool canvas; one heavy headline voice with tight tracking; small mono "reference" labels that make numbers feel official; pill controls; a single accent; white cards with generous radii; no gradients and no glow.
 
-## Fundry's own identity: the chip is the fund
+## Sworn's own identity: the chip is the fund
 - **Every fund shows its real die.** A square chip drawing generated from the fund's actual netlist: one tile per gate (NAND dark, LATCH copper), I/O pads around the edge matching its real input/output pins. Two funds with different rules look different. This is art tied to real data, not decoration.
 - **Wafer markings** in mono under every chip and number: `CIRCUIT #12 · 33 GATES · 1 LATCH · LOCKED SINCE BLOCK 76,625,102`.
 - **Accent: molten copper** `#E2591B` (foundry), used for one action per screen and for LATCH tiles. Everything else is ink on cool paper.

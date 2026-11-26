@@ -1,4 +1,4 @@
-# Fundry: build plan
+# Sworn: build plan
 
 **One sentence:** launch your own stock fund in 60 seconds; its rules are etched in a chip on X Layer, so nobody (not even you) can change them, and anyone can invest.
 
@@ -13,7 +13,7 @@ Facts are in [HACK.md](HACK.md); the stock trade path is in [STOCKS.md](STOCKS.m
    - "If everything is falling → go to cash"
    - "Stay out for K rebalances after a stop" (LATCH memory)
 
-   Optional: type it in words and AI fills in the chips. The page shows the rule in plain English and as a chip diagram (gate count). One transaction tapes the rulebook out as a TapeOut circuit on the **Fundry processor** and deploys the fund.
+   Optional: type it in words and AI fills in the chips. The page shows the rule in plain English and as a chip diagram (gate count). One transaction tapes the rulebook out as a TapeOut circuit on the **Sworn processor** and deploys the fund.
 2. **Fund page** (`/f/<id>`):
    - holdings, NAV per share, performance since launch
    - the rulebook (English + chip + circuit ID + "locked since block N")
@@ -26,7 +26,7 @@ Facts are in [HACK.md](HACK.md); the stock trade path is in [STOCKS.md](STOCKS.m
 ## How it works on chain
 
 ```
-            ┌──────────── Fundry processor (TapeOut Circuits, X Layer) ───────────┐
+            ┌──────────── Sworn processor (TapeOut Circuits, X Layer) ───────────┐
  launch ──▶ │  tapeout(netlist)  → circuit #k  = the fund's rulebook (frozen)     │
             └────────────────────────────────────────────────────────────────────┘
                                    ▲ eval/step(k, inputBits, state)
@@ -40,8 +40,8 @@ Facts are in [HACK.md](HACK.md); the stock trade path is in [STOCKS.md](STOCKS.m
 ```
 
 - **Trust model:** no owner can move fund assets. `rebalance` is permissionless, rate-limited (one per window) and slippage-capped against the TWAP. The rulebook circuit is immutable (TapeOut logic frozen Oct 22). The only parameters are fixed at launch: assets, pools, thresholds, fee, creator.
-- **Fees:** management fee (default 1%/yr, max 2%) accrues as newly minted shares, split creator 50 / Fundry treasury 40 / rule-part authors 10. Launch fee in BEM (half burned), when BEM is wired up (phase 3).
-- **Processor:** "Fundry" processor from the TapeOut factory. Its `creator` is the FundryTreasury contract, so transistor mint income (every launch burns 1 transistor per gate) goes to the treasury by rule.
+- **Fees:** management fee (default 1%/yr, max 2%) accrues as newly minted shares, split creator 50 / Sworn treasury 40 / rule-part authors 10. Launch fee in BEM (half burned), when BEM is wired up (phase 3).
+- **Processor:** "Sworn" processor from the TapeOut factory. Its `creator` is the SwornTreasury contract, so transistor mint income (every launch burns 1 transistor per gate) goes to the treasury by rule.
 - **Prices:** Uniswap V3 TWAP only. These pools are live, have $0.3–3.6M depth, and keep 720–1801 price snapshots. No keys, no off-chain oracle. Chainlink Data Streams is "not built".
 - **Caps:** per-fund TVL cap (default $25K) because of pool depth. Geo-gate in the app (no US/EU), matching xStocks' own limits; labelled.
 
@@ -49,7 +49,7 @@ Facts are in [HACK.md](HACK.md); the stock trade path is in [STOCKS.md](STOCKS.m
 
 ```
 contracts/   Foundry: FundryFactory, Fund (shares, NAV, rebalance), RuleBits (feature encoding),
-             Twap (Uniswap V3 observe), FundryTreasury (processor creator, fee split), ITapeOut
+             Twap (Uniswap V3 observe), SwornTreasury (processor creator, fee split), ITapeOut
              test/: unit + fork tests against real X Layer pools
 sdk/         rule → netlist compiler (chips → NAND/LATCH), JS VM bit-identical to TapeOut eval,
              rule → plain English
@@ -67,7 +67,7 @@ Ideas and parts of the NAND/LATCH netlist builder and JS VM come from our earlie
 |---|---|---|
 | 0. Skeleton | Nov 17–18 | repo + Foundry + fork test reads real wNVDAx/SPY TWAPs and quotes a swap |
 | 1. Core contracts + compiler | Nov 18–22 | fork test: launch fund (tapeout on a fork), deposit, rebalance driven by the circuit, withdraw. JS VM matches `eval` on chain bit for bit |
-| 2. App + mainnet | Nov 22–26 | Fundry processor + factory live and verified; 2–3 seed funds with small real money; League, Launch, Fund page live at fundry.nerom.site + DeWEB mirror |
+| 2. App + mainnet | Nov 22–26 | Sworn processor + factory live and verified; 2–3 seed funds with small real money; League, Launch, Fund page live at sworn.nerom.site + DeWEB mirror |
 | 3. Parts + Mine-to-Own + AI | Nov 26–30 | parts REF'd with fee split live; auto-invest from FAB/OKB; "describe your fund" AI fill |
 | 4. Ship | Dec 1–5 | self-audit ≥7 everywhere, README/JUDGES.md, ≤3-min demo video, X posts from the project account, form submitted |
 

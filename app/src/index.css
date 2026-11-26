@@ -1,4 +1,4 @@
-/* Fundry — "The Foundry": warm paper canvas, white cards, one dark cinematic card per screen,
+/* Sworn — "The Foundry": warm paper canvas, white cards, one dark cinematic card per screen,
    Inter Tight at tight tracking, JetBrains Mono labels, copper as the only accent. */
 :root {
   --canvas: #f4f3ef;
@@ -34,10 +34,8 @@ input, select, textarea { font: inherit; color: inherit; }
 
 /* header */
 .top { display: flex; align-items: center; gap: 28px; height: 68px; padding: 0 6px; }
-.brand { display: flex; align-items: center; gap: 9px; font-weight: 700; font-size: 19px; letter-spacing: -0.03em; margin-right: 8px; }
-.brand-mark { width: 22px; height: 22px; border-radius: 6px; background: var(--ink); display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; padding: 4px; }
-.brand-mark i { background: #8d8a84; border-radius: 1px; }
-.brand-mark i.c { background: var(--copper); }
+.brand { display: flex; align-items: center; gap: 9px; font-weight: 700; font-size: 20px; letter-spacing: -0.01em; margin-right: 8px; }
+.brand-mark { width: 26px; height: 26px; flex: none; }
 .nav { display: flex; gap: 26px; align-items: center; font-weight: 500; font-size: 14.5px; }
 .nav a { color: #3b3a36; transition: color 0.2s; }
 .nav a.active, .nav a:hover { color: var(--ink); }

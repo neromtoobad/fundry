@@ -1,4 +1,4 @@
-// Rules written in words -> a Fundry rulebook. A small, predictable parser (no AI model): it knows
+// Rules written in words -> a Sworn rulebook. A small, predictable parser (no AI model): it knows
 // a fixed set of sentence shapes, and reports every sentence it did not understand so nothing is
 // guessed silently. What it returns still goes through validate() and the circuit compiler.
 //

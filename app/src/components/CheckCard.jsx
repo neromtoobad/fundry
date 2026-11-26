@@ -1,7 +1,7 @@
 // "Check it yourself": every claim on the fund page, re-checked in the browser from chain data.
 import { useState } from "react";
 import { keccak256 } from "viem";
-import { checkRules, replay, step, hexToBytes, unpackBits, isFork, stateSize } from "@fundry/sdk";
+import { checkRules, replay, step, hexToBytes, unpackBits, isFork, stateSize } from "@sworn/sdk";
 import { chipTree, stepOnChain, decisionLog, lineage, fundOfCircuit } from "../lib/data.js";
 import { deployment, txUrl } from "../lib/config.js";
 import { REPO } from "../App.jsx";

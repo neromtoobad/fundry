@@ -1,0 +1,41 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f4f3ef;--ink:#0d0f12;--cu:#E2591B;--cr:#F4EFE6;--muted:#6b6a64}
+*{box-sizing:border-box}html,body{margin:0;overflow:hidden}body{font-family:Inter Tight,sans-serif;color:var(--ink)}
+.w{font-weight:700;letter-spacing:-.01em;line-height:1}.w i{font-style:normal;margin-left:.045em}
+.mono{font:600 13px JetBrains Mono;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.s{display:none}
+</style></head><body>
+<div id="avatar" class="s" style="width:400px;height:400px;background:#0d0f12;place-items:center"><svg width="250" height="250" viewBox="0 0 100 100"><path d="M70 24H40L29 35v4l11 11h20l11 11v4L60 76H30" fill="none" stroke="#F4EFE6" stroke-width="10" stroke-linejoin="round"/><circle cx="72" cy="24" r="8" fill="#E2591B"/><circle cx="28" cy="76" r="8" fill="#E2591B"/></svg></div>
+<div id="logo256" class="s" style="width:256px;height:256px"><img src="../../docs/brand/logo.svg" width="256" height="256"></div>
+<div id="touch" class="s" style="width:180px;height:180px;background:#0d0f12;place-items:center"><svg width="120" height="120" viewBox="0 0 100 100"><path d="M70 24H40L29 35v4l11 11h20l11 11v4L60 76H30" fill="none" stroke="#F4EFE6" stroke-width="10" stroke-linejoin="round"/><circle cx="72" cy="24" r="8" fill="#E2591B"/><circle cx="28" cy="76" r="8" fill="#E2591B"/></svg></div>
+<div id="banner" class="s" style="width:1500px;height:500px;background:var(--paper);position:relative">
+  <svg id="traces" width="1500" height="500" style="position:absolute;inset:0"></svg>
+  <div style="position:absolute;left:520px;top:120px">
+    <div style="display:flex;align-items:center;gap:22px"><img src="../../docs/brand/logo.svg" width="92"><span class="w" style="font-size:104px">Swor<i>n</i></span></div>
+    <div style="font-size:40px;font-weight:600;letter-spacing:-.025em;margin-top:30px">Stock funds that keep their word.</div>
+    <div class="mono" style="margin-top:22px">Rules sealed in a TapeOut chip · Live on X Layer</div>
+  </div>
+</div>
+<div id="og" class="s" style="width:1200px;height:630px;background:var(--paper);position:relative">
+  <svg id="traces2" width="1200" height="630" style="position:absolute;inset:0"></svg>
+  <div style="position:absolute;left:84px;top:92px;right:84px">
+    <div style="display:flex;align-items:center;gap:18px"><img src="../../docs/brand/logo.svg" width="72"><span class="w" style="font-size:72px">Swor<i>n</i></span></div>
+    <div style="font-size:86px;font-weight:700;letter-spacing:-.04em;line-height:1;margin-top:60px;max-width:1040px">Launch a stock fund whose rules nobody can change.</div>
+    <div class="mono" style="margin-top:44px;font-size:18px">NVDA · SPY · SpaceX · META · MSFT · Gold · BTC · ETH &nbsp;—&nbsp; on X Layer</div>
+  </div>
+</div>
+<script>
+const id=new URLSearchParams(location.search).get("a");document.getElementById(id).style.display=id==="avatar"||id==="touch"?"grid":"block";
+// circuit traces: horizontal runs with 45-degree jogs and pads; one copper run. Seeded so it's the same every render.
+let seed=7;const rnd=()=>(seed=(seed*16807)%2147483647)/2147483647;
+function draw(el,W,H,clear){let g="";const rows=Math.floor(H/38);for(let r=0;r<rows;r++){let y=22+r*38,x=-20,d=`M${x} ${y}`;while(x<W+20){const run=60+rnd()*180;x+=run;d+=` H${x}`;const up=rnd()<.5?-1:1;if(rnd()<.6&&y+up*38>10&&y+up*38<H-10){x+=38;y+=up*38;d+=` L${x} ${y}`}}
+ const hot=r===Math.floor(rows*.62);g+=`<path d="${d}" fill="none" stroke="${hot?"#E2591B":"#0d0f12"}" stroke-opacity="${hot?.9:.07}" stroke-width="${hot?5:4}" stroke-linejoin="round"/>`;
+ for(let k=0;k<3;k++){const px=Math.floor(rnd()*W),py=22+r*38;}
+}
+ for(let k=0;k<26;k++){g+=`<circle cx="${Math.floor(rnd()*W)}" cy="${22+Math.floor(rnd()*rows)*38}" r="7" fill="#0d0f12" fill-opacity=".09"/>`}
+ el.innerHTML=g+clear}
+draw(document.getElementById("traces"),1500,500,`<rect x="470" y="70" width="1000" height="330" rx="30" fill="#f4f3ef"/>`);
+draw(document.getElementById("traces2"),1200,630,`<rect x="40" y="40" width="1120" height="550" rx="30" fill="#f4f3ef" fill-opacity=".92"/>`);
+</script></body></html>

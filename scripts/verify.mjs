@@ -1,4 +1,4 @@
-// Check a Fundry fund from chain data alone, the same checks as "Check it yourself" on the fund page:
+// Check a Sworn fund from chain data alone, the same checks as "Check it yourself" on the fund page:
 //   1. read its chip (and, for a fork, the parent chip it REFs) from the TapeOut processor
 //   2. a fork's REF really points at the parent chip the factory recorded, on the fund's own inputs
 //   3. the rules written at launch (the rulebook in FundLaunched) match the chip on every input
@@ -10,7 +10,7 @@
 //   node scripts/verify.mjs --all                      (every fund the factory knows)
 import { readFileSync } from "node:fs";
 import { createPublicClient, http, parseAbiItem, keccak256 } from "viem";
-import { decode, refKey, checkRules, replay, step, stateSize, packBits, unpackBits, bytesToHex, hexToBytes, isFork } from "@fundry/sdk";
+import { decode, refKey, checkRules, replay, step, stateSize, packBits, unpackBits, bytesToHex, hexToBytes, isFork } from "@sworn/sdk";
 import { fundAbi, factoryAbi, circuitsAbi } from "../app/src/lib/abi.js";
 
 const RPC = process.env.RPC_URL || "https://rpc.xlayer.tech";

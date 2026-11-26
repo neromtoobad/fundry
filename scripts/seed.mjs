@@ -9,7 +9,7 @@ import { readFileSync } from "node:fs";
 import { execFileSync } from "node:child_process";
 import { createPublicClient, createWalletClient, http, parseUnits, defineChain, decodeEventLog } from "viem";
 import { privateKeyToAccount, mnemonicToAccount } from "viem/accounts";
-import { compile, compileFork, decode, bytesToHex } from "@fundry/sdk";
+import { compile, compileFork, decode, bytesToHex } from "@sworn/sdk";
 import { fundAbi, factoryAbi, circuitsAbi, erc20Abi } from "../app/src/lib/abi.js";
 import { demoFunds, demoForks } from "./funds.mjs";
 

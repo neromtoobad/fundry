@@ -1,4 +1,4 @@
-// Round logo badges for the stocks Fundry can hold. Brand marks come from Simple Icons (CC0),
+// Round logo badges for the stocks Sworn can hold. Brand marks come from Simple Icons (CC0),
 // bundled into the app (nothing loads from other sites); Microsoft's four squares, the S&P 500
 // badge and the gold bar are drawn here. Used only to identify each asset.
 import { siNvidia, siMeta, siSpacex, siBitcoin, siEthereum } from "simple-icons";

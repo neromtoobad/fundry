@@ -5,7 +5,7 @@
 // (2 weight bits per stock). With `inputs`, tiles carrying a 1 light up: that is the chip evaluating,
 // with the same evaluator the checks use (REFs included).
 import { useMemo } from "react";
-import { decode, firstSignals, step } from "@fundry/sdk";
+import { decode, firstSignals, step } from "@sworn/sdk";
 
 function layout(records, nIn) {
   const first = firstSignals(records, nIn);

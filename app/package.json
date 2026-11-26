@@ -1,5 +1,5 @@
 {
-  "name": "@fundry/app",
+  "name": "@sworn/app",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -14,7 +14,7 @@
     "@fontsource/inter-tight": "^5.3.0",
     "@fontsource/jetbrains-mono": "^5.3.0",
     "@fontsource/schibsted-grotesk": "^5.3.0",
-    "@fundry/sdk": "*",
+    "@sworn/sdk": "*",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
     "react-router-dom": "^7.9.0",

@@ -41,7 +41,7 @@ export function ChipOwnerCard({ f, w, onDone }) {
       <dl className="kv">
         <dt>Holder now</dt><dd><Addr a={owner} />{mine ? " (you)" : ""}</dd>
         <dt>Launched by</dt><dd><Addr a={f.creator} /></dd>
-        <dt>Fee</dt><dd>{(f.feeBps / 100).toFixed(1)}% a year: half to the holder{f.parent ? ", less 20% for the parent" : ""}, half to Fundry</dd>
+        <dt>Fee</dt><dd>{(f.feeBps / 100).toFixed(1)}% a year: half to the holder{f.parent ? ", less 20% for the parent" : ""}, half to Sworn</dd>
         <dt>Earned by holders</dt><dd>{money(valueOf(f.ownerFeeShares, f))}</dd>
         {f.parent && <><dt>Paid to the parent</dt><dd>{money(valueOf(f.royaltyFeeShares, f))}{parentOwner.data ? <> to <Addr a={parentOwner.data} /></> : null}</dd></>}
       </dl>

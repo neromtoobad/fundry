@@ -8,7 +8,7 @@ import WalletButton from "./components/WalletButton.jsx";
 import { IS_FORK, deployment, addrUrl } from "./lib/config.js";
 import { short } from "./lib/format.js";
 
-export const REPO = "https://github.com/neromtoobad/fundry";
+export const REPO = "https://github.com/neromtoobad/sworn";
 
 export default function App() {
   const { pathname } = useLocation();
@@ -17,11 +17,13 @@ export default function App() {
   return (
     <div className="wrap">
       <header className="top">
-        <Link to="/" className="brand" aria-label="Fundry home">
-          <span className="brand-mark" aria-hidden>
-            {Array.from({ length: 9 }, (_, i) => <i key={i} className={i === 4 ? "c" : ""} />)}
-          </span>
-          Fundry
+        <Link to="/" className="brand" aria-label="Sworn home">
+          <svg className="brand-mark" viewBox="0 0 100 100" aria-hidden>
+            <rect width="100" height="100" rx="24" fill="#0D0F12" />
+            <path d="M70 24H40L29 35v4l11 11h20l11 11v4L60 76H30" fill="none" stroke="#F4EFE6" strokeWidth="10" strokeLinejoin="round" />
+            <circle cx="72" cy="24" r="8" fill="#E2591B" /><circle cx="28" cy="76" r="8" fill="#E2591B" />
+          </svg>
+          <span>Swor<span style={{ marginLeft: "0.045em" }}>n</span></span>
         </Link>
         <nav className="nav">
           <NavLink to="/" end>League</NavLink>
@@ -39,7 +41,7 @@ export default function App() {
           <b>Local fork of X Layer mainnet.</b> Real stock pools, real TapeOut contracts, test money. Nothing here touches mainnet.
         </div>
       )}
-      {!deployment && <div className="banner">No Fundry deployment found for this chain.</div>}
+      {!deployment && <div className="banner">No Sworn deployment found for this chain.</div>}
 
       <Routes>
         <Route path="/" element={<League />} />
@@ -49,7 +51,7 @@ export default function App() {
       </Routes>
 
       <footer className="foot">
-        <span>Fundry · built for X Layer TapeOut Accelerate · <a href={REPO} target="_blank" rel="noreferrer"><u>source on GitHub</u></a></span>
+        <span>Sworn · built for X Layer TapeOut Accelerate · <a href={REPO} target="_blank" rel="noreferrer"><u>source on GitHub</u></a></span>
         {deployment && (
           <span className="mono">
             FACTORY {addrUrl(deployment.factory) ? <a href={addrUrl(deployment.factory)} target="_blank" rel="noreferrer">{short(deployment.factory)}</a> : short(deployment.factory)}

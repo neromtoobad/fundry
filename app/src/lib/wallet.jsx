@@ -102,7 +102,7 @@ const explain = (name) =>
     Slippage: "The price moved too much. Try again.",
     ZeroAmount: "Enter an amount.",
     Empty: "Nobody has invested yet, so there is nothing to rebalance.",
-    NotListed: "One of these stocks isn't listed on Fundry.",
+    NotListed: "One of these stocks isn't listed on Sworn.",
     BadNetlist: "The compiled circuit was rejected.",
     BadParams: "Some launch settings are out of range.",
   })[name] || name;

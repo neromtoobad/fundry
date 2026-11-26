@@ -1,7 +1,7 @@
 // Everything the app shows is read from chain: the factory's fund list, each fund's state, its
-// circuit (netlist) on the Fundry TapeOut processor, and its events for the decision log.
+// circuit (netlist) on the Sworn TapeOut processor, and its events for the decision log.
 import { createPublicClient, http, parseAbiItem } from "viem";
-import { decode, refKey, hexToBytes, unpackBits, packBits, bytesToHex } from "@fundry/sdk";
+import { decode, refKey, hexToBytes, unpackBits, packBits, bytesToHex } from "@sworn/sdk";
 import { chain, deployment, assetByAddress, RPC_URL } from "./config.js";
 import { fundAbi, factoryAbi, circuitsAbi, erc20Abi } from "./abi.js";
 
@@ -93,7 +93,7 @@ export async function allFunds() {
   return pool(list, 4, async (f) => fundSummary(f, await launchInfo(f)));
 }
 
-/** The circuit as taped out on the Fundry processor. */
+/** The circuit as taped out on the Sworn processor. */
 export async function circuit(circuitId) {
   const [netlist, info] = await Promise.all([
     client.readContract({ address: deployment.circuits, abi: circuitsAbi, functionName: "netlist", args: [circuitId] }),

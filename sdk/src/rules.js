@@ -1,6 +1,6 @@
-// Fundry fund rules: a small rulebook a person picks from chips, compiled to a TapeOut circuit.
+// Sworn fund rules: a small rulebook a person picks from chips, compiled to a TapeOut circuit.
 //
-// Circuit interface (fixed for every Fundry fund, so the Fund contract can drive any rulebook):
+// Circuit interface (fixed for every Sworn fund, so the Fund contract can drive any rulebook):
 //   inputs  : 3 bits per asset i, in order [DROP_i, RISE_i, STOP_i]
 //             DROP_i = price fell at least dropBps since the last rebalance
 //             RISE_i = price rose at least riseBps since the last rebalance
@@ -182,7 +182,7 @@ export function describe(rb) {
 // A fork is a new fund whose chip contains its parent's chip, wired in with a TapeOut REF record.
 // Each beat the parent chip runs first, unchanged, on the same price signals; the fork's own gates
 // then adjust the parent's weight levels. Only the fork's own gates are burned at tape-out: the
-// parent's are reused. The Fundry factory checks the REF on chain and pays the parent chip's
+// parent's are reused. The Sworn factory checks the REF on chain and pays the parent chip's
 // owner a royalty out of the fork's creator fee.
 //
 // Fork rulebook:

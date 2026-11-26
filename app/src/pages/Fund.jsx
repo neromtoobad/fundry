@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { describe, hexToBytes, unpackBits } from "@fundry/sdk";
+import { describe, hexToBytes, unpackBits } from "@sworn/sdk";
 import { parseUnits, formatUnits } from "viem";
 import { useAsync } from "../lib/hooks.js";
 import { fundSummary, launchInfo, preview, decisionLog, balanceOf, client, lineage } from "../lib/data.js";

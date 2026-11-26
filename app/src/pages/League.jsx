@@ -13,7 +13,7 @@ const STEPS = [
   { n: "01", label: "THE RULES", pos: "40% 62%", title: "Pick stocks and write the rules",
     text: "Choose up to four of NVDA, SPY, SpaceX, MSFT, META, gold, BTC and ETH. Say what happens when each one falls, rises or hits a stop-loss, in plain words or with buttons." },
   { n: "02", label: "THE CHIP", pos: "86% 74%", title: "The rules are etched into a chip",
-    text: "Fundry compiles the rulebook into NAND and LATCH gates and tapes it out on the Fundry TapeOut processor. You get the chip as an NFT. Nobody can edit it, not even you." },
+    text: "Sworn compiles the rulebook into NAND and LATCH gates and tapes it out on the Sworn TapeOut processor. You get the chip as an NFT. Nobody can edit it, not even you." },
   { n: "03", label: "THE FUND", pos: "92% 16%", title: "The chip runs the fund",
     text: "Each period anyone can press Rebalance. The fund reads 30-minute TWAP prices, asks the chip for target weights and trades on Uniswap. Every decision is logged on chain." },
 ];
@@ -36,7 +36,7 @@ export default function League() {
           <h1 className="hero">Launch a stock fund.<br />Its rules are <em>etched in a&nbsp;chip.</em></h1>
           <p className="lede">
             Pick up to four tokenized stocks on X Layer and write the rules in plain words, like “if NVDA falls 5%, cut it
-            to half”. Fundry etches them into a TapeOut circuit, so nobody can change them after launch, not even you.
+            to half”. Sworn etches them into a TapeOut circuit, so nobody can change them after launch, not even you.
           </p>
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
             <Link to="/launch" className="pill light big">Launch a fund <Arw /></Link>
@@ -59,7 +59,7 @@ export default function League() {
           <div>
             <span className="kick">The league</span>
             <h2 style={{ marginTop: 12 }}>Every fund, ranked.</h2>
-            <p>Ranked by return since launch. Each one is a chip on the Fundry processor; open a fund to read its rules and every decision it made.</p>
+            <p>Ranked by return since launch. Each one is a chip on the Sworn processor; open a fund to read its rules and every decision it made.</p>
           </div>
           <Link to="/launch" className="pill ink big">Launch yours <Arw /></Link>
         </div>
@@ -127,15 +127,15 @@ export default function League() {
               <span className="kick" style={{ color: "rgba(255,255,255,.7)" }}>Proof</span>
               <h2 style={{ marginTop: 12 }}>Check it on chain.</h2>
               <p>
-                Fundry runs on its own TapeOut processor, created through the TapeOut factory with the BEM fee paid. Every fund is a
+                Sworn runs on its own TapeOut processor, created through the TapeOut factory with the BEM fee paid. Every fund is a
                 circuit on it, and every rebalance calls <code>Circuits.step</code>. The contract source is verified on Sourcify.
               </p>
               <a className="pill ghost" href={`${REPO}/blob/main/JUDGES.md`} target="_blank" rel="noreferrer">Read the 5-minute check <Arw /></a>
             </div>
             <dl>
               {[
-                ["FUNDRY FACTORY", deployment.factory],
-                ["FUNDRY PROCESSOR", deployment.circuits],
+                ["SWORN FACTORY", deployment.factory],
+                ["SWORN PROCESSOR", deployment.circuits],
                 ["TRANSISTORS", deployment.transistors],
                 ["TAPEOUT FACTORY", deployment.tapeout],
               ].map(([k, a]) => (

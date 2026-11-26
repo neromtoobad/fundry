@@ -1,7 +1,7 @@
 {
-  "name": "@fundry/sdk",
+  "name": "@sworn/sdk",
   "version": "0.1.0",
-  "description": "Fundry rule compiler: fund rules -> TapeOut NAND/LATCH netlists, a bit-exact JS evaluator, and plain-English rule text.",
+  "description": "Sworn rule compiler: fund rules -> TapeOut NAND/LATCH netlists, a bit-exact JS evaluator, and plain-English rule text.",
   "type": "module",
   "main": "src/index.js",
   "license": "MIT",

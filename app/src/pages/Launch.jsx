@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { compile, describe, run, bytesToHex, parseWords } from "@fundry/sdk";
+import { compile, describe, run, bytesToHex, parseWords } from "@sworn/sdk";
 import { parseUnits, formatEther, decodeEventLog } from "viem";
 import Chip from "../components/Chip.jsx";
 import { useAsync } from "../lib/hooks.js";
@@ -102,7 +102,7 @@ export default function Launch() {
           <span className="crumb"><Link to="/">LEAGUE</Link> / LAUNCH A FUND</span>
           <h1 className="hero">Launch a fund.</h1>
           <p className="lede" style={{ color: "rgba(255,255,255,.8)", margin: 0 }}>
-            Pick the stocks and set the rules once. Fundry etches them into a chip on X Layer, and they can never be changed, not even by you.
+            Pick the stocks and set the rules once. Sworn etches them into a chip on X Layer, and they can never be changed, not even by you.
           </p>
         </div>
       </section>
@@ -242,7 +242,7 @@ export default function Launch() {
           <section className="card">
             <dl className="kv" style={{ marginTop: 0 }}>
               <dt>Tape-out fee (TapeOut)</dt><dd>{fee != null ? `${formatEther(fee)} OKB` : "…"}</dd>
-              <dt>Transistors used</dt><dd>{compiled.c ? `${compiled.c.gateCount}, from Fundry’s stock` : "–"}</dd>
+              <dt>Transistors used</dt><dd>{compiled.c ? `${compiled.c.gateCount}, from Sworn’s stock` : "–"}</dd>
               <dt>Fund size cap</dt><dd>$25,000</dd>
             </dl>
             <button className="pill copper big" style={{ width: "100%", justifyContent: "center", marginTop: 16 }} disabled={!canLaunch} onClick={launch}>

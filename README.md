@@ -1,12 +1,14 @@
-# Fundry
+# Sworn
 
-**Launch your own stock fund in 60 seconds. Its rules are etched in a chip on X Layer, so nobody can change them, not even you.**
+**Stock funds that keep their word.** Launch your own stock fund in 60 seconds. Its rules are sealed in a TapeOut chip on X Layer, so nobody can change them, not even you.
 
 Built for **X Layer TapeOut Accelerate** (Oct 16 – Dec 7 2026). This repo started on Nov 17 2026.
 
-**App:** https://fundry.nerom.site · **For judges:** [JUDGES.md](JUDGES.md) (5-minute checks and the judging criteria answered) · **Mainnet proof:** [evidence/](evidence/mainnet-v2-2026-11-24.json) · **Demo video:** recorded before submission (≤ 3 min), link goes here
+> **Name:** Sworn was built under the working name **Fundry** and renamed on Nov 26 2026. Contracts deployed before the rename keep that name on chain: the factory is `FundryFactory`, and the TapeOut processor is named "Fundry" with transistor symbol `FNDRY`. Same contracts, same addresses; only the brand changed.
 
-## Three things you can only do on Fundry
+**App:** https://sworn.nerom.site · **For judges:** [JUDGES.md](JUDGES.md) (5-minute checks and the judging criteria answered) · **Mainnet proof:** [evidence/](evidence/mainnet-v2-2026-11-24.json) · **Demo video:** recorded before submission (≤ 3 min), link goes here
+
+## Three things you can only do on Sworn
 
 1. **Fork a fund.** A fork's chip runs its parent's chip inside it, unchanged, through a TapeOut **REF**, and adds its own rules on top. The fork only etches its own gates, and **20% of its creator fee goes to whoever holds the parent chip, forever**. "AI + Market, Safer" (chip #9) runs "AI + Market" (chip #5) inside it on mainnet. These are the first REF circuits on X Layer.
 2. **The chip owns the fund.** The creator fee goes to whoever holds the fund's circuit NFT right now, read live with `ownerOf`. The rules can't change, so the chip *is* the strategy and its track record, and selling the NFT sells the fee stream. No one, the holder included, can touch investors' money or the rules.
@@ -14,7 +16,7 @@ Built for **X Layer TapeOut Accelerate** (Oct 16 – Dec 7 2026). This repo star
 
 ## How it works
 
-1. **Launch.** Pick up to 4 tokenized stocks (NVDA, SPY, SpaceX, MSFT, META, gold…) and set the fund's rules from plain choices: "if NVDA falls 5%, cut it to half", "stop-loss at −15% and stay out until it recovers", "if everything falls, go to cash". Fundry compiles the rulebook into a NAND/LATCH circuit and tapes it out on the **Fundry TapeOut processor**. TapeOut circuits can't be changed once taped out, so the rules are locked from launch.
+1. **Launch.** Pick up to 4 tokenized stocks (NVDA, SPY, SpaceX, MSFT, META, gold…) and set the fund's rules from plain choices: "if NVDA falls 5%, cut it to half", "stop-loss at −15% and stay out until it recovers", "if everything falls, go to cash". Sworn compiles the rulebook into a NAND/LATCH circuit and tapes it out on the **Sworn TapeOut processor**. TapeOut circuits can't be changed once taped out, so the rules are locked from launch.
 2. **Invest.** Deposit USDG for fund shares, priced at NAV. The fund holds real wrapped xStocks on X Layer, priced from 30-minute Uniswap V3 TWAPs.
 3. **Rebalance.** Anyone can call `rebalance()` once per period. The contract turns prices into input bits, asks the circuit (`Circuits.step`) for target weights and trades toward them. The circuit decides; the contract only obeys.
 4. **Withdraw.** Burn shares and get your exact slice of every holding. No prices are involved, so a withdrawal always works.
@@ -22,19 +24,19 @@ Built for **X Layer TapeOut Accelerate** (Oct 16 – Dec 7 2026). This repo star
 
 ## Live on X Layer mainnet
 
-**App: https://fundry.nerom.site** (reads X Layer mainnet; connect OKX Wallet to launch or invest)
+**App: https://sworn.nerom.site** (reads X Layer mainnet; connect OKX Wallet to launch or invest)
 
 | | Address |
 |---|---|
 | FundryFactory (v2) | [`0x6a880e7B1DC510E3d5254CAa6F5DB8e33bDD660c`](https://www.oklink.com/xlayer/address/0x6a880e7B1DC510E3d5254CAa6F5DB8e33bDD660c) · [source verified on Sourcify](https://repo.sourcify.dev/196/0x6a880e7B1DC510E3d5254CAa6F5DB8e33bDD660c) |
 | Fund implementation (v2) | [`0x687eb3636FCe7f2DF052792821B6942F77056FC9`](https://www.oklink.com/xlayer/address/0x687eb3636FCe7f2DF052792821B6942F77056FC9) · [Sourcify](https://repo.sourcify.dev/196/0x687eb3636FCe7f2DF052792821B6942F77056FC9) |
-| Fundry processor (Circuits) | [`0x80bf3Aa74171b3711b5946D9F39b84F464B4CC0B`](https://www.oklink.com/xlayer/address/0x80bf3Aa74171b3711b5946D9F39b84F464B4CC0B) (created through the TapeOut factory, BEM fee paid) |
-| Fundry transistors | [`0xd1Aac2c96094fd9B9EE4C8e717620B132Fc2098c`](https://www.oklink.com/xlayer/address/0xd1Aac2c96094fd9B9EE4C8e717620B132Fc2098c) |
+| Sworn processor (Circuits; on-chain name "Fundry") | [`0x80bf3Aa74171b3711b5946D9F39b84F464B4CC0B`](https://www.oklink.com/xlayer/address/0x80bf3Aa74171b3711b5946D9F39b84F464B4CC0B) (created through the TapeOut factory, BEM fee paid) |
+| Sworn transistors (`FNDRY`) | [`0xd1Aac2c96094fd9B9EE4C8e717620B132Fc2098c`](https://www.oklink.com/xlayer/address/0xd1Aac2c96094fd9B9EE4C8e717620B132Fc2098c) |
 | Deploy transaction | [`0xd5ce7d…1e24`](https://www.oklink.com/xlayer/tx/0xd5ce7d74d105b44d3e31be310c122db73f5a110e9eca6892ec408d67f4ee1e24) (block 76,767,744) |
 
 v1 (factory [`0x9b4F…1e6E`](https://www.oklink.com/xlayer/address/0x9b4FD9f81Aa64e83446F83F03616Ac3c5Ab71e6E), Nov 24) is retired: its four funds never took deposits, and its leftover BEM was swept back to the treasury. v2 runs on the **same processor**, so circuits #1–#4 (v1) and #5 onward (v2) sit side by side. Full record: [evidence/mainnet-v2-2026-11-24.json](evidence/mainnet-v2-2026-11-24.json), v1 in [evidence/mainnet-2026-11-24.json](evidence/mainnet-2026-11-24.json).
 
-Demo funds launched on mainnet (each one is a TapeOut circuit on the Fundry processor):
+Demo funds launched on mainnet (each one is a TapeOut circuit on the Sworn processor):
 
 | Fund | Holds | Circuit | Address |
 |---|---|---|---|
@@ -62,7 +64,7 @@ The demo funds start empty: putting money in and rebalancing trade real tokens, 
 | Rules in words (`sdk/src/words.js`) | ✅ a fixed parser (no AI model) turns sentences like “If NVDA falls 5%, cut it to half” into a rulebook and lists every sentence it didn't understand (`sdk/test/words.test.js`) |
 | Keeper (`scripts/keeper.mjs`) | ✅ presses Rebalance for every fund that is due, simulating each call first; rebalanced all 5 funds on the local fork |
 | No chain scanning | ✅ public X Layer RPCs cap `eth_getLogs` at 100–1,000 blocks, so each fund stores the blocks it has events in (`Fund.eventBlocks`) and the app fetches exactly those |
-| Forks through TapeOut REF | ✅ `compileFork` puts a REF to the parent chip first; 80 random forks and a 3-generation chain match the reference on every input (`sdk/test/forks.test.js`); on a mainnet fork, real `Circuits.step` matches on all 256 cases, only the fork's own gates are burned, and bad REFs (wrong chip, rewired inputs, no parent declared, parent not a Fundry fund) are rejected (`contracts/test/Forks.t.sol`) |
+| Forks through TapeOut REF | ✅ `compileFork` puts a REF to the parent chip first; 80 random forks and a 3-generation chain match the reference on every input (`sdk/test/forks.test.js`); on a mainnet fork, real `Circuits.step` matches on all 256 cases, only the fork's own gates are burned, and bad REFs (wrong chip, rewired inputs, no parent declared, parent not a Sworn fund) are rejected (`contracts/test/Forks.t.sol`) |
 | Chip-owner fees and fork royalties | ✅ fee follows the circuit NFT: after both chips are sold, the new holders earn and the old ones don't (`Forks.t.sol` `test_chipOwnerEarnsAndForkPaysRoyalty`) |
 | Chip Lab + Check it yourself (`app/src/components/ChipLab.jsx`, `CheckCard.jsx`) | ✅ clicked through on the local fork and run against mainnet; `scripts/verify.mjs --all` passes on all 6 mainnet funds |
 | DeWEB publisher (`scripts/deweb-publish.mjs`) | ✅ dry-run tested: opens the circuit's container, uploads the build in 24 KB chunks, activates the `.tape` name, checks every file's SHA-256 back |
@@ -74,10 +76,10 @@ The demo funds start empty: putting money in and rebalancing trade real tokens, 
 
 ## Built with TapeOut and X Layer (sponsor integration)
 
-- **TapeOut circuits are the rulebook.** Every fund is a circuit on the Fundry processor, and the fund contract calls `Circuits.step` on every rebalance. LATCH bits are the fund's memory ("stay out after a stop").
+- **TapeOut circuits are the rulebook.** Every fund is a circuit on the Sworn processor, and the fund contract calls `Circuits.step` on every rebalance. LATCH bits are the fund's memory ("stay out after a stop").
 - **REF is the fork mechanism.** A fork's netlist starts with a REF record to its parent's chip; TapeOut evaluates the parent inside the child, counts its gates, and doesn't burn them again.
 - **Circuit NFTs are the business.** `Fund.chipOwner()` is `Circuits.ownerOf(circuitId)`: the fee follows the NFT.
-- **The Fundry processor** is created by `FundryFactory` through the TapeOut factory, paying the BEM deploy fee. Every launch burns Fundry transistors, and the fund creator receives the circuit NFT.
+- **The Sworn processor** is created by `FundryFactory` through the TapeOut factory, paying the BEM deploy fee. Every launch burns Sworn transistors, and the fund creator receives the circuit NFT.
 - **X Layer xStocks** (wrapped, traded on Uniswap V3 against USDG) are the fund holdings. Pool list: [docs/STOCKS.md](docs/STOCKS.md).
 
 ## Claims and where to check them
@@ -106,7 +108,7 @@ The demo funds start empty: putting money in and rebalancing trade real tokens, 
 ## Run it
 
 ```bash
-git clone --recurse-submodules https://github.com/neromtoobad/fundry && cd fundry && npm install
+git clone --recurse-submodules https://github.com/neromtoobad/sworn && cd sworn && npm install
 npm test                                # compiler tests, about 1 s
 cd contracts && forge test && cd ..     # fork tests against X Layer mainnet (slow public RPC: ~7 min)
 ```
@@ -130,11 +132,11 @@ In the app, “Connect → Local test account” signs with an anvil test key an
 Everything in this repo was written during Accelerate, from Nov 17 2026 (see the commit history). One idea came from before:
 
 
-The netlist-building approach (TAP-02 encoding, output buffers, the JS stepper) is adapted from our earlier TapeOut entry [NAND Arena](https://github.com/neromtoobad/nand-arena) (Oct 5–9 2026, before this event). The code here was written fresh for Fundry.
+The netlist-building approach (TAP-02 encoding, output buffers, the JS stepper) is adapted from our earlier TapeOut entry [NAND Arena](https://github.com/neromtoobad/nand-arena) (Oct 5–9 2026, before this event). The code here was written fresh for Sworn.
 
 ## AI disclosure
 
-Fundry was built by directing Claude Code (an AI coding agent), which wrote the code, contracts, tests and copy. Every claim in this README was checked against the code or the chain. The product itself uses no AI model: the "rules in words" box is a fixed parser (`sdk/src/words.js`) that lists any sentence it didn't understand.
+Sworn was built by directing Claude Code (an AI coding agent), which wrote the code, contracts, tests and copy. Every claim in this README was checked against the code or the chain. The product itself uses no AI model: the "rules in words" box is a fixed parser (`sdk/src/words.js`) that lists any sentence it didn't understand.
 
 ## License
 

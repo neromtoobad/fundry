@@ -2,7 +2,7 @@
 // Only the new gates are etched; 20% of the fork's creator fee goes to the parent chip's holder.
 import { useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { compileFork, describe, describeFork, step, decode, bytesToHex } from "@fundry/sdk";
+import { compileFork, describe, describeFork, step, decode, bytesToHex } from "@sworn/sdk";
 import { parseUnits, formatEther, decodeEventLog } from "viem";
 import Chip from "../components/Chip.jsx";
 import { Seg } from "./Launch.jsx";
@@ -203,7 +203,7 @@ export default function Fork() {
             <dl className="kv" style={{ marginTop: 0 }}>
               <dt>Tape-out fee (TapeOut)</dt><dd>{fee != null ? `${formatEther(fee)} OKB` : "…"}</dd>
               <dt>Gates etched</dt><dd>{c ? `${c.ownGates} (chip #${p.f.circuitId}’s ${p.chip.gateCount} are reused, not re-etched)` : "–"}</dd>
-              <dt>Your fee split</dt><dd>half to Fundry; of your half, 80% to you, 20% to chip #{String(p.f.circuitId)}’s holder</dd>
+              <dt>Your fee split</dt><dd>half to Sworn; of your half, 80% to you, 20% to chip #{String(p.f.circuitId)}’s holder</dd>
             </dl>
             <button className="pill copper big" style={{ width: "100%", justifyContent: "center", marginTop: 16 }} disabled={!canLaunch} onClick={launch}>
               {status?.kind === "busy" ? "Etching…" : "Etch and launch the fork"}

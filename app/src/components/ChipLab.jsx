@@ -1,7 +1,7 @@
 // Chip Lab: move prices, watch the fund's real chip decide, and see TapeOut's own evaluator on
 // X Layer give the same answer (a free read call, no wallet).
 import { useEffect, useMemo, useState } from "react";
-import { step, hexToBytes, unpackBits, isFork } from "@fundry/sdk";
+import { step, hexToBytes, unpackBits, isFork } from "@sworn/sdk";
 import Chip from "./Chip.jsx";
 import { useChip } from "./FundChip.jsx";
 import { stepOnChain } from "../lib/data.js";

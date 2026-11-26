@@ -21,7 +21,7 @@ export const chain = defineChain({
   contracts: { multicall3: { address: "0xcA11bde05977b3631167028862bE2a173976CA11" } },
 });
 
-/** Stocks Fundry can hold, keyed by lowercase token address. */
+/** Stocks Sworn can hold, keyed by lowercase token address. */
 export const ASSETS = assetsJson.assets;
 export const assetByAddress = Object.fromEntries(ASSETS.map((a) => [a.address.toLowerCase(), a]));
 export const assetBySymbol = Object.fromEntries(ASSETS.map((a) => [a.symbol, a]));

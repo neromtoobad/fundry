@@ -1,4 +1,4 @@
-// Fundry keeper: presses "Rebalance" for every fund that is due. rebalance() is open to anyone and
+// Sworn keeper: presses "Rebalance" for every fund that is due. rebalance() is open to anyone and
 // the chip decides the weights, so the keeper has no say over what a fund buys; it only pays gas.
 // It simulates each call first and only sends the ones that would succeed.
 //
