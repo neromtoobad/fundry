@@ -55,4 +55,5 @@ Three things set it apart:
 ## Links
 - GitHub: https://github.com/neromtoobad/sworn
 - Website: https://sworn.nerom.site
+- Project X account: @swornfund (once created)
 - Demo video: (after recording)
