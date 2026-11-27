@@ -38,7 +38,7 @@ Try **Chip Lab** on the same page too: move a stock's price with a slider and wa
 |---|---|
 | User value and commercial potential | Creators turn the rules they already post on X into a fund their followers can join, and earn half of a 0–2%/yr fee. Investors get rules that can't change and exits that always work. Revenue: the other half of the fee goes to the Sworn treasury, plus Sworn transistor sales on every launch. See `docs/SUBMISSION.md`. |
 | Innovation | The circuit is the fund's rulebook and LATCH bits are its memory ("stay out after a stop-loss"). The chip decides the weights; the contract only obeys. Forks compose strategies chip-inside-chip with TapeOut REF (the first REF circuits on X Layer), and pay their parent a royalty, so good strategies earn from everything built on them. |
-| Ecosystem integration | Own TapeOut processor (BEM fee, transistors burned per launch), `Circuits.step` on every rebalance, REF for forks, the circuit NFT as the fee right (ownerOf), X Layer xStocks and USDG pools, DeWEB publisher in `scripts/deweb-publish.mjs`. |
+| Ecosystem integration | Own TapeOut processor (BEM fee, transistors burned per launch), `Circuits.step` on every rebalance, REF for forks, the circuit NFT as the fee right (ownerOf), X Layer xStocks and USDG pools, the app itself published on DeWEB as `1.2.445.tape` (https://1-2-445.tapekit.org/, in fund #1's circuit container) by `scripts/deweb-publish.mjs`. |
 | Product readiness and UX | Live app on mainnet data; rules can be written in plain words; Chip Lab lets anyone test a fund's real chip with what-if prices; every claim can be re-checked in the browser; every decision is logged on chain and shown on the fund page. |
 | Demo video | Linked in the README once recorded (≤ 3 min). |
 
@@ -47,4 +47,3 @@ Try **Chip Lab** on the same page too: move a stock's price with a slider and wa
 - The six demo funds are empty: investing and rebalancing trade real tokens, so we leave that to real investors. Rebalance replay is shown working on the local fork of mainnet (3 rebalances per fund, all replayed); on mainnet it reports "no rebalances yet" until someone invests.
 - v1 (factory `0x9b4F…1e6E`) was retired on Nov 24 for v2; its funds never took deposits.
 - The BTC and ETH pools had too little price history for a 30-minute TWAP; we raised it on chain (evidence file → `oracleFix`). Until a pool has 30 minutes of history, its funds show "price not ready" and can't take deposits or rebalance. Withdrawals never need a price.
-- The DeWEB copy of the app is ready to publish but not yet published (it costs 0.085 OKB).

@@ -1,0 +1,18 @@
+{
+  "what": "Sworn app published on TapeOut DeWEB, X Layer mainnet (chain 196)",
+  "name": "1.2.445.tape",
+  "gateway": "https://1-2-445.tapekit.org/",
+  "fabx": "https://r1-e59459ab06c8a6166a8620cffc6cffea3de7ff4b-deweb.fabx.tech/",
+  "circuits": "0x80bf3Aa74171b3711b5946D9F39b84F464B4CC0B",
+  "processor": 445,
+  "circuitId": 1,
+  "container": "0xE59459AB06C8A6166a8620cffc6cfFea3De7fF4B",
+  "openTx": "0x800b0bc15cab2ded076de9acb473fa8f73043ed1895cdfa8dec940743a6033c9",
+  "bindTx": "0xa4d351ce0575cc0cf521222b51b9ffd1e1f69413a2cce3f0f4ec6b67f12c40d6",
+  "files": 18,
+  "bytes": 1320759,
+  "transactions": 67,
+  "cost": { "openFeeOKB": "0.08", "gasOKB": "0.005999774319988701" },
+  "verified": "18/18 files match on-chain SHA-256; activation live until 2027-11-22",
+  "checked": "Nov 27 2026: home page, league (6 funds read from chain) and a fund page load on the gateway"
+}

@@ -67,11 +67,10 @@ The demo funds start empty: putting money in and rebalancing trade real tokens, 
 | Forks through TapeOut REF | ✅ `compileFork` puts a REF to the parent chip first; 80 random forks and a 3-generation chain match the reference on every input (`sdk/test/forks.test.js`); on a mainnet fork, real `Circuits.step` matches on all 256 cases, only the fork's own gates are burned, and bad REFs (wrong chip, rewired inputs, no parent declared, parent not a Sworn fund) are rejected (`contracts/test/Forks.t.sol`) |
 | Chip-owner fees and fork royalties | ✅ fee follows the circuit NFT: after both chips are sold, the new holders earn and the old ones don't (`Forks.t.sol` `test_chipOwnerEarnsAndForkPaysRoyalty`) |
 | Chip Lab + Check it yourself (`app/src/components/ChipLab.jsx`, `CheckCard.jsx`) | ✅ clicked through on the local fork and run against mainnet; `scripts/verify.mjs --all` passes on all 6 mainnet funds |
-| DeWEB publisher (`scripts/deweb-publish.mjs`) | ✅ dry-run tested: opens the circuit's container, uploads the build in 24 KB chunks, activates the `.tape` name, checks every file's SHA-256 back |
+| DeWEB copy of the app, `tape://1.2.445.tape` (https://1-2-445.tapekit.org/) | ✅ live on X Layer mainnet Nov 27: `scripts/deweb-publish.mjs` opened fund #1's circuit container, uploaded 18 files in 67 transactions, activated the name to Nov 2027 and read every file's SHA-256 back (evidence `deweb-2026-11-27.json`) |
 
 ## Not built yet
 
-- DeWEB copy of the app (the publisher is ready and dry-run against circuit #1; publishing costs 0.085 OKB)
 - Mine-to-Own
 
 ## Built with TapeOut and X Layer (sponsor integration)

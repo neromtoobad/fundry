@@ -33,7 +33,7 @@ Three things set it apart:
 - **REF:** forks are built by REF'ing the parent's chip; the factory checks the REF points at the parent and is fed the fund's own inputs. The first REF circuits on X Layer.
 - **Circuit NFTs:** the fee right is `ownerOf(circuitId)`, so the NFT is a sellable strategy.
 - **Own processor:** `FundryFactory` creates the Sworn processor through the TapeOut factory (BEM deploy fee) and burns Sworn transistors on every launch.
-- **DeWEB:** a publisher that mirrors the app into fund #1's circuit container is ready (`scripts/deweb-publish.mjs`, dry-run tested); the app itself is at sworn.nerom.site.
+- **DeWEB:** the full app is published on chain as `tape://1.2.445.tape` (https://1-2-445.tapekit.org/), stored in fund #1's circuit container `0xE59459AB06C8A6166a8620cffc6cfFea3De7fF4B` by `scripts/deweb-publish.mjs`. sworn.nerom.site serves the same build.
 - **X Layer:** xStocks / USDG Uniswap V3 pools for prices (TWAP) and trades.
 
 ## Target users and how we reach them
