@@ -30,3 +30,11 @@ export const USDG = assetsJson.usdg;
 /** Explorer links only make sense on mainnet; the fork has no explorer. */
 export const txUrl = (h) => (IS_FORK ? null : `${EXPLORER}/tx/${h}`);
 export const addrUrl = (a) => (IS_FORK ? null : `${EXPLORER}/address/${a}`);
+
+/** Links shown in the "On chain" menu and footer. */
+export const DEWEB_NAME = "1.2.445.tape";
+export const DEWEB_URL = "https://1-2-445.tapekit.org/";
+export const X_URL = "https://x.com/Swornfund";
+
+/** The fund the Chip Lab menu item opens: "AI + Market, Safer" (chip #9, a fork). The fork has no fixed address. */
+export const LAB_FUND = IS_FORK ? null : "0xa0E934066bF5abf29F1AB13128B77c2822a15000";

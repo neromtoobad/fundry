@@ -1,11 +1,14 @@
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { NavLink, Route, Routes, Link, useLocation } from "react-router-dom";
 import League from "./pages/League.jsx";
 import Launch from "./pages/Launch.jsx";
 import FundPage from "./pages/Fund.jsx";
 import Fork from "./pages/Fork.jsx";
+import How from "./pages/How.jsx";
+import Lab from "./pages/Lab.jsx";
+import Mine from "./pages/Mine.jsx";
 import WalletButton from "./components/WalletButton.jsx";
-import { IS_FORK, deployment, addrUrl } from "./lib/config.js";
+import { IS_FORK, deployment, addrUrl, DEWEB_NAME, DEWEB_URL, X_URL } from "./lib/config.js";
 import { short } from "./lib/format.js";
 
 export const REPO = "https://github.com/neromtoobad/sworn";
@@ -27,9 +30,11 @@ export default function App() {
         </Link>
         <nav className="nav">
           <NavLink to="/" end>League</NavLink>
+          <NavLink to="/how">How it works</NavLink>
+          <NavLink to="/lab">Chip Lab</NavLink>
           <NavLink to="/launch">Launch a fund</NavLink>
-          <a className="hide-nav" href={`${REPO}/blob/main/JUDGES.md`} target="_blank" rel="noreferrer">Proof</a>
-          <a className="hide-nav" href={REPO} target="_blank" rel="noreferrer">GitHub</a>
+          <NavLink to="/me">My funds</NavLink>
+          <OnChainMenu />
         </nav>
         <span className="sp" />
         <span className="live">{IS_FORK ? "LOCAL FORK OF X LAYER" : "LIVE ON X LAYER MAINNET"}</span>
@@ -45,13 +50,20 @@ export default function App() {
 
       <Routes>
         <Route path="/" element={<League />} />
+        <Route path="/how" element={<How />} />
+        <Route path="/lab" element={<Lab />} />
         <Route path="/launch" element={<Launch />} />
+        <Route path="/me" element={<Mine />} />
         <Route path="/fund/:address" element={<FundPage />} />
         <Route path="/fork/:address" element={<Fork />} />
       </Routes>
 
       <footer className="foot">
-        <span>Sworn · built for X Layer TapeOut Accelerate · <a href={REPO} target="_blank" rel="noreferrer"><u>source on GitHub</u></a></span>
+        <span>
+          Sworn · built for X Layer TapeOut Accelerate · <a href={REPO} target="_blank" rel="noreferrer"><u>source on GitHub</u></a>
+          {" · "}<a href={X_URL} target="_blank" rel="noreferrer"><u>@Swornfund</u></a>
+          {!IS_FORK && <>{" · "}<a href={DEWEB_URL} target="_blank" rel="noreferrer"><u>on DeWEB</u></a></>}
+        </span>
         {deployment && (
           <span className="mono">
             FACTORY {addrUrl(deployment.factory) ? <a href={addrUrl(deployment.factory)} target="_blank" rel="noreferrer">{short(deployment.factory)}</a> : short(deployment.factory)}
@@ -60,5 +72,47 @@ export default function App() {
         )}
       </footer>
     </div>
+  );
+}
+
+/** "On chain ▾": where Sworn lives outside this page (DeWEB copy, X, contracts, the judges' check). */
+function OnChainMenu() {
+  const [open, setOpen] = useState(false);
+  const ref = useRef(null);
+  const { pathname } = useLocation();
+  useEffect(() => setOpen(false), [pathname]);
+  useEffect(() => {
+    if (!open) return;
+    const close = (e) => { if (!ref.current?.contains(e.target)) setOpen(false); };
+    const esc = (e) => { if (e.key === "Escape") setOpen(false); };
+    document.addEventListener("pointerdown", close);
+    document.addEventListener("keydown", esc);
+    return () => { document.removeEventListener("pointerdown", close); document.removeEventListener("keydown", esc); };
+  }, [open]);
+
+  const items = [
+    !IS_FORK && { href: DEWEB_URL, title: "Sworn on DeWEB", sub: `This app, stored on X Layer · ${DEWEB_NAME}` },
+    { href: X_URL, title: "@Swornfund on X", sub: "Launches, new funds, rebalances" },
+    deployment && addrUrl(deployment.factory) && { href: addrUrl(deployment.factory), title: "Sworn factory", sub: `${short(deployment.factory)} · verified on Sourcify` },
+    deployment && addrUrl(deployment.circuits) && { href: addrUrl(deployment.circuits), title: "Sworn TapeOut processor", sub: `${short(deployment.circuits)} · every fund is a chip here` },
+    { href: `${REPO}/blob/main/JUDGES.md`, title: "The 5-minute check", sub: "Every claim, with how to verify it" },
+  ].filter(Boolean);
+
+  return (
+    <span className="menu" ref={ref}>
+      <button className={`menu-btn${open ? " open" : ""}`} aria-expanded={open} aria-haspopup="true" onClick={() => setOpen((o) => !o)}>
+        On chain <svg viewBox="0 0 10 6" aria-hidden><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg>
+      </button>
+      {open && (
+        <span className="menu-pop" role="menu">
+          {items.map((it) => (
+            <a key={it.title} role="menuitem" href={it.href} target="_blank" rel="noreferrer" onClick={() => setOpen(false)}>
+              <b>{it.title} <span aria-hidden>↗</span></b>
+              <span className="mono">{it.sub}</span>
+            </a>
+          ))}
+        </span>
+      )}
+    </span>
   );
 }

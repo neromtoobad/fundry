@@ -19,6 +19,9 @@ const bitsOf = (hex, n) => unpackBits(hexToBytes(hex || "0x"), n);
 const SIG = ["DROP", "RISE", "STOP-LOSS"];
 const LEVEL = ["out", "low", "medium", "high"];
 
+// The app routes with the URL hash (#/fund/…), so in-page "#lab" links must scroll, not navigate.
+const jump = (id) => (e) => { e.preventDefault(); document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" }); };
+
 function TxLink({ hash, children }) {
   const u = txUrl(hash);
   return u ? <a href={u} target="_blank" rel="noreferrer"><u>{children}</u></a> : <span title={hash}>{children}</span>;
@@ -120,7 +123,7 @@ export default function FundPage() {
             <p className="muted" style={{ marginTop: 0 }}>{due ? "Due now. Anyone can run it: the chip decides, not the caller." : f.supply === 0n ? "Waiting for the first investor." : `Next one ${until(f.nextRebalanceAt, now)}. Anyone can run it once it’s due.`}</p>
             <RebalanceButton f={f} w={w} due={due} onDone={reloadAll} />
             <p className="muted" style={{ fontSize: 14, marginTop: 18 }}>
-              <a className="u" href="#lab">Try the chip</a> below with your own prices, or <a className="u" href="#check">check every claim</a> on this page against the chain.
+              <a className="u" href="#lab" onClick={jump("lab")}>Try the chip</a> below with your own prices, or <a className="u" href="#check" onClick={jump("check")}>check every claim</a> on this page against the chain.
             </p>
           </div>
         </div>

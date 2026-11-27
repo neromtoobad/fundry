@@ -27,10 +27,10 @@ function levelsOf(outputs) {
   return lv;
 }
 
-export default function ChipLab({ f, live, parents }) {
+export default function ChipLab({ f, live, parents, initialMode = "now", bare = false }) {
   const chip = useChip(f.circuitId);
   const n = f.holdings.length;
-  const [mode, setMode] = useState("now");
+  const [mode, setMode] = useState(initialMode);
   const [moves, setMoves] = useState(() => f.holdings.map(() => ({ change: 0, fromPeak: 0 })));
   const liveState = useMemo(() => unpackBits(hexToBytes(f.latchState || "0x"), chip?.nState ?? 0), [f.latchState, chip?.nState]);
   const [memory, setMemory] = useState(null);
@@ -75,6 +75,7 @@ export default function ChipLab({ f, live, parents }) {
   return (
     <section className="card" style={{ marginTop: 16 }} id="lab">
       <div className="sect-head" style={{ marginBottom: 18 }}>
+        {bare ? <h3 style={{ margin: 0 }}>{f.name} · chip #{String(f.circuitId)}</h3> : (
         <div>
           <span className="kick">Chip Lab</span>
           <h2 style={{ marginTop: 12 }}>Move the prices. Watch the chip decide.</h2>
@@ -82,7 +83,7 @@ export default function ChipLab({ f, live, parents }) {
             This is the fund’s real circuit, read from X Layer. Every change below runs it gate by gate in your browser, then asks
             TapeOut’s own evaluator on chain the same question. It’s a free read, no wallet needed.
           </p>
-        </div>
+        </div>)}
         <span className="seg">
           <button className={mode === "now" ? "on" : ""} onClick={() => setMode("now")}>Right now</button>
           <button className={mode === "what" ? "on" : ""} onClick={() => setMode("what")}>What if…</button>
