@@ -3,6 +3,11 @@
 Account: @Swornfund · site: sworn.nerom.site · submission deadline Dec 7, 23:59 UTC.
 Post texts for days 1–5 are in [X-KIT.md](X-KIT.md); the rest are below.
 
+## Images
+Every post has a 1600×900 image in [posts/](posts/), built from real screenshots of the live site (`design/sworn/posts.html` + `shots.cjs`; re-run them when the numbers change):
+post-01 launch · post-02 rebalance (Chip Lab) · post-03 fork (family) · post-04 chip NFT (owner card) · post-05 checks · post-06 fund spotlight · post-08 stop-loss memory · post-09 your rule as a fund · post-11 submitted (League).
+Post 7 (first rebalance) and 10 (demo video) get theirs when those exist. Re-shoot 06 and 11 after the first deposit so they don't show $0.
+
 ## Rules for every post
 - **Facts only.** Every number comes from the site or the chain. No returns, users or deposits until they exist.
 - **One idea per post,** with a picture from the real product (screenshot of the site, chip, log). No stock art.

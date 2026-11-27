@@ -1,0 +1,108 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f4f3ef;--ink:#0d0f12;--cu:#E2591B;--cr:#F4EFE6;--muted:#62615b}
+*{box-sizing:border-box}html,body{margin:0;overflow:hidden}
+body{width:1600px;height:900px;background:var(--paper);font-family:Inter Tight,sans-serif;color:var(--ink);position:relative}
+#traces{position:absolute;inset:0}
+.kick{font:600 17px JetBrains Mono;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:10px}
+.kick:before{content:"";width:9px;height:9px;border-radius:50%;background:var(--cu)}
+h1{font-weight:700;letter-spacing:-.04em;line-height:.98;margin:22px 0 0}
+h1 em{font-style:normal;color:var(--cu)}
+.sub{font-size:26px;line-height:1.32;color:var(--muted);margin-top:22px;letter-spacing:-.01em}
+.brand{position:absolute;display:flex;align-items:center;gap:12px;font-weight:700;font-size:30px;letter-spacing:-.01em}
+.brand i{font-style:normal;margin-left:.045em}
+.brand .url{font:600 15px JetBrains Mono;letter-spacing:.08em;color:var(--muted);margin-left:14px;text-transform:uppercase}
+.shot{position:absolute;border-radius:22px;overflow:hidden;background:#fff;box-shadow:0 2px 0 rgba(13,15,18,.04),0 30px 80px -20px rgba(13,15,18,.28),0 0 0 1px rgba(13,15,18,.06)}
+.shot img{display:block;position:absolute}
+.call{position:absolute;background:var(--cu);color:#fff;font-weight:600;font-size:22px;letter-spacing:-.01em;padding:12px 18px;border-radius:14px;box-shadow:0 12px 30px -8px rgba(226,89,27,.55);white-space:nowrap;line-height:1.2}
+.call.ink{background:var(--ink);box-shadow:0 12px 30px -8px rgba(13,15,18,.5)}
+.call small{display:block;font:500 14px JetBrains Mono;letter-spacing:.06em;opacity:.8;margin-top:4px;text-transform:uppercase}
+.ring{position:absolute;border:4px solid var(--cu);border-radius:14px}
+.bar{position:absolute;left:0;right:0;top:0;height:46px;background:#e9e7e1;display:flex;align-items:center;gap:8px;padding:0 18px}
+.bar b{width:12px;height:12px;border-radius:50%;background:#d3d0c8}
+.bar span{margin-left:18px;background:#fff;border-radius:8px;padding:6px 16px;font:500 15px JetBrains Mono;color:var(--muted)}
+.n{position:absolute;right:56px;top:52px;font:600 16px JetBrains Mono;letter-spacing:.1em;color:#a9a69e}
+</style></head><body>
+<svg id="traces" width="1600" height="900"></svg>
+<div id="root"></div>
+<script>
+const LOGO = `<svg width="46" height="46" viewBox="0 0 100 100"><rect width="100" height="100" rx="24" fill="#0D0F12"/><path d="M70 24H40L29 35v4l11 11h20l11 11v4L60 76H30" fill="none" stroke="#F4EFE6" stroke-width="10" stroke-linejoin="round"/><circle cx="72" cy="24" r="8" fill="#E2591B"/><circle cx="28" cy="76" r="8" fill="#E2591B"/></svg>`;
+const brand = (x, y) => `<div class="brand" style="left:${x}px;top:${y}px">${LOGO}<span>Swor<i>n</i></span><span class="url">sworn.nerom.site</span></div>`;
+// a screenshot (or a crop of one, in source pixels) placed at x,y with width w
+function shot({ src, sw, sh, crop = [0, 0, sw, sh], x, y, w, bar }) {
+  const [cx, cy, cw, ch] = crop, k = w / cw, h = Math.round(ch * k) + (bar ? 46 : 0);
+  return `<div class="shot" style="left:${x}px;top:${y}px;width:${w}px;height:${h}px">${bar ? `<div class="bar"><b></b><b></b><b></b><span>${bar}</span></div>` : ""}
+    <img src="shots/${src}" style="width:${sw * k}px;left:${-cx * k}px;top:${-cy * k + (bar ? 46 : 0)}px"></div>`;
+}
+const P = {
+  1: () => `<div style="position:absolute;left:96px;top:84px;width:640px">
+      <div class="kick">Live on X Layer mainnet</div>
+      <h1 style="font-size:92px">Stock funds that keep their <em>word.</em></h1>
+      <div class="sub">Pick stocks, write the rules, launch in a minute. The rules are sealed in a TapeOut chip. Nobody can change them, not even you.</div></div>
+    ${shot({ src: "home-hero.png", sw: 2560, sh: 1800, crop: [0, 0, 2560, 1500], x: 790, y: 120, w: 900, bar: "sworn.nerom.site" })}
+    ${brand(96, 790)}`,
+  2: () => `<div style="position:absolute;left:96px;top:70px;width:1100px">
+      <div class="kick">How a rebalance works</div>
+      <h1 style="font-size:80px">Move a price. Watch the <em>chip</em> decide.</h1></div>
+    ${shot({ src: "chiplab.png", sw: 2480, sh: 1136, crop: [0, 352, 2480, 784], x: 96, y: 330, w: 1408 })}
+    <div class="call" style="left:1010px;top:276px">NVDA falls 6% → the chip cuts it to 0%</div>
+    <div class="call ink" style="left:820px;top:752px">✓ TapeOut on X Layer returns the same bits</div>
+    ${brand(96, 822)}`,
+  3: () => `<div style="position:absolute;left:96px;top:110px;width:600px">
+      <div class="kick">Fork a fund</div>
+      <h1 style="font-size:80px">Fork a fund. Its maker gets paid <em>forever.</em></h1>
+      <div class="sub">Your chip runs the parent's chip inside it, untouched, through a TapeOut REF. You only pay for your own gates.</div></div>
+    ${shot({ src: "family.png", sw: 1042, sh: 644, x: 780, y: 150, w: 740 })}
+    <div class="call" style="left:740px;top:640px">20% of every fork's fee → the parent chip's holder<small>Enforced by the contract</small></div>
+    ${brand(96, 790)}`,
+  4: () => `<div style="position:absolute;left:96px;top:110px;width:600px">
+      <div class="kick">The chip owns the fund</div>
+      <h1 style="font-size:80px">Every fund is a chip <em>NFT.</em></h1>
+      <div class="sub">Whoever holds the NFT earns the creator fee. The rules never change, so the NFT is the strategy and its track record. You can sell it.</div></div>
+    ${shot({ src: "owner.png", sw: 1410, sh: 720, x: 770, y: 190, w: 760 })}
+    <div class="call ink" style="left:1150px;top:150px">Sell the NFT → the fee moves with it</div>
+    ${brand(96, 790)}`,
+  5: () => `<div style="position:absolute;left:96px;top:70px;width:1200px">
+      <div class="kick">Don't trust us</div>
+      <h1 style="font-size:80px">Check every claim <em>yourself.</em></h1></div>
+    ${shot({ src: "checks.png", sw: 2480, sh: 1250, crop: [0, 0, 2480, 1250], x: 96, y: 260, w: 1408 })}
+    <div class="call" style="left:1110px;top:228px">Runs in your browser, from chain data only</div>
+    ${brand(96, 1000)}`,
+  6: () => `<div style="position:absolute;left:96px;top:110px;width:560px">
+      <div class="kick">Fund spotlight</div>
+      <h1 style="font-size:76px">AI + Market, <em>Safer.</em></h1>
+      <div class="sub">Runs the AI + Market chip first, untouched. Then holds less NVDA, more SPY, and a stop-loss on SPY.</div>
+      <div class="kick" style="margin-top:30px">Rules, not advice. Read them first.</div></div>
+    ${shot({ src: "fund-head.png", sw: 2480, sh: 668, x: 700, y: 120, w: 820 })}
+    ${shot({ src: "rules.png", sw: 2480, sh: 800, crop: [0, 0, 1400, 800], x: 700, y: 375, w: 820 })}
+    ${brand(96, 790)}`,
+  8: () => `<div style="position:absolute;left:96px;top:70px;width:1200px">
+      <div class="kick">Stop-loss with memory</div>
+      <h1 style="font-size:80px">The stop fires. The chip <em>remembers.</em></h1></div>
+    ${shot({ src: "chiplab-stop.png", sw: 2480, sh: 1136, crop: [0, 352, 2480, 784], x: 96, y: 330, w: 1408 })}
+    <div class="call" style="left:1000px;top:276px">NVDA 20% below its peak → stop-loss → 0%</div>
+    <div class="call ink" style="left:1000px;top:584px">LATCH gates remember: stay out until it recovers</div>
+    ${brand(96, 822)}`,
+  9: () => `<div style="position:absolute;left:96px;top:110px;width:560px">
+      <div class="kick">Your rule as a fund</div>
+      <h1 style="font-size:80px">Type your rule. Get a <em>chip.</em></h1>
+      <div class="sub">Write it in plain words. Sworn turns it into a TapeOut circuit you can launch as a fund others can join.</div></div>
+    ${shot({ src: "launch-example.png", sw: 2560, sh: 1800, crop: [40, 630, 1410, 770], x: 690, y: 150, w: 600 })}
+    ${shot({ src: "launch-example.png", sw: 2560, sh: 1800, crop: [1480, 630, 1040, 1170], x: 1150, y: 300, w: 380 })}
+    <div class="call ink" style="left:690px;top:505px">Read by a fixed parser, not an AI</div>
+    <div class="call" style="left:1050px;top:770px">Your rule → a 30-gate chip</div>
+    ${brand(96, 790)}`,
+  11: () => `<div style="position:absolute;left:96px;top:70px;width:1300px">
+      <div class="kick">Submitted to X Layer TapeOut Accelerate</div>
+      <h1 style="font-size:80px">6 funds. 6 chips. All on <em>mainnet.</em></h1></div>
+    ${shot({ src: "league.png", sw: 2480, sh: 1432, crop: [0, 300, 2480, 1132], x: 96, y: 270, w: 1408 })}
+    ${brand(96, 1000)}`,
+};
+const p = new URLSearchParams(location.search).get("p");
+document.getElementById("root").innerHTML = P[p]() + `<div class="n">${String(p).padStart(2, "0")}</div>`;
+// faint circuit traces in the background, the same every render
+let seed = 11; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+let g = ""; for (let r = 0; r < 24; r++) { let y = 20 + r * 38, x = -20, d = `M${x} ${y}`; while (x < 1620) { x += 60 + rnd() * 200; d += ` H${x}`; const up = rnd() < .5 ? -1 : 1; if (rnd() < .55 && y + up * 38 > 10 && y + up * 38 < 890) { x += 38; y += up * 38; d += ` L${x} ${y}`; } } g += `<path d="${d}" fill="none" stroke="#0d0f12" stroke-opacity=".055" stroke-width="4" stroke-linejoin="round"/>`; }
+document.getElementById("traces").innerHTML = g;
+</script></body></html>
